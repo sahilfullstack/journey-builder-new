@@ -14,6 +14,7 @@ class TreesSeeder extends Seeder
     {
         $trees = [
             'Acne' => 'The tree for acne',
+            'General Assessment' => 'The tree for General Assessment',
         ];
 
         foreach ($trees as $tree => $description) {

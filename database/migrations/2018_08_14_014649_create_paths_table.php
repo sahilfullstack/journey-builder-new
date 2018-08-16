@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNodesTable extends Migration
+class CreatePathsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateNodesTable extends Migration
      */
     public function up()
     {
-        Schema::create('nodes', function (Blueprint $table) {
+        Schema::create('paths', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('tree_id');
-            $table->unsignedInteger('identifier');
-            $table->json('data')->nullable();
+            $table->unsignedInteger('journey_id');
+            $table->unsignedInteger('node_id');
             $table->json('linker')->nullable();
             $table->timestamps();
             $table->softDeletes();
@@ -32,6 +31,6 @@ class CreateNodesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nodes');
+        Schema::dropIfExists('paths');
     }
 }

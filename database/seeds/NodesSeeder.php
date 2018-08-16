@@ -28,8 +28,7 @@ class NodesSeeder extends Seeder
         	'text_input',
         	'image_input',
         	'generate_report',
-        	'final',
-        	'info',
+        	'final'
         ];
 
         $nodes = [
@@ -50,7 +49,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'age_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -63,7 +62,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'age_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -76,7 +75,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'age_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -188,7 +187,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'skin_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -201,7 +200,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'skin_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -214,7 +213,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'skin_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -239,7 +238,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'skin_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -252,7 +251,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			            	[
 			                    'skin_score' => [
-			                        '$add' => 6
+			                        'add' => 6
 			                    ]
 			                ]
 			            ]                		
@@ -265,7 +264,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'skin_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -278,7 +277,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'skin_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -291,7 +290,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'skin_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -316,7 +315,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'habits_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -329,7 +328,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'habits_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -342,7 +341,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'habits_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -367,7 +366,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'skin_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -380,7 +379,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'skin_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -393,7 +392,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'skin_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -427,7 +426,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -441,7 +440,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -455,7 +454,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 5
+			                        'add' => 5
 			                    ]
 			                ]
 			            ]                		
@@ -530,7 +529,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -543,7 +542,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -568,7 +567,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 5
+			                        'add' => 5
 			                    ]
 			                ]
 			            ]                		
@@ -581,7 +580,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -594,7 +593,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -607,7 +606,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -686,7 +685,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -699,7 +698,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -712,7 +711,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -725,7 +724,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 4
+			                        'add' => 4
 			                    ]
 			                ]
 			            ]                		
@@ -738,7 +737,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 5
+			                        'add' => 5
 			                    ]
 			                ]
 			            ]                		
@@ -763,7 +762,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -776,7 +775,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -789,7 +788,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -814,7 +813,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'cause_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -827,7 +826,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'cause_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -852,7 +851,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'cause_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -865,7 +864,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'cause_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -878,7 +877,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'cause_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -903,7 +902,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'cause_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -916,7 +915,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'cause_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -941,7 +940,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'cause_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -954,7 +953,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'cause_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -967,7 +966,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'cause_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -992,7 +991,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_grade_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -1017,7 +1016,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_grade_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -1042,7 +1041,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_grade_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -1067,7 +1066,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_grade_score' => [
-			                        '$add' => 4
+			                        'add' => 4
 			                    ]
 			                ]
 			            ]                		
@@ -1092,7 +1091,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'acne_grade_score' => [
-			                        '$add' => 5
+			                        'add' => 5
 			                    ]
 			                ]
 			            ]                		
@@ -1110,7 +1109,7 @@ class NodesSeeder extends Seeder
                 	[
 	 					'when' => [
 			                'acne_score' => [
-			                    '$lte' => 14
+			                    'lte' => 14
 			                ]
 		            	],
 			            'to' => 21,
@@ -1119,7 +1118,7 @@ class NodesSeeder extends Seeder
                 	[
 	 					'when' => [
 			                'acne_score' => [
-			                    '$lte' => 24
+			                    'lte' => 24
 			                ]
 		            	],
 			            'to' => 22,
@@ -1128,7 +1127,7 @@ class NodesSeeder extends Seeder
                 	[
 	 					'when' => [
 			                'acne_score' => [
-			                    '$lte' => 34
+			                    'lte' => 34
 			                ]
 		            	],
 			            'to' => 23,
@@ -1137,14 +1136,14 @@ class NodesSeeder extends Seeder
                 	[
 	 					'when' => [
 			                'acne_score' => [
-			                    '$gte' => 45
+			                    'gte' => 45
 			                ]
 		            	],
 			            'to' => 25,
 			            'operations' => []
                 	],
                 	[
-	 					'when' => '$true',
+	 					'when' => 'true',
 			            'to' => 1,
 			            'operations' => []
                 	],
@@ -1167,7 +1166,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -1180,7 +1179,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -1193,7 +1192,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -1218,7 +1217,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 0
+			                        'add' => 0
 			                    ]
 			                ]
 			            ]                		
@@ -1231,7 +1230,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -1244,7 +1243,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -1257,7 +1256,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -1270,7 +1269,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -1296,7 +1295,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -1309,7 +1308,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -1322,7 +1321,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -1335,7 +1334,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 0
+			                        'add' => 0
 			                    ]
 			                ]
 			            ]                		
@@ -1361,7 +1360,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -1374,7 +1373,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -1400,7 +1399,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -1413,7 +1412,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		
@@ -1427,7 +1426,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			                [
 			                    'food_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -1515,7 +1514,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			            	 [
 			                    'habits_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -1528,7 +1527,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 	 						[
 			                    'habits_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -1553,7 +1552,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			            	 [
 			                    'habits' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -1566,7 +1565,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 	 						[
 			                    'habits' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -1591,7 +1590,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			            	 [
 			                    'mood_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -1604,7 +1603,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 	 						[
 			                    'mood_score' => [
-			                        '$add' => 8
+			                        'add' => 8
 			                    ]
 			                ]
 			            ]                		
@@ -1617,7 +1616,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 	 						[
 			                    'mood_score' => [
-			                        '$add' => 8
+			                        'add' => 8
 			                    ]
 			                ]
 			            ]                		
@@ -1630,7 +1629,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 	 						[
 			                    'mood_score' => [
-			                        '$add' => 8
+			                        'add' => 8
 			                    ]
 			                ]
 			            ]                		
@@ -1643,7 +1642,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 	 						[
 			                    'mood_score' => [
-			                        '$add' => 8
+			                        'add' => 8
 			                    ]
 			                ]
 			            ]                		
@@ -1668,7 +1667,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 			            	 [
 			                    'cause_score' => [
-			                        '$add' => 3
+			                        'add' => 3
 			                    ]
 			                ]
 			            ]                		
@@ -1681,7 +1680,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 	 						[
 			                    'cause_score' => [
-			                        '$add' => 1
+			                        'add' => 1
 			                    ]
 			                ]
 			            ]                		
@@ -1694,7 +1693,7 @@ class NodesSeeder extends Seeder
 			            'operations' => [
 	 						[
 			                    'cause_score' => [
-			                        '$add' => 2
+			                        'add' => 2
 			                    ]
 			                ]
 			            ]                		

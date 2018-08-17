@@ -18,7 +18,7 @@ class Node extends Model
      * @var array
      */
     protected $fillable = [
-        'tree_id', 'data', 'type', 'options', 'decisions', 'order'
+        'tree_id', 'data', 'linker', 'identifier'
     ];
 
     /**
@@ -34,9 +34,8 @@ class Node extends Model
      * @var array
      */
     protected $casts = [
-        'data'      => 'array',
-        'options'   => 'array',
-        'decisions' => 'array',
+        'data'   => 'array',
+        'linker' => 'array'
     ];
 
     /**

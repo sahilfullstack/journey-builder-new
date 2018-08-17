@@ -2,12 +2,12 @@
 
 namespace App\Services\JourneyManager\Nodes;
 
-use App\Models\{UserJourney, Node, UserJourneyNode};
+use App\Models\{Journey, Node, Path};
 
 class NormalNode {
 
-	public function next(UserJourney $journey, UserJourneyNode $userJourneyNode)
+	public function next(Journey $journey, Path $Path)
 	{
-		return Node::whereTreeId($journey->tree_id)->whereOrder($userJourneyNode['options'][0]['to'])->first();
+		return Node::whereTreeId($journey->tree_id)->whereIdentifier($Path['options'][0]['to'])->first();
 	}
 }

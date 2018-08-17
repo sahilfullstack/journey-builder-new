@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\UserJourney;
+use App\Models\Journey;
 
 class User extends Authenticatable
 {
@@ -30,6 +30,6 @@ class User extends Authenticatable
 
     public function journeys()
     {
-        return $this->hasMany(UserJourney::class);
+        return $this->hasMany(Journey::class);
     }
 }

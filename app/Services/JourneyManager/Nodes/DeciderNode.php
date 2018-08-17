@@ -2,11 +2,11 @@
 
 namespace App\Services\JourneyManager\Nodes;
 
-use App\Models\{UserJourney, Node, UserJourneyNode};
+use App\Models\{Journey, Node, Path};
 
 class DeciderNode {
 
-	public function next(UserJourney $journey, Node $deciderNode)
+	public function next(Journey $journey, Node $deciderNode)
 	{
 		// perforem decider operation
 		$options = $journey->nodes()->select('options')->get()->toArray();
@@ -49,11 +49,11 @@ class DeciderNode {
 
 		// then return the final node
 
-		// $node = $userJourneyNode->node;
+		// $node = $Path->node;
 
-		// $orderId = $userJourneyNode['options'][0]['to'];
+		// $orderId = $Path['options'][0]['to'];
 
-		// return Node::whereTreeId($journey->tree_id)->whereOrder()->first();
+		// return Node::whereTreeId($journey->tree_id)->whereIdentifier()->first();
 	}
 
 		private function processOptions($nodeOptions)
@@ -140,8 +140,8 @@ class DeciderNode {
 	}
 
 
-	private function getNodeWithOrder(UserJourney $journey, $order)
+	private function getNodeWithOrder(Journey $journey, $order)
 	{
-		return Node::whereTreeId($journey->tree_id)->whereOrder($order)->first();
+		return Node::whereTreeId($journey->tree_id)->whereIdentifier($order)->first();
 	}
 }

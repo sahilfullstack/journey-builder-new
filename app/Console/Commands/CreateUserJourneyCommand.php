@@ -5,10 +5,12 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Tree;
 use App\User;
-use App\Models\{UserJourney, UserJourneyNode};
+use App\Models\{Journey, Path, Node};
 use App\Services\JourneyManager\JourneyManager;
+use Illuminate\Http\Request;
+use App\Jobs\Path\StorePath;
 
-class CreateUserJourneyCommand extends Command
+class CreateJourneyCommand extends Command
 {
     /**
      * The name and signature of the console command.
@@ -45,16 +47,12 @@ class CreateUserJourneyCommand extends Command
      */
     public function handle()
     {
-        $mathematicalOperators = ['$add', 'sub', 'mul', 'div'];
-        $stringOperators = ["set", "append", "list"];
-        $a = '$add';
-        dd("hi");
-        $tree = Tree::notDeleted()->whereSlug(str_slug('Acne'))->first();
+        $tree = Tree::notDeleted()->whereSlug(str_slug('General Assessment'))->first();
         $user = User::find($this->argument('user'));
             
         if(count($user->journeys) == 0)
         {
-             UserJourney::create([
+             Journey::create([
                     'user_id' => $user->id,
                     'tree_id' => $tree->id
                 ]);
@@ -64,31 +62,16 @@ class CreateUserJourneyCommand extends Command
             $journey = $user->journeys()->orderBy('id', 'desc')->first();
 
             $node = $this->journeyManager->nextNode($journey);
+dd($node);
+            // select_one
+            // $response = [
+            //     "orders" => [1, 3]
+            // ];
+            $response = [
+                'response' => 'something fishy'
+            ]; 
 
-            //option 1 as answer from user            
-            if(count($node['options']) > 0)
-            {
-                if(count($node['options']) > 1)
-                {
-                    $options[] = $node['options'][1];
-                }
-                else
-                {
-                    $options[] = $node['options'][0];
-                }
-            }
-            else
-            {
-                // todo
-                // have to implement fininshed when journey gets completed
-                $options = [];
-            }
-
-            UserJourneyNode::create([
-                'user_journey_id' => $journey->id,
-                'node_id' => $node->id,
-                'options' => $options
-            ]);
+            dispatch(new StorePath($journey, $node, $response));
         }
     }
 }

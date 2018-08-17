@@ -2,18 +2,20 @@
 
 namespace App\Services\JourneyManager;
 
-use App\Models\{UserJourney, Node, UserJourneyNode};
+use App\Models\{Journey, Node, Path};
 use App\Services\JourneyManager\Nodes\{NormalNode, GenerateReportNode, DeciderNode};
 
 class NodeManager {
 
-	public function next(UserJourney $journey)
+	public function next(Journey $journey)
 	{		
 		if($this->isJourneyEmpty($journey)) return $this->getFirstNode($journey);
 
 		$userLastJourneyNode = $journey->nodes()->orderBy('id', 'desc')->first();
+		
+		dd($userLastJourneyNode);
 
-		$nextNode = Node::whereTreeId($journey->tree_id)->whereOrder($userLastJourneyNode['options'][0]['to'])->first();
+		$nextNode = Node::whereTreeId($journey->tree_id)->whereIdentifier($userLastJourneyNode['options'][0]['to'])->first();
 
 
 		switch ($nextNode->type) 
@@ -45,14 +47,14 @@ dd($nextFinalNode);
 		return $nextFinalNode;
 	}
 	
-	private function isJourneyEmpty(UserJourney $journey)
+	private function isJourneyEmpty(Journey $journey)
 	{
 		return count($journey->nodes) == 0;
 	}
 
-	private function getFirstNode(UserJourney $journey)
+	private function getFirstNode(Journey $journey)
 	{
-		return Node::whereTreeId($journey->tree_id)->whereOrder(1)->first();
+		return Node::whereTreeId($journey->tree_id)->whereIdentifier(1)->first();
 	}
 
 }

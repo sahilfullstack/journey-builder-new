@@ -2,7 +2,7 @@
 
 namespace App\Services\JourneyManager;
 
-use App\Models\UserJourney;
+use App\Models\Journey;
 use App\Models\Node;
 
 class JourneyManager {
@@ -14,7 +14,7 @@ class JourneyManager {
 		$this->nodeManager = $nodeManager;
 	}
 
-	public function nextNode(UserJourney $journey)
+	public function nextNode(Journey $journey)
 	{
 		return $this->nodeManager->next($journey);
 	}

@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Traits\ContainsSoftDeletableUniques;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\User;
 
-class UserJourneyNode extends Model
+class Journey extends Model
 {
     use ContainsSoftDeletableUniques, SoftDeletes;
 
@@ -18,7 +19,7 @@ class UserJourneyNode extends Model
      * @var array
      */
     protected $fillable = [
-        'user_journey_id', 'node_id', 'options'
+        'user_id', 'tree_id', 'is_finished'
     ];
 
     /**
@@ -27,15 +28,6 @@ class UserJourneyNode extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'options'   => 'array',
-    ];
 
     /**
      * Limit the search to only not deleted elements.
@@ -48,13 +40,13 @@ class UserJourneyNode extends Model
         return $query->whereNull('deleted_at')->where(self::SOFT_DELETION_TOKEN, 0);
     }
 
-    public function journey()
+    public function nodes()
     {
-        return $this->belongsTo(UserJourney::class);
+        return $this->hasMany(Path::class);
     }
 
-    public function node()
+    public function user()
     {
-        return $this->hasOne(Node::class, 'id', 'node_id');
+        return $this->belongsTo(User::class);
     }
 }

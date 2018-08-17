@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
+// trees
+Route::get('/trees', ['as' => 'api.tree.list', 'uses' => 'TreeController@list']);
+Route::get('/trees/{tree}', ['as' => 'api.tree.show', 'uses' => 'TreeController@show']);
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

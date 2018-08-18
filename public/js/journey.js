@@ -47369,7 +47369,9 @@ window.Vue = __webpack_require__(34);
  */
 
 Vue.component('selectable-card', __webpack_require__(48));
-Vue.component('question--select-many', __webpack_require__(59));
+Vue.component('journey', __webpack_require__(74));
+Vue.component('node', __webpack_require__(64));
+Vue.component('linker--select-many', __webpack_require__(69));
 
 var app = new Vue({
   el: '#app'
@@ -47747,7 +47749,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         value: {
-            type: String,
             required: true
         }
     },
@@ -47811,25 +47812,30 @@ if (false) {
 /* 56 */,
 /* 57 */,
 /* 58 */,
-/* 59 */
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(60)
+  __webpack_require__(65)
 }
 var normalizeComponent = __webpack_require__(37)
 /* script */
-var __vue_script__ = __webpack_require__(62)
+var __vue_script__ = __webpack_require__(67)
 /* template */
-var __vue_template__ = __webpack_require__(63)
+var __vue_template__ = __webpack_require__(68)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-de465010"
+var __vue_scopeId__ = "data-v-2c677db9"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -47840,7 +47846,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/QuestionSelectMany.vue"
+Component.options.__file = "resources/assets/js/components/Node.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -47849,9 +47855,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-de465010", Component.options)
+    hotAPI.createRecord("data-v-2c677db9", Component.options)
   } else {
-    hotAPI.reload("data-v-de465010", Component.options)
+    hotAPI.reload("data-v-2c677db9", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -47862,23 +47868,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 60 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(61);
+var content = __webpack_require__(66);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(51)("a4d3999e", content, false, {});
+var update = __webpack_require__(51)("a5ec290c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-de465010\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./QuestionSelectMany.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-de465010\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./QuestionSelectMany.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2c677db9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Node.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2c677db9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Node.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -47888,7 +47894,7 @@ if(false) {
 }
 
 /***/ }),
-/* 61 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(44)(false);
@@ -47896,13 +47902,380 @@ exports = module.exports = __webpack_require__(44)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 62 */
+/* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        node: {
+            type: Object,
+            required: true
+        }
+    },
+    data: function data() {
+        return {
+            value: undefined
+        };
+    },
+
+    methods: {
+        emit: function emit(event) {
+            this.$emit('input', this.value);
+        }
+    }
+});
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "question" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c("h2", [_vm._v(_vm._s(this.node.data.title))]),
+        _vm._v(" "),
+        _c("p", [_vm._v(_vm._s(this.node.data.body))]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "answerable" },
+          [
+            this.node.linker.type == "select_multiple"
+              ? _c("linker--select-many", {
+                  attrs: { linker: this.node.linker },
+                  on: { input: _vm.emit },
+                  model: {
+                    value: _vm.value,
+                    callback: function($$v) {
+                      _vm.value = $$v
+                    },
+                    expression: "value"
+                  }
+                })
+              : _vm._e()
+          ],
+          1
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2c677db9", module.exports)
+  }
+}
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(70)
+}
+var normalizeComponent = __webpack_require__(37)
+/* script */
+var __vue_script__ = __webpack_require__(72)
+/* template */
+var __vue_template__ = __webpack_require__(73)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-5cb5af8e"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/LinkerSelectMany.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5cb5af8e", Component.options)
+  } else {
+    hotAPI.reload("data-v-5cb5af8e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(71);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(51)("10defdfd", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5cb5af8e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LinkerSelectMany.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5cb5af8e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LinkerSelectMany.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(44)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        linker: {
+            type: Object,
+            required: true
+        }
+    },
+    data: function data() {
+        return {
+            selected: []
+        };
+    },
+
+
+    methods: {
+        onSelect: function onSelect(value) {
+            // value is the index of the selectable selected
+            var selected = this.linker.selectables[value];
+            this.selected.push(selected);
+
+            this.$emit('input', this.selected);
+        },
+        onUnselect: function onUnselect(value) {
+            // value is the index of the selectable selected
+            var selected = this.linker.selectables[value];
+
+            var index = this.selected.indexOf(selected);
+            if (index !== -1) this.selected.splice(index, 1);
+
+            this.$emit('input', this.selected);
+        }
+    }
+});
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "horizontal-scroll" },
+    _vm._l(this.linker.selectables, function(selectable, index) {
+      return _c(
+        "selectable-card",
+        {
+          key: index,
+          staticClass: "text-center",
+          attrs: { value: index },
+          on: { selected: _vm.onSelect, unselected: _vm.onUnselect }
+        },
+        [
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v(_vm._s(selectable.data.text))
+            ])
+          ])
+        ]
+      )
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5cb5af8e", module.exports)
+  }
+}
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(75)
+}
+var normalizeComponent = __webpack_require__(37)
+/* script */
+var __vue_script__ = __webpack_require__(77)
+/* template */
+var __vue_template__ = __webpack_require__(78)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-187bd8d4"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/JourneyComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-187bd8d4", Component.options)
+  } else {
+    hotAPI.reload("data-v-187bd8d4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(76);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(51)("97c3dfa0", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-187bd8d4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./JourneyComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-187bd8d4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./JourneyComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(44)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47963,247 +48336,180 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            data: {
-                title: 'What do you like the most?',
-                body: 'Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah'
-            },
-            selected: []
+            nodes: [this.goToNext()],
+            path: []
         };
     },
 
-
     methods: {
-        onSelect: function onSelect(value) {
-            this.selected.push(value);
-        },
-        onUnselect: function onUnselect(value) {
-            var index = this.selected.indexOf(value);
+        goToNext: function goToNext() {
+            var available = [{
+                "id": 4,
+                "tree_id": 2,
+                "identifier": 4,
+                "data": {
+                    "body": "",
+                    "title": "Which of the following food items you consume in your diet?"
+                },
+                "linker": {
+                    "to": 5,
+                    "type": "select_multiple",
+                    "maximum": 6,
+                    "minimum": 1,
+                    "selectables": [{
+                        "to": 5,
+                        "data": {
+                            "text": "Vegetables"
+                        },
+                        "operations": []
+                    }, {
+                        "to": 5,
+                        "data": {
+                            "text": "Fruits"
+                        },
+                        "operations": []
+                    }, {
+                        "to": 5,
+                        "data": {
+                            "text": "Meat"
+                        },
+                        "operations": []
+                    }, {
+                        "to": 5,
+                        "data": {
+                            "text": "Egg"
+                        },
+                        "operations": []
+                    }, {
+                        "to": 5,
+                        "data": {
+                            "text": "Dairy Products"
+                        },
+                        "operations": []
+                    }, {
+                        "to": 5,
+                        "data": {
+                            "text": "Fish"
+                        },
+                        "operations": []
+                    }]
+                }
+            }, {
+                "id": 4,
+                "tree_id": 2,
+                "identifier": 4,
+                "data": {
+                    "body": "",
+                    "title": "Which of the following food items you consume in your diet?"
+                },
+                "linker": {
+                    "type": "number",
+                    "to": 15
+                }
+            }, {
+                "id": 4,
+                "tree_id": 2,
+                "identifier": 4,
+                "data": {
+                    "body": "",
+                    "title": "Which of the following food items you consume in your diet?"
+                },
+                "linker": {
+                    "type": "text",
+                    "to": 15
+                }
+            }];
 
-            if (index !== -1) this.selected.splice(index, 1);
+            console.log(this.path);
+
+            return available[0];
         }
     }
 });
 
 /***/ }),
-/* 63 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "question" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12" }, [
-        _c("h1", [_vm._v(_vm._s(this.data.title))]),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(this.data.body))]),
-        _vm._v(" "),
-        _c("div", { staticClass: "answerable" }, [
+  return _c("section", { staticClass: "main container-fluid" }, [
+    _c("div", { staticClass: "row h-100" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "section",
+        { staticClass: "col-sm-12 col-md-8 offset-md-4" },
+        _vm._l(this.nodes, function(node, index) {
+          return _c("node", {
+            key: index,
+            attrs: { node: node },
+            model: {
+              value: _vm.path[index],
+              callback: function($$v) {
+                _vm.$set(_vm.path, index, $$v)
+              },
+              expression: "path[index]"
+            }
+          })
+        })
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row navigator" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4 p-0" }, [
+        _c("div", { staticClass: "btn-group", attrs: { role: "group" } }, [
           _c(
-            "div",
-            { staticClass: "horizontal-scroll" },
-            [
-              _c(
-                "selectable-card",
-                {
-                  staticClass: "text-center",
-                  attrs: { value: "1" },
-                  on: { selected: _vm.onSelect, unselected: _vm.onUnselect }
-                },
-                [
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-title" }, [
-                      _vm._v("Card title")
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(
-                        "This card has supporting text below as a natural lead-in to additional content."
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm._v("Last updated 3 mins ago")
-                      ])
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "selectable-card",
-                {
-                  staticClass: "text-center",
-                  attrs: { value: "2" },
-                  on: { selected: _vm.onSelect, unselected: _vm.onUnselect }
-                },
-                [
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-title" }, [
-                      _vm._v("Card title")
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(
-                        "This card has supporting text below as a natural lead-in to additional content."
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm._v("Last updated 3 mins ago")
-                      ])
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "selectable-card",
-                {
-                  staticClass: "text-center",
-                  attrs: { value: "3" },
-                  on: { selected: _vm.onSelect, unselected: _vm.onUnselect }
-                },
-                [
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-title" }, [
-                      _vm._v("Card title")
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(
-                        "This card has supporting text below as a natural lead-in to additional content."
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm._v("Last updated 3 mins ago")
-                      ])
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "selectable-card",
-                {
-                  staticClass: "text-center",
-                  attrs: { value: "4" },
-                  on: { selected: _vm.onSelect, unselected: _vm.onUnselect }
-                },
-                [
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-title" }, [
-                      _vm._v("Card title")
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(
-                        "This card has supporting text below as a natural lead-in to additional content."
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm._v("Last updated 3 mins ago")
-                      ])
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "selectable-card",
-                {
-                  staticClass: "text-center",
-                  attrs: { value: "5" },
-                  on: { selected: _vm.onSelect, unselected: _vm.onUnselect }
-                },
-                [
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-title" }, [
-                      _vm._v("Card title")
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(
-                        "This card has supporting text below as a natural lead-in to additional content."
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm._v("Last updated 3 mins ago")
-                      ])
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "selectable-card",
-                {
-                  staticClass: "text-center",
-                  attrs: { value: "6" },
-                  on: { selected: _vm.onSelect, unselected: _vm.onUnselect }
-                },
-                [
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-title" }, [
-                      _vm._v("Card title")
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(
-                        "This card has supporting text below as a natural lead-in to additional content."
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _c("small", { staticClass: "text-muted" }, [
-                        _vm._v("Last updated 3 mins ago")
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ],
-            1
+            "button",
+            {
+              staticClass: "btn btn-primary btn-back",
+              attrs: { type: "button" }
+            },
+            [_vm._v("Back")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-next",
+              attrs: { type: "button" },
+              on: { click: _vm.goToNext }
+            },
+            [_vm._v("Next")]
           )
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "aside",
+      { staticClass: "col-md-4 bg-primary d-none d-md-block sidebar" },
+      [
+        _c("p", { staticClass: "text-white" }, [
+          _vm._v("Some info about the journey.")
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-de465010", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-187bd8d4", module.exports)
   }
 }
 

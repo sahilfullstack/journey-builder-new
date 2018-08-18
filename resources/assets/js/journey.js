@@ -15,7 +15,9 @@ window.Vue = require('vue');
  */
 
 Vue.component('selectable-card', require('./components/SelectableCard.vue'));
-Vue.component('question--select-many', require('./components/QuestionSelectMany.vue'));
+Vue.component('journey', require('./components/JourneyComponent.vue'));
+Vue.component('node', require('./components/Node.vue'));
+Vue.component('linker--select-many', require('./components/LinkerSelectMany.vue'));
 
 const app = new Vue({
     el: '#app'

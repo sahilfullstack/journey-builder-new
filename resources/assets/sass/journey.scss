@@ -13,6 +13,7 @@ $font-family-sans-serif: "Quicksand", sans-serif;
 @import "~bootstrap/scss/type";
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/button-group";
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/card";
 
@@ -21,7 +22,7 @@ $font-family-sans-serif: "Quicksand", sans-serif;
     overflow-x: hidden;
 }
 
-html,body,section.main {
+html,body,div#app,section.main {
     width: 100%;
     height: 100%;
 }
@@ -35,6 +36,7 @@ section.main {
     display: flex;
     flex: 1;
     overflow-y: auto;
+    flex-direction: column;
 }
 
 .sidebar {
@@ -47,6 +49,28 @@ section.main {
     display: flex;
     height: 100%;
     align-items: center;
+}
+
+.navigator {
+    .btn-group {
+        display: flex;
+        button {
+            height: 4rem;
+            border-radius: 0;
+            font-weight: bold;
+
+            &.btn-back {
+                background: lighten($primary, 10%);
+                border: lighten($primary, 10%);
+            }
+    
+            &.btn-next {
+                background: $primary;
+                flex: 1;
+                text-align: right;
+            }
+        }
+    }
 }
 
 /**

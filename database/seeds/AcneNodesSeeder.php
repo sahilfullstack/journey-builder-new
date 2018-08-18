@@ -17,20 +17,6 @@ class AcneNodesSeeder extends Seeder
             str_slug('Acne') => Tree::notDeleted()->whereSlug(str_slug('Acne'))->first()->id,
         ];
 
-        $types = [
-        	'decider',
-        	'select_one',
-        	'select_many',
-        	'image_options',
-        	'image_multiple_choice',
-        	'select_one',
-        	'select_many',
-        	'text_input',
-        	'image_input',
-        	'generate_report',
-        	'final'
-        ];
-
         $nodes = [
             [
             	'identifier' => 1,

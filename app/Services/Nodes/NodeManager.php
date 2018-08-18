@@ -6,8 +6,6 @@ use App\Models\{Journey, Node};
 
 class NodeManager {
 
-	protected $nodeManager;
-
 	public function __construct() {}
 
 	public function preparePath(Journey $journey, Node $node, Array $response)

@@ -62,5 +62,22 @@ class EloquentJourneyRepo implements JourneyRepo {
 		}
 	}
 
+	public function markFinished(Journey $journey)
+	{
+		try
+		{
+			$journey->is_finished = true;
+        	$journey->save();
+		}
+		catch(MassAssignmentException $e)
+		{
+			throw $e;
+		}
+		catch(Exception $e)
+		{
+			throw $e;
+		}
+	}
+
 
 }

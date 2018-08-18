@@ -54,4 +54,11 @@ class Journey extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function finished()
+    {
+        return $this->is_finished == 1;
+    }
+
+    
 }

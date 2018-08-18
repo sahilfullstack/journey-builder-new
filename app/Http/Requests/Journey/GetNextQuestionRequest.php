@@ -5,6 +5,7 @@ namespace App\Http\Requests\Journey;
 use Illuminate\Foundation\Http\FormRequest;
 
 use App\Models\Journey;
+use App\Exceptions\InvalidInputException;
 
 class GetNextQuestionRequest extends FormRequest
 {
@@ -24,7 +25,12 @@ class GetNextQuestionRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
+    {        
+        if($this->instance()->route('journey')->finished())
+        {
+            throw new InvalidInputException("Journey is finished.");
+        }
+        
         return [];
     }
 }

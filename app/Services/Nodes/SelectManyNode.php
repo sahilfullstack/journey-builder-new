@@ -4,7 +4,7 @@ namespace App\Services\Nodes;
 
 use App\Models\Node;
 
-class SelectMultipleNode implements QuestionInterface {
+class SelectManyNode implements QuestionInterface {
 
 	public function __construct() {}
 

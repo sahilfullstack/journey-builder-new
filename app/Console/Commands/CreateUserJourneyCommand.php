@@ -47,31 +47,31 @@ class CreateJourneyCommand extends Command
      */
     public function handle()
     {
-        $tree = Tree::notDeleted()->whereSlug(str_slug('General Assessment'))->first();
+        $tree = Tree::notDeleted()->whereSlug(str_slug('Acne'))->first();
         $user = User::find($this->argument('user'));
             
-        if(count($user->journeys) == 0)
-        {
+        // if(count($user->journeys) == 0)
+        // {
              Journey::create([
                     'user_id' => $user->id,
                     'tree_id' => $tree->id
                 ]);
-        }
-        else
-        {
-            $journey = $user->journeys()->orderBy('id', 'desc')->first();
+//         }
+//         else
+//         {
+//             $journey = $user->journeys()->orderBy('id', 'desc')->first();
 
-            $node = $this->journeyManager->nextNode($journey);
-dd($node);
-            // select_one
-            // $response = [
-            //     "orders" => [1, 3]
-            // ];
-            $response = [
-                'response' => 'something fishy'
-            ]; 
+//             $node = $this->journeyManager->nextNode($journey);
+// dd($node);
+//             // select_one
+//             // $response = [
+//             //     "orders" => [1, 3]
+//             // ];
+//             $response = [
+//                 'response' => 'something fishy'
+//             ]; 
 
-            dispatch(new StorePath($journey, $node, $response));
-        }
+//             dispatch(new StorePath($journey, $node, $response));
+//         }
     }
 }

@@ -23,14 +23,8 @@ class StorePathRequest extends FormRequest
      */
     public function rules()
     {
-        // 1. check validation of node for user here
-        // if(is_null($profile = $this->instance()->input('profile')))
-        // {
-        //     throw new InvalidInputException("Profile field required.");
-        // }
-
        return [
-        'response' => 'required'
+            'response' => 'required'
        ];
     }
 }

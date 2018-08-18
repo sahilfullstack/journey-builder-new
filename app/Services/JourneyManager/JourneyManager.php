@@ -4,6 +4,7 @@ namespace App\Services\JourneyManager;
 
 use App\Models\Journey;
 use App\Models\Node;
+use App\Services\Nodes\NodeManager;
 
 class JourneyManager {
 

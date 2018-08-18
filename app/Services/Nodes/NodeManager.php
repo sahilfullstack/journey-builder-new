@@ -22,4 +22,34 @@ class NodeManager {
 
         return $path;
 	}
+
+	public function next(Journey $journey)
+	{
+		if($this->isJourneyEmpty($journey)) return $this->getFirstNode($journey);
+
+		$userLastJourneyPath = $journey->lastPath();
+
+		$nextNode = Node::whereTreeId($journey->tree_id)->whereIdentifier($userLastJourneyPath->linker['to'])->first();
+
+		$nodeType = studly_case($nextNode->linker['type']);
+
+		$nodeClass = app("App\\Services\\Nodes\\{$nodeType}Node");
+
+		if($nodeClass instanceof DeciderInterface)
+		{
+			$nextNode = $nodeClass->decide();
+		}
+
+		return $nextNode;
+	}
+
+	private function isJourneyEmpty(Journey $journey)
+	{
+		return count($journey->paths) == 0;
+	}
+
+	private function getFirstNode(Journey $journey)
+	{
+		return Node::whereTreeId($journey->tree_id)->whereIdentifier(1)->first();
+	}
 }

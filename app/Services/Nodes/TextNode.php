@@ -4,7 +4,7 @@ namespace App\Services\Nodes;
 
 use App\Models\Node;
 
-class TextNode {
+class TextNode implements QuestionInterface {
 
 	public function __construct() {}
 
@@ -17,5 +17,12 @@ class TextNode {
 		];
 
 		return $linker;	
+	}
+
+	public function getRules()
+	{
+		return [
+			'response.response' => 'required'
+		];
 	}
 }

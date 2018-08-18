@@ -4,17 +4,27 @@ namespace App\Services\Nodes;
 
 use App\Models\Node;
 
-class SelectOneNode {
+class SelectOneNode implements QuestionInterface {
 
 	public function __construct() {}
 
 	public function prepareLinkerForPath(Node $node, Array $response)
 	{
+		$selectable = array_get($node->linker['selectables'], $response['order']);
+
 		$linker = [
 			'type' => $node->linker['type'],
-			'selectables' => array_get($node->linker['selectables'], $response['order'])
+			'to' => $selectable['to'],
+			'selectables' => $selectable
 		];
 
 		return $linker;
+	}
+
+	public function getRules()
+	{
+		return [
+			'response.order' => 'required'
+		];
 	}
 }

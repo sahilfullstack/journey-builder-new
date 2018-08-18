@@ -11,6 +11,7 @@ use App\Repos\Path\PathRepo;
 use App\Services\Nodes\NodeManager;
 
 use App\Models\{Path, Node, Journey};
+use App\Http\Requests\Path\{ValidatePathResponseRequest};
 
 class StorePath
 {
@@ -25,9 +26,9 @@ class StorePath
      */
     public function __construct(Journey $journey, Node $node, $response)
     {
+        $this->journey  = $journey;
         $this->node     = $node;
         $this->response = $response;
-        $this->journey  = $journey;
     }
 
     /**
@@ -35,12 +36,12 @@ class StorePath
      *
      * @return void
      */
-    public function handle(Request $request, PathRepo $pathRepo, NodeManager $nodeManager)
+    public function handle(ValidatePathResponseRequest $request, PathRepo $pathRepo, NodeManager $nodeManager)
     {       
         $path = $nodeManager->preparePath($this->journey, $this->node, $this->response);
 
         $pathModel = new Path($path);
 
-        $path = $pathRepo->store($pathModel);
+        $pathRepo->store($pathModel);
     }
 }

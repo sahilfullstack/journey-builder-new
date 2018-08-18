@@ -4,7 +4,7 @@ namespace App\Services\Nodes;
 
 use App\Models\Node;
 
-class SelectMultipleNode {
+class SelectMultipleNode implements QuestionInterface {
 
 	public function __construct() {}
 
@@ -25,5 +25,12 @@ class SelectMultipleNode {
 		];
 
 		return $linker;	
+	}
+
+	public function getRules()
+	{
+		return [
+			'response.orders' => 'required'
+		];
 	}
 }

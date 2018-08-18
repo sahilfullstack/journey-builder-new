@@ -40,9 +40,14 @@ class Journey extends Model
         return $query->whereNull('deleted_at')->where(self::SOFT_DELETION_TOKEN, 0);
     }
 
-    public function nodes()
+    public function paths()
     {
         return $this->hasMany(Path::class);
+    }
+
+    public function lastPath()
+    {
+        return $this->paths()->orderBy('id', 'desc')->first();
     }
 
     public function user()

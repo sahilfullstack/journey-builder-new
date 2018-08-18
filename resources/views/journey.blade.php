@@ -9,59 +9,15 @@
 </head>
 <body>
 
-    <!-- <div class="horizontal-scroll">
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
-            </div>
-        </div>
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
-            </div>
-        </div>
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
-            </div>
-        </div>
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
-            </div>
-        </div>
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
-            </div>
-        </div>
-    </div> -->
-    <section class="main container-fluid">
+    <section id="app" class="main container-fluid">
         <div class="row h-100">
             <aside class="col-md-4 bg-primary d-none d-md-block sidebar">
                 <p class="text-white">Some info about the journey.</p>
             </aside>
             <section class="col-sm-12 col-md-8 offset-md-4">
+                <question--select-many>
+
+                </question--select-many>
                 <div class="question">
                     <div class="row">
                         <div class="col-sm-12">
@@ -70,7 +26,7 @@
             
                             <div class="answerable">
                                 <div class="horizontal-scroll">
-                                    <div class="card text-center">
+                                    <selectable-card value="1" class="text-center">
                                         <div class="card-body">
                                             <h5 class="card-title">Card title</h5>
                                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -78,8 +34,8 @@
                                                 <small class="text-muted">Last updated 3 mins ago</small>
                                             </p>
                                         </div>
-                                    </div>
-                                    <div class="card text-center">
+                                    </selectable-card>    
+                                    <selectable-card value="1" class="text-center">
                                         <div class="card-body">
                                             <h5 class="card-title">Card title</h5>
                                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -87,8 +43,8 @@
                                                 <small class="text-muted">Last updated 3 mins ago</small>
                                             </p>
                                         </div>
-                                    </div>
-                                    <div class="card text-center">
+                                    </selectable-card>
+                                    <selectable-card value="1" class="text-center">
                                         <div class="card-body">
                                             <h5 class="card-title">Card title</h5>
                                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -96,8 +52,8 @@
                                                 <small class="text-muted">Last updated 3 mins ago</small>
                                             </p>
                                         </div>
-                                    </div>
-                                    <div class="card text-center">
+                                    </selectable-card>
+                                    <selectable-card value="1" class="text-center">
                                         <div class="card-body">
                                             <h5 class="card-title">Card title</h5>
                                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -105,8 +61,8 @@
                                                 <small class="text-muted">Last updated 3 mins ago</small>
                                             </p>
                                         </div>
-                                    </div>
-                                    <div class="card text-center">
+                                    </selectable-card>
+                                    <selectable-card value="1" class="text-center">
                                         <div class="card-body">
                                             <h5 class="card-title">Card title</h5>
                                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -114,7 +70,16 @@
                                                 <small class="text-muted">Last updated 3 mins ago</small>
                                             </p>
                                         </div>
-                                    </div>
+                                    </selectable-card>
+                                    <selectable-card value="1" class="text-center">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            <p class="card-text">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </p>
+                                        </div>
+                                    </selectable-card>
                                 </div>
                             </div>
                         </div>
@@ -165,5 +130,6 @@
         </div>
     </footer>
 
+    <script src="/js/journey.js"></script>
 </body>
 </html>

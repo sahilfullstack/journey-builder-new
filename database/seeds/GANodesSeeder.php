@@ -3404,7 +3404,7 @@ let node = {
     },
 
     linker: {
-        type: 'select_one', // logic, select_one, select_many, text, date, number, upload, camera
+        type: 'select_one', // logic, select_one, select_many, text, date, number, upload, camera, info
         minimum: 1, // present when select_many
         maximum: 1, // present when select_many
         to: 123, // present when select_many, text, number, upload, camera

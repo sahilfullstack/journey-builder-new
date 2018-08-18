@@ -10,6 +10,7 @@ class LogicNode implements DeciderInterface {
 
 	public function decide()
 	{
+		dd("hello decider");
 		// still in progress
 	}
 }

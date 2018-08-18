@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Tree;
 use App\Models\Node;
 
-class NodesSeeder extends Seeder
+class AcneNodesSeeder extends Seeder
 {
     /**
      * Run the database seeds.

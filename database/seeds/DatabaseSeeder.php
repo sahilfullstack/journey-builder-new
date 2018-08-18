@@ -13,6 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(TreesSeeder::class);
         $this->call(GANodesSeeder::class);
-        // $this->call(NodesSeeder::class);
+        // $this->call(AcneNodesSeeder::class);
     }
 }

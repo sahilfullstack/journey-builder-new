@@ -8,7 +8,7 @@ use App\Jobs\Tree\{ListTrees, GetTree};
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\TransformsResources;
 use App\Http\Requests\Tree\{ListTreesRequest, GetTreeRequest};
-
+use App\Http\Resources\Tree as TreeResource;
 
 class TreeController extends Controller
 {
@@ -18,13 +18,13 @@ class TreeController extends Controller
     {
     	$trees = $this->dispatch(new ListTrees);
 
-		return $this->respondTransformed($trees, new Transformers\TreeTransformer);
+        return TreeResource::collection($trees);
     }
 
     public function show(GetTreeRequest $request, Tree $tree)
     {
 	    $tree = $this->dispatch(new GetTree($tree));
 	    	
-		return $this->respondTransformed($tree, new Transformers\TreeTransformer);
+		return new TreeResource($tree);
     }
 }

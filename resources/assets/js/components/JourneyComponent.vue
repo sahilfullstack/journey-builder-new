@@ -58,16 +58,18 @@
     export default {
         data() {
             return {
-                nodes: [
-                    this.goToNext()
-                ],
-                path: [
-                    
-                ]
+                nodes: [],
+                path: [],
+                on_n: 0
             }
+        },
+        created() {
+            this.on_n = 0;
+            this.goToNext();
         },
         methods: {
             goToNext() {
+                
                 let available = [
                     {
                         "id": 4,
@@ -137,7 +139,7 @@
                             "title": "Which of the following food items you consume in your diet?"
                         },
                         "linker": {
-                            "type": "number",
+                            "type": "text",
                             "to": 15
                         }
                     },
@@ -150,15 +152,19 @@
                             "title": "Which of the following food items you consume in your diet?"
                         },
                         "linker": {
-                            "type": "text",
+                            "type": "number",
                             "to": 15
                         }
                     }
                 ];
 
-                console.log(this.path);
+                //todo: API call to record response goes here.
+                console.log(this.path[this.on_n - 1]);
+                
+                this.nodes.push(available[this.on_n]);
+                this.path.push(undefined);
 
-                return available[0];
+                this.on_n += 1;
             }
         }
     }

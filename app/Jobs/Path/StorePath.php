@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use App\Repos\Path\{PathRepo};
-use App\Services\Nodes\NodeManager;
+use App\Utility\Nodes\NodeManager;
 
 use App\Models\{Path, Node, Journey};
 use App\Http\Requests\Path\{ValidatePathResponseRequest};

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Nodes;
+namespace App\Utility\Nodes;
 
 use App\Models\Node;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\JourneyManager;
+namespace App\Utility\Journey;
 
 use App\Models\Journey;
 use App\Models\Node;
-use App\Services\Nodes\NodeManager;
+use App\Utility\Nodes\NodeManager;
 
 class JourneyManager {
 

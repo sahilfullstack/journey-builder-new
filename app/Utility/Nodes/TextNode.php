@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Nodes;
+namespace App\Utility\Nodes;
 
 use App\Models\Node;
 
-class NumberNode implements QuestionInterface {
+class TextNode implements QuestionInterface {
 
 	protected $operationManager;
 
@@ -21,7 +21,7 @@ class NumberNode implements QuestionInterface {
 		];
 
 		return $linker;	
-	}	
+	}
 
 	public function getRules()
 	{

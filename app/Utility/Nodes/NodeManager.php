@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Nodes;
+namespace App\Utility\Nodes;
 
 use App\Models\{Journey, Node};
 
@@ -15,7 +15,7 @@ class NodeManager {
         $path = [
 			'journey_id' => $journey->id,
 			'node_id'    => $node->id,
-        	'linker' => app("App\\Services\\Nodes\\{$nodeType}Node")->prepareLinkerForPath($node, $response),
+        	'linker' => app("App\\Utility\\Nodes\\{$nodeType}Node")->prepareLinkerForPath($node, $response),
         ];
 
         return $path;
@@ -31,7 +31,7 @@ class NodeManager {
 
 		$nodeType = studly_case($nextNode->linker['type']);
 
-		$nodeClass = app("App\\Services\\Nodes\\{$nodeType}Node");
+		$nodeClass = app("App\\Utility\\Nodes\\{$nodeType}Node");
 
 		if($nodeClass instanceof DeciderInterface)
 		{

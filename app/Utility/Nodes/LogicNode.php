@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Nodes;
+namespace App\Utility\Nodes;
 
 use App\Models\{Node, Journey};
 use App\Jobs\Journey\EvaluateJourney;
@@ -32,7 +32,7 @@ class LogicNode implements DeciderInterface {
 		foreach ($linkers as $key => $linker) 
 		{
 			$nodeType = studly_case($linker['linker']['type']);
-			$scores = app("App\\Services\\Nodes\\{$nodeType}Node")->evaluateLinker($linker['linker'], $scores);
+			$scores = app("App\\Utility\\Nodes\\{$nodeType}Node")->evaluateLinker($linker['linker'], $scores);
 		}
 
 		return $scores;

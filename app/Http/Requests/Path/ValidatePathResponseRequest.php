@@ -33,6 +33,6 @@ class ValidatePathResponseRequest extends FormRequest
 
         $nodeType = studly_case($node->linker['type']);
 
-        return app("App\\Services\\Nodes\\{$nodeType}Node")->getRules();
+        return app("App\\Utility\\Nodes\\{$nodeType}Node")->getRules();
     }
 }

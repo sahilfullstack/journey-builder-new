@@ -7,7 +7,6 @@ use App\Transformers;
 use App\Jobs\Journey\{ListJourneys, GetJourney, GetNextQuestion};
 use App\Jobs\Path\{StorePath};
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\TransformsResources;
 use App\Http\Requests\Journey\{ListJourneysRequest, GetJourneyRequest, GetNextQuestionRequest};
 use App\Http\Requests\Path\{StorePathRequest};
 use App\User;
@@ -16,8 +15,6 @@ use App\Http\Resources\Question as QuestionResource;
 
 class UserController extends Controller
 {
-	use TransformsResources;
-
     public function listJourneys(ListJourneysRequest $request, User $user)
     {
         $journeys = $this->dispatch(new ListJourneys($user));
@@ -41,6 +38,7 @@ class UserController extends Controller
 
     public function storePath(StorePathRequest $request, User $user, Journey $journey)
     {
+                dd($request->all());
         $node = $this->dispatch(new GetNextQuestion($user, $journey));
 
         $response =  $request->get('response');

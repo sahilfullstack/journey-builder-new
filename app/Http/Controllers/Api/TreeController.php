@@ -6,13 +6,11 @@ use App\Models\Tree;
 use App\Transformers;
 use App\Jobs\Tree\{ListTrees, GetTree};
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\TransformsResources;
 use App\Http\Requests\Tree\{ListTreesRequest, GetTreeRequest};
 use App\Http\Resources\Tree as TreeResource;
 
 class TreeController extends Controller
 {
-	use TransformsResources;
 
     public function list(ListTreesRequest $request)
     {

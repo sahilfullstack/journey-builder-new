@@ -13,8 +13,8 @@ class TreesSeeder extends Seeder
     public function run()
     {
         $trees = [
-            'Acne' => 'The tree for acne',
             'General Assessment' => 'The tree for General Assessment',
+            'Acne' => 'The tree for acne',
         ];
 
         foreach ($trees as $tree => $description) {

@@ -14,12 +14,13 @@ class SelectOneNode implements QuestionInterface {
 
 	public function prepareLinkerForPath(Node $node, Array $response)
 	{
-		$selectable = array_get($node->linker['selectables'], $response['order']);
+		// $selectable = array_get($node->linker['selectables'], $response['order']);
+		$selectables = $response['selectables'];
 
 		$linker = [
 			'type' => $node->linker['type'],
-			'to' => $selectable['to'],
-			'selectables' => $selectable
+			'to' => $selectables[0]['to'],
+			'selectables' => $selectables
 		];
 
 		return $linker;
@@ -28,7 +29,7 @@ class SelectOneNode implements QuestionInterface {
 	public function getRules()
 	{
 		return [
-			'response.order' => 'required'
+			'response.selectables' => 'required'
 		];
 	}
 

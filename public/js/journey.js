@@ -47600,8 +47600,9 @@ Vue.component('selectable-card', __webpack_require__(49));
 Vue.component('journey', __webpack_require__(55));
 Vue.component('node', __webpack_require__(60));
 Vue.component('linker--select-many', __webpack_require__(65));
-Vue.component('linker--text', __webpack_require__(70));
-Vue.component('linker--number', __webpack_require__(75));
+Vue.component('linker--select-one', __webpack_require__(70));
+Vue.component('linker--text', __webpack_require__(75));
+Vue.component('linker--number', __webpack_require__(80));
 
 var app = new Vue({
   el: '#app'
@@ -47895,7 +47896,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47977,6 +47978,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        saveResponse: function saveResponse() {
+            var self = this;
+            console.log(this.path);
+            axios.post('/api/users/1/journeys/1/paths', { response: this.path[this.on_n - 1] }).then(function (response) {
+                console.log("successfull response submitted");
+                self.nodes.push(response.data);
+                self.on_n += 1;
+            }).catch(function (error) {
+                console.log("error occured");
+                console.log(error);
+            });
+        },
         goToNext: function goToNext() {
 
             var available = [{
@@ -47989,7 +48002,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 },
                 "linker": {
                     "to": 5,
-                    "type": "select_multiple",
+                    "type": "select_many",
                     "maximum": 6,
                     "minimum": 1,
                     "selectables": [{
@@ -48056,18 +48069,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }];
 
-            //todo: API call to record response goes here.
-            console.log(this.path[this.on_n - 1]);
-
-            axios.post('/api/users/1/journeys/1/paths', { response: this.path[this.on_n - 1] }).then(function (response) {
-                console.log("successfull response submitted");
+            var self = this;
+            axios.get('/api/users/1/journeys/1/questions/next').then(function (response) {
+                self.nodes.push(response.data);
             }).catch(function (error) {
                 console.log("error occured");
                 console.log(error);
             });
 
-            this.nodes.push(available[this.on_n]);
-            this.path.push(undefined);
+            //                this.nodes.push(available[this.on_n]);
+            //                this.path.push(undefined);
 
             this.on_n += 1;
         }
@@ -48122,7 +48133,7 @@ var render = function() {
             {
               staticClass: "btn btn-primary btn-next",
               attrs: { type: "button" },
-              on: { click: _vm.goToNext }
+              on: { click: _vm.saveResponse }
             },
             [_vm._v("Next")]
           )
@@ -48242,7 +48253,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48253,6 +48264,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -48310,8 +48322,22 @@ var render = function() {
           "div",
           { staticClass: "answerable" },
           [
-            this.node.linker.type == "select_multiple"
+            this.node.linker.type == "select_many"
               ? _c("linker--select-many", {
+                  attrs: { linker: this.node.linker },
+                  on: { input: _vm.emit },
+                  model: {
+                    value: _vm.value,
+                    callback: function($$v) {
+                      _vm.value = $$v
+                    },
+                    expression: "value"
+                  }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            this.node.linker.type == "select_one"
+              ? _c("linker--select-one", {
                   attrs: { linker: this.node.linker },
                   on: { input: _vm.emit },
                   model: {
@@ -48487,7 +48513,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            selected: []
+            selected: { selectables: [] }
         };
     },
 
@@ -48496,7 +48522,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onSelect: function onSelect(value) {
             // value is the index of the selectable selected
             var selected = this.linker.selectables[value];
-            this.selected.push(selected);
+            this.selected.selectables.push(selected);
 
             this.$emit('input', this.selected);
         },
@@ -48504,8 +48530,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // value is the index of the selectable selected
             var selected = this.linker.selectables[value];
 
-            var index = this.selected.indexOf(selected);
-            if (index !== -1) this.selected.splice(index, 1);
+            var index = this.selected.selectables.indexOf(selected);
+            if (index !== -1) this.selected.selectables.splice(index, 1);
 
             this.$emit('input', this.selected);
         }
@@ -48572,6 +48598,193 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
+var __vue_scopeId__ = "data-v-2b4826fc"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/LinkerSelectOne.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2b4826fc", Component.options)
+  } else {
+    hotAPI.reload("data-v-2b4826fc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(72);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("340771e1", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2b4826fc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LinkerSelectOne.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2b4826fc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LinkerSelectOne.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 73 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        linker: {
+            type: Object,
+            required: true
+        }
+    },
+    data: function data() {
+        return {
+            selected: { selectables: [] }
+        };
+    },
+
+
+    methods: {
+        onSelect: function onSelect(value) {
+            if (this.selected.selectables.length == 0) {
+                // value is the index of the selectable selected
+                var selected = this.linker.selectables[value];
+                this.selected.selectables.push(selected);
+
+                this.$emit('input', this.selected);
+            }
+        },
+        onUnselect: function onUnselect(value) {
+            // value is the index of the selectable selected
+            var selected = this.linker.selectables[value];
+
+            var index = this.selected.selectables.indexOf(selected);
+            if (index !== -1) this.selected.selectables.splice(index, 1);
+
+            this.$emit('input', this.selected);
+        }
+    }
+});
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "horizontal-scroll" },
+    _vm._l(this.linker.selectables, function(selectable, index) {
+      return _c(
+        "selectable-card",
+        {
+          key: index,
+          staticClass: "text-center",
+          attrs: { value: index },
+          on: { selected: _vm.onSelect, unselected: _vm.onUnselect }
+        },
+        [
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v(_vm._s(selectable.data.text))
+            ])
+          ])
+        ]
+      )
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2b4826fc", module.exports)
+  }
+}
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(76)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(78)
+/* template */
+var __vue_template__ = __webpack_require__(79)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
 var __vue_scopeId__ = "data-v-9c39b12a"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
@@ -48605,13 +48818,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 71 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(72);
+var content = __webpack_require__(77);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -48631,7 +48844,7 @@ if(false) {
 }
 
 /***/ }),
-/* 72 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -48639,13 +48852,13 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 73 */
+/* 78 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48669,7 +48882,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            value: ''
+            value: {
+                response: ''
+            }
         };
     },
 
@@ -48681,7 +48896,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 74 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -48695,19 +48910,19 @@ var render = function() {
           {
             name: "model",
             rawName: "v-model",
-            value: _vm.value,
-            expression: "value"
+            value: _vm.value.response,
+            expression: "value.response"
           }
         ],
         attrs: { type: "text" },
-        domProps: { value: _vm.value },
+        domProps: { value: _vm.value.response },
         on: {
           input: [
             function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.value = $event.target.value
+              _vm.$set(_vm.value, "response", $event.target.value)
             },
             _vm.emit
           ]
@@ -48727,19 +48942,19 @@ if (false) {
 }
 
 /***/ }),
-/* 75 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(76)
+  __webpack_require__(81)
 }
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(78)
+var __vue_script__ = __webpack_require__(83)
 /* template */
-var __vue_template__ = __webpack_require__(79)
+var __vue_template__ = __webpack_require__(84)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48778,13 +48993,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 76 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(77);
+var content = __webpack_require__(82);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -48804,7 +49019,7 @@ if(false) {
 }
 
 /***/ }),
-/* 77 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -48812,13 +49027,13 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 78 */
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48842,7 +49057,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            value: ''
+            value: {
+                response: ''
+            }
         };
     },
 
@@ -48854,7 +49071,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 79 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -48868,19 +49085,19 @@ var render = function() {
           {
             name: "model",
             rawName: "v-model",
-            value: _vm.value,
-            expression: "value"
+            value: _vm.value.response,
+            expression: "value.response"
           }
         ],
         attrs: { type: "number" },
-        domProps: { value: _vm.value },
+        domProps: { value: _vm.value.response },
         on: {
           input: [
             function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.value = $event.target.value
+              _vm.$set(_vm.value, "response", $event.target.value)
             },
             _vm.emit
           ]

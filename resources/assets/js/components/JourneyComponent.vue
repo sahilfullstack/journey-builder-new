@@ -47,7 +47,7 @@
             <div class="col-sm-12 col-md-8 offset-md-4 p-0">
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-primary btn-back">Back</button>
-                    <button type="button" class="btn btn-primary btn-next" @click="goToNext">Next</button>
+                    <button type="button" class="btn btn-primary btn-next" @click="saveResponse">Next</button>
                 </div>
             </div>
         </div>
@@ -68,6 +68,20 @@
             this.goToNext();
         },
         methods: {
+            saveResponse() {
+                    let self = this;
+                    console.log(this.path);
+                  axios.post('/api/users/1/journeys/1/paths',  {response: this.path[this.on_n - 1]})
+                    .then(function (response) {
+                        console.log("successfull response submitted");                  
+                        self.nodes.push(response.data);
+                        self.on_n += 1;
+                    })
+                    .catch(function (error) {
+                        console.log("error occured");
+                        console.log(error);
+                    });
+            },
             goToNext() {
                 
                 let available = [
@@ -81,7 +95,7 @@
                         },
                         "linker": {
                             "to": 5,
-                            "type": "select_multiple",
+                            "type": "select_many",
                             "maximum": 6,
                             "minimum": 1,
                             "selectables": [
@@ -158,20 +172,19 @@
                     }
                 ];
 
-                //todo: API call to record response goes here.
-                console.log(this.path[this.on_n - 1]);
-
-                axios.post('/api/users/1/journeys/1/paths',  {response: this.path[this.on_n - 1]})
+                let self = this;
+                axios.get('/api/users/1/journeys/1/questions/next')
                     .then(function (response) {
-                        console.log("successfull response submitted");                  
+                        self.nodes.push(response.data);
                     })
                     .catch(function (error) {
                         console.log("error occured");
                         console.log(error);
                     });
-                
-                this.nodes.push(available[this.on_n]);
-                this.path.push(undefined);
+
+
+//                this.nodes.push(available[this.on_n]);
+//                this.path.push(undefined);
 
                 this.on_n += 1;
             }

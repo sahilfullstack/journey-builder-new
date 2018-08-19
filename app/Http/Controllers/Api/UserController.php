@@ -45,6 +45,10 @@ class UserController extends Controller
         // merging the node to request object for future validation
         $request->merge(['node' => $node]);
 
-        $node = $this->dispatch(new StorePath($journey, $node,  $response));
+        $this->dispatch(new StorePath($journey, $node,  $response));
+
+        $node = $this->dispatch(new GetNextQuestion($user, $journey));
+
+         return new QuestionResource($node);
     }
 }

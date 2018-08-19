@@ -35,7 +35,7 @@ class NodeManager {
 
 		if($nodeClass instanceof DeciderInterface)
 		{
-			$nextNode = $nodeClass->decide();
+			$nextNode = $nodeClass->decide($journey, $nextNode);
 		}
 
 		return $nextNode;

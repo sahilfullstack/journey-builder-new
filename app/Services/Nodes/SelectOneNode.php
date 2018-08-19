@@ -6,7 +6,11 @@ use App\Models\Node;
 
 class SelectOneNode implements QuestionInterface {
 
-	public function __construct() {}
+	protected $operationManager;
+
+	public function __construct(OperationManager $operationManager) {
+		$this->operationManager = $operationManager;
+	}
 
 	public function prepareLinkerForPath(Node $node, Array $response)
 	{
@@ -26,5 +30,10 @@ class SelectOneNode implements QuestionInterface {
 		return [
 			'response.order' => 'required'
 		];
+	}
+
+	public function evaluateLinker($linker, $scores)
+	{
+		return $this->operationManager->applyOperations($linker['selectables']['operations'], $scores);
 	}
 }

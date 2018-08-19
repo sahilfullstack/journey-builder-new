@@ -60,5 +60,8 @@ class Journey extends Model
         return $this->is_finished == 1;
     }
 
-    
+    public function linkers()
+    {
+        return $this->hasMany(Path::class)->select('linker')->get()->toArray();
+    }    
 }

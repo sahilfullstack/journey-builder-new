@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Exception;
+use App\Exceptions\Exception as BaseException;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -46,6 +48,38 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($exception instanceof ValidationException)
+        {
+            return response()->json(
+                    [
+                        'errors' => $exception->validator->errors()->toArray(), 
+                        'code' => 400
+                    ], 
+                    400
+                );
+        }
+        
+
+        if($exception instanceof AuthenticationException)
+        {
+            return (new UnauthorisedException)->getJsonResponse();
+        }
+
+        if($exception instanceof AuthorizationException)
+        {
+            return (new ForbiddenException)->getJsonResponse();
+        }
+
+        if($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException)
+        {
+            return (new NotFoundException)->getJsonResponse();
+        }
+
+        if($exception instanceof AuthorizationException)
+        {
+            return redirect('/');
+        }
+
         return parent::render($request, $exception);
     }
 }

@@ -125,8 +125,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'response.order' => [
+            'required' => 'order field is required in response object.',
         ],
     ],
 

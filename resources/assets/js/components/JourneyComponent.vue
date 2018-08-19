@@ -46,7 +46,7 @@
         <div class="row navigator">
             <div class="col-sm-12 col-md-8 offset-md-4 p-0">
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-primary btn-back">Back</button>
+                    <button type="button" class="btn btn-primary btn-back" @click="goToPrevious">Back</button>
                     <button type="button" class="btn btn-primary btn-next" @click="goToNext">Next</button>
                 </div>
             </div>
@@ -55,6 +55,11 @@
 </template>
 
 <script>
+    import smoothscroll from 'smoothscroll-polyfill';
+
+    // kick off the polyfill!
+    smoothscroll.polyfill();
+
     export default {
         data() {
             return {
@@ -68,6 +73,15 @@
             this.goToNext();
         },
         methods: {
+            goToPrevious() {
+                Vue.nextTick(() => {
+                    $('.question')[this.on_n - 1].scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                });
+                
+                this.on_n -= 1;
+            },
             goToNext() {
                 
                 let available = [
@@ -164,6 +178,13 @@
                 this.nodes.push(available[this.on_n]);
                 this.path.push(undefined);
 
+                
+                Vue.nextTick(() => {
+                    $('.question')[this.on_n - 1].scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                });
+                
                 this.on_n += 1;
             }
         }

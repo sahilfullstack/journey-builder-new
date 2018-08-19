@@ -18,6 +18,8 @@ Vue.component('selectable-card', require('./components/SelectableCard.vue'));
 Vue.component('journey', require('./components/JourneyComponent.vue'));
 Vue.component('node', require('./components/Node.vue'));
 Vue.component('linker--select-many', require('./components/LinkerSelectMany.vue'));
+Vue.component('linker--text', require('./components/LinkerText.vue'));
+Vue.component('linker--number', require('./components/LinkerNumber.vue'));
 
 const app = new Vue({
     el: '#app'

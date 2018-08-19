@@ -7,6 +7,8 @@
 
                 <div class="answerable">
                     <linker--select-many v-if="this.node.linker.type == 'select_multiple'" :linker="this.node.linker" v-model="value" @input="emit"></linker--select-many>
+                    <linker--text v-if="this.node.linker.type == 'text'" :linker="this.node.linker" v-model="value" @input="emit"></linker--text>
+                    <linker--number v-if="this.node.linker.type == 'number'" :linker="this.node.linker" v-model="value" @input="emit"></linker--number>
                 </div>
             </div>
         </div>

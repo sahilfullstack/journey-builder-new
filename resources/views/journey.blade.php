@@ -11,7 +11,6 @@
 <body>
     <div id="app">
         <journey></journey>
-        
 
         <!-- <footer class="footer d-block d-md-none">
             <div class="container">

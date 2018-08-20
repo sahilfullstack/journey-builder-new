@@ -210,21 +210,21 @@
                     }
                 ];
 
-                this.nodes.push(available[1]);
-                this.path.push(undefined);
-                this.validated.push(false);
+                // this.nodes.push(available[1]);
+                // this.path.push(undefined);
+                // this.validated.push(false);
 
-                // let self = this;
-                // axios.get('/api/users/1/journeys/1/questions/next')
-                //     .then(function (response) {
-                //         self.nodes.push(response.data);
-                //         self.path.push(undefined);
-                //         self.validated.push(false);
-                //     })
-                //     .catch(function (error) {
-                //         console.log("error occured");
-                //         console.log(error);
-                //     });
+                let self = this;
+                axios.get('/api/users/1/journeys/1/questions/next')
+                    .then(function (response) {
+                        self.nodes.push(response.data);
+                        self.path.push(undefined);
+                        self.validated.push(false);
+                    })
+                    .catch(function (error) {
+                        console.log("error occured");
+                        console.log(error);
+                    });
                 
                 this.on_n += 1;
             }

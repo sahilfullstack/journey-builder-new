@@ -50069,21 +50069,19 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
                 }
             }];
 
-            this.nodes.push(available[1]);
-            this.path.push(undefined);
-            this.validated.push(false);
+            // this.nodes.push(available[1]);
+            // this.path.push(undefined);
+            // this.validated.push(false);
 
-            // let self = this;
-            // axios.get('/api/users/1/journeys/1/questions/next')
-            //     .then(function (response) {
-            //         self.nodes.push(response.data);
-            //         self.path.push(undefined);
-            //         self.validated.push(false);
-            //     })
-            //     .catch(function (error) {
-            //         console.log("error occured");
-            //         console.log(error);
-            //     });
+            var self = this;
+            axios.get('/api/users/1/journeys/1/questions/next').then(function (response) {
+                self.nodes.push(response.data);
+                self.path.push(undefined);
+                self.validated.push(false);
+            }).catch(function (error) {
+                console.log("error occured");
+                console.log(error);
+            });
 
             this.on_n += 1;
         }

@@ -23,12 +23,13 @@ Route::get('/users/{user}/journeys', ['as' => 'api.user.journey.list', 'uses' =>
 // get a journey
 Route::get('/users/{user}/journeys/{journey}', ['as' => 'api.user.journey.get', 'uses' => 'UserController@getJourney']);
 
-// store user path
 Route::post('/users/{user}/journeys/{journey}/paths', ['as' => 'api.user.store.path.get', 'uses' => 'UserController@storePath']);
 
-// get next path of the journey
 Route::get('/users/{user}/journeys/{journey}/questions/next', ['as' => 'api.user.next.path.get', 'uses' => 'UserController@getNextQuestion']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+

@@ -26,11 +26,14 @@
 
         methods: {
             onSelect(value) {
-                // value is the index of the selectable selected
-                let selected = this.linker.selectables[value];
-                this.selected.selectables.push(selected);
+                if(this.selected.selectables.length == 0) 
+                {
+                    // value is the index of the selectable selected
+                    let selected = this.linker.selectables[value];
+                    this.selected.selectables.push(selected);
 
-                this.$emit('input', this.selected);
+                    this.$emit('input', this.selected);                
+                }
             },
             onUnselect(value) {
                 // value is the index of the selectable selected

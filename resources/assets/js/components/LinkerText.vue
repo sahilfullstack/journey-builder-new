@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12">
             <!-- <label for="text">First Name</label> -->
-            <input type="text" v-model="value" @input="emit">
+            <input type="text" v-model="value.response" @input="emit">
         </div>
     </div>
 </template>
@@ -17,7 +17,9 @@
         },
         data() {
             return {
-                value: ''
+                value: {
+                    response : ''
+                }
             }
         },
         methods: {

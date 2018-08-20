@@ -5,7 +5,13 @@
                 <p class="text-white">Some info about the journey.</p>
             </aside>
             <section class="col-sm-12 col-md-8 offset-md-4">
-                <node v-for="(node, index) in this.nodes" :key="index" :node="node" v-model="path[index]"></node>
+                <node 
+                    v-for="(node, index) in this.nodes" 
+                    :key="index" 
+                    :node="node" 
+                    v-model="path[index]"
+                    @can-next="onCanNext(index)" @cannot-next="onCannotNext(index)">
+                </node>
                 <!-- <question--select-many></question--select-many>
                 <div class="question">
                     <div class="row">
@@ -46,8 +52,8 @@
         <div class="row navigator">
             <div class="col-sm-12 col-md-8 offset-md-4 p-0">
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-primary btn-back" @click="goToPrevious">Back</button>
-                    <button type="button" class="btn btn-primary btn-next" @click="saveResponse">Next</button>
+                    <button type="button" class="btn btn-back" @click="goToPrevious"><i class="fas fa-chevron-left fa-fw"></i></button>
+                    <button type="button" class="btn btn-primary btn-next" :disabled="! validated[on_n - 1]" @click="saveResponse">Next <i class="fas fa-chevron-right fa-fw"></i></button>
                 </div>
             </div>
         </div>
@@ -65,14 +71,26 @@
             return {
                 nodes: [],
                 path: [],
-                on_n: 0
+                on_n: 0,
+                validated: []
             }
         },
         created() {
             this.on_n = 0;
             this.goToNext();
         },
+        computed: {
+            canNext() {
+                return this.validated[this.on_n - 1];
+            }
+        },
         methods: {
+            onCanNext(index) {
+                this.validated[index] = true;
+            },
+            onCannotNext(index) {
+                this.validated[index] = false;
+            },
             goToPrevious() {
                 Vue.nextTick(() => {
                     $('.question')[this.on_n - 1].scrollIntoView({ 
@@ -89,6 +107,7 @@
                     .then(function (response) {                
                         self.nodes.push(response.data);
                         self.path.push(undefined);
+                        self.validated.push(false);
                         Vue.nextTick(() => {
                             $('.question')[self.on_n - 1].scrollIntoView({ 
                                 behavior: 'smooth' 
@@ -116,7 +135,7 @@
                             "to": 5,
                             "type": "select_many",
                             "maximum": 3,
-                            "minimum": 1,
+                            "minimum": 2,
                             "selectables": [
                                 {
                                     "to": 5,
@@ -191,13 +210,16 @@
                     }
                 ];
 
-                this.nodes.push(available[this.on_n]);
+                this.nodes.push(available[0]);
                 this.path.push(undefined);
+                this.validated.push(false);
 
                 // let self = this;
                 // axios.get('/api/users/1/journeys/1/questions/next')
                 //     .then(function (response) {
                 //         self.nodes.push(response.data);
+                //         self.path.push(undefined);
+                //         self.validated.push(false);
                 //     })
                 //     .catch(function (error) {
                 //         console.log("error occured");

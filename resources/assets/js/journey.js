@@ -22,6 +22,20 @@ Vue.component('linker--select-one', require('./components/LinkerSelectOne.vue'))
 Vue.component('linker--text', require('./components/LinkerText.vue'));
 Vue.component('linker--number', require('./components/LinkerNumber.vue'));
 
+/**
+ * Icons
+ */
+import { library, dom } from '@fortawesome/fontawesome-svg-core'
+import { faChevronLeft, faChevronRight, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+dom.watch();
+library.add(
+    faChevronLeft,
+    faChevronRight,
+    faCheckCircle
+)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 const app = new Vue({
     el: '#app'
 });

@@ -6,10 +6,10 @@
                 <p>{{ this.node.data.body }}</p>
 
                 <div class="answerable">
-                    <linker--select-many v-if="this.node.linker.type == 'select_many'" :linker="this.node.linker" v-model="value" @input="emit"></linker--select-many>
-                    <linker--select-one v-if="this.node.linker.type == 'select_one'" :linker="this.node.linker" v-model="value" @input="emit"></linker--select-one>
-                    <linker--text v-if="this.node.linker.type == 'text'" :linker="this.node.linker" v-model="value" @input="emit"></linker--text>
-                    <linker--number v-if="this.node.linker.type == 'number'" :linker="this.node.linker" v-model="value" @input="emit"></linker--number>
+                    <linker--select-many v-if="this.node.linker.type == 'select_many'" :linker="this.node.linker" v-model="value" v-on="$listeners"></linker--select-many>
+                    <linker--select-one v-if="this.node.linker.type == 'select_one'" :linker="this.node.linker" v-model="value" v-on="$listeners"></linker--select-one>
+                    <linker--text v-if="this.node.linker.type == 'text'" :linker="this.node.linker" v-model="value" v-on="$listeners"></linker--text>
+                    <linker--number v-if="this.node.linker.type == 'number'" :linker="this.node.linker" v-model="value" v-on="$listeners"></linker--number>
                 </div>
             </div>
         </div>
@@ -30,9 +30,9 @@
             }
         },
         methods: {
-            emit(event) {
-                this.$emit('input', this.value);
-            }
+            // canNext() {
+            //     this.$emit('can-next');
+            // }
         }
     }
 </script>

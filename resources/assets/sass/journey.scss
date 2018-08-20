@@ -52,6 +52,7 @@ section.main {
 }
 
 .navigator {
+    overflow: hidden;
     .btn-group {
         display: flex;
         button {
@@ -60,8 +61,8 @@ section.main {
             font-weight: bold;
 
             &.btn-back {
-                background: lighten($primary, 10%);
-                border: lighten($primary, 10%);
+                background: lighten($secondary, 10%);
+                border: lighten($secondary, 10%);
             }
     
             &.btn-next {
@@ -85,7 +86,7 @@ label {
 }
 input {
     margin: 0 0 1em;
-    padding: 0 1em 0;
+    padding: 1em 0.75em;
     background-color: #f8fafc;
     border: solid 2px $primary;
     border-radius: 4px;
@@ -93,7 +94,7 @@ input {
     box-sizing: border-box;
     width: 100%;
     height: 3em;
-    font-size: 1em;
+    font-size: 1.5em;
     font-weight: 600;
     transition: box-shadow .2s linear, border-color .25s ease-out;
 

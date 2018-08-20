@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-sm-12">
-            <!-- <label for="text">First Name</label> -->
+            <!-- <label for="text">Your answer</label> -->
             <input type="text" v-model="value.response" @input="emit">
         </div>
     </div>

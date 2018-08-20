@@ -7,8 +7,8 @@
             :key="index" :value="index"
             :is-selected="selected.indexOf(index) !== -1"
             @selected="onSelect" @unselected="onUnselect">
-            <div class="card-body">
-                <h5 class="card-title">{{ selectable.data.text }}</h5>
+            <div class="card-body d-flex align-items-center">
+                <p class="m-0">{{ selectable.data.text }}</p>
             </div>
         </selectable-card>
     </div>
@@ -33,12 +33,14 @@
                 this.$set(this.selected, 0, value);
 
                 this.$emit('input', this.selected);
+                this.$emit('can-next');
             },
             onUnselect(value) {
                 let index = this.selected.indexOf(value);
                 if (index !== -1) this.selected.splice(index, 1);
 
                 this.$emit('input', this.selected);
+                this.$emit('cannot-next');
             }
         }
     }

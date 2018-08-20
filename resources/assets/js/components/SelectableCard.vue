@@ -1,10 +1,6 @@
 <template>
-    <div @click="toggle" :class=" 'card ' + (this.selected ? 'shake' : '')">
+    <div @click="toggle" :class=" 'card ' + (this.selected ? 'shake bg-success text-white' : '')">
         <slot></slot>
-        <div class="card-footer">
-            <span v-if="this.selected" class="text-primary">SELECTED</span>
-            <span v-else>NOT SELECTED</span>
-        </div>
     </div>
 </template>
 
@@ -154,5 +150,11 @@
 
     div {
         cursor: pointer;
+    }
+
+    .selected-signaling-icon {
+        position: absolute;
+        top: 0.15em;
+        left: 0.15em;
     }
 </style>

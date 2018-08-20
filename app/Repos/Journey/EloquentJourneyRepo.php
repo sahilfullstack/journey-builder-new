@@ -12,11 +12,11 @@ use App\User;
 
 class EloquentJourneyRepo implements JourneyRepo {
 
-	public function find(User $user, Int $id)
+	public function find(Int $id)
 	{
 		try
 		{
-			return Journey::notDeleted()->where('user_id', $user->id)->findOrFail($id);
+			return Journey::notDeleted()->findOrFail($id);
 		}
 		catch(ModelNotFoundException $e)
 		{

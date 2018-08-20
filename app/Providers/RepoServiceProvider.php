@@ -26,5 +26,6 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind('App\Repos\Journey\JourneyRepo', 'App\Repos\Journey\EloquentJourneyRepo');
         $this->app->bind('App\Repos\Tree\TreeRepo', 'App\Repos\Tree\EloquentTreeRepo');
         $this->app->bind('App\Repos\Path\PathRepo', 'App\Repos\Path\EloquentPathRepo');
+        $this->app->bind('App\Repos\User\UserRepo', 'App\Repos\User\EloquentUserRepo');
     }
 }

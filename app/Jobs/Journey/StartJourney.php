@@ -6,27 +6,27 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
 
 use App\Repos\Journey\JourneyRepo;
-use App\Models\Journey;
+use App\Models\{Journey, Tree};
 use App\User;
 
-class GetJourney
+class StartJourney
 {
     use Dispatchable, Queueable;
 
     /**
      * Instance of App\Models\Journey
      */
-    protected $journey, $user;
+    protected $tree, $user;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user, Journey $journey)
+    public function __construct(Tree $tree, User $user)
     {
-        $this->user    = $user;
-        $this->journey = $journey;
+        $this->tree = $tree;
+        $this->user = $user;
     }
 
     /**
@@ -36,7 +36,12 @@ class GetJourney
      */
     public function handle(JourneyRepo $journeyRepo)
     {
-        return $journeyRepo->find($this->journey->id);
+        $journeyModel = new Journey([
+                'user_id' => $this->user->id,
+                'tree_id' => $this->tree->id
+            ]);
+
+        return $journeyRepo->store($journeyModel);
     }
 }
 

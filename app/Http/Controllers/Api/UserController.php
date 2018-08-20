@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\{Journey, Node};
-use App\Transformers;
 use App\Jobs\Journey\{ListJourneys, GetJourney, GetNextQuestion};
 use App\Jobs\Path\{StorePath};
 use App\Http\Controllers\Controller;
@@ -12,9 +11,20 @@ use App\Http\Requests\Path\{StorePathRequest};
 use App\User;
 use App\Http\Resources\Journey as JourneyResource;
 use App\Http\Resources\Question as QuestionResource;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {        
+        $this->middleware('auth');
+    }
+
     public function listJourneys(ListJourneysRequest $request, User $user)
     {
         $journeys = $this->dispatch(new ListJourneys($user));
@@ -38,6 +48,7 @@ class UserController extends Controller
 
     public function storePath(StorePathRequest $request, User $user, Journey $journey)
     {
+         dd(auth()->user());   
         $node = $this->dispatch(new GetNextQuestion($user, $journey));
 
         $response =  $request->get('response');

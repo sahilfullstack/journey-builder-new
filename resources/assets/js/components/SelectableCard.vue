@@ -13,21 +13,28 @@
         props: {
             value: {
                 required: true
+            },
+            isSelected: {
+                type: Boolean,
+                required: true
+            }
+        },
+        watch: {
+            isSelected(isSelected) {
+                this.selected = isSelected;
             }
         },
         data() {
             return {
-                selected: false
+                selected: this.isSelected
             }
         },
         methods: {
             toggle() {
-                this.selected = !this.selected;
-
                 if(this.selected) {
-                    this.$emit('selected', this.value);
-                } else {
                     this.$emit('unselected', this.value);
+                } else {
+                    this.$emit('selected', this.value);
                 }
             }
         }

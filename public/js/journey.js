@@ -47753,22 +47753,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         value: {
             required: true
+        },
+        isSelected: {
+            type: Boolean,
+            required: true
+        }
+    },
+    watch: {
+        isSelected: function isSelected(_isSelected) {
+            this.selected = _isSelected;
         }
     },
     data: function data() {
         return {
-            selected: false
+            selected: this.isSelected
         };
     },
 
     methods: {
         toggle: function toggle() {
-            this.selected = !this.selected;
-
             if (this.selected) {
-                this.$emit('selected', this.value);
-            } else {
                 this.$emit('unselected', this.value);
+            } else {
+                this.$emit('selected', this.value);
             }
         }
     }
@@ -49489,7 +49496,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49512,6 +49519,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -49522,27 +49534,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            selected: { selectables: [] }
+            selected: []
         };
     },
 
-
     methods: {
         onSelect: function onSelect(value) {
-            if (this.selected.selectables.length == 0) {
-                // value is the index of the selectable selected
-                var selected = this.linker.selectables[value];
-                this.selected.selectables.push(selected);
+            this.$set(this.selected, 0, value);
 
-                this.$emit('input', this.selected);
-            }
+            this.$emit('input', this.selected);
         },
         onUnselect: function onUnselect(value) {
-            // value is the index of the selectable selected
-            var selected = this.linker.selectables[value];
-
-            var index = this.selected.selectables.indexOf(selected);
-            if (index !== -1) this.selected.selectables.splice(index, 1);
+            var index = this.selected.indexOf(value);
+            if (index !== -1) this.selected.splice(index, 1);
 
             this.$emit('input', this.selected);
         }
@@ -49566,7 +49570,10 @@ var render = function() {
         {
           key: index,
           staticClass: "text-center",
-          attrs: { value: index },
+          attrs: {
+            value: index,
+            "is-selected": _vm.selected.indexOf(index) !== -1
+          },
           on: { selected: _vm.onSelect, unselected: _vm.onUnselect }
         },
         [

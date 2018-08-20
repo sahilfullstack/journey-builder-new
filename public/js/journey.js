@@ -47903,7 +47903,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48005,9 +48005,8 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
         },
         saveResponse: function saveResponse() {
             var self = this;
-            console.log(this.path);
+
             axios.post('/api/users/1/journeys/1/paths', { response: this.path[this.on_n - 1] }).then(function (response) {
-                console.log("successfull response submitted");
                 self.nodes.push(response.data);
                 self.path.push(undefined);
                 Vue.nextTick(function () {
@@ -48034,7 +48033,7 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
                 "linker": {
                     "to": 5,
                     "type": "select_many",
-                    "maximum": 6,
+                    "maximum": 3,
                     "minimum": 1,
                     "selectables": [{
                         "to": 5,
@@ -48100,16 +48099,18 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
                 }
             }];
 
-            var self = this;
-            axios.get('/api/users/1/journeys/1/questions/next').then(function (response) {
-                self.nodes.push(response.data);
-            }).catch(function (error) {
-                console.log("error occured");
-                console.log(error);
-            });
+            this.nodes.push(available[this.on_n]);
+            this.path.push(undefined);
 
-            //                this.nodes.push(available[this.on_n]);
-            //                this.path.push(undefined);
+            // let self = this;
+            // axios.get('/api/users/1/journeys/1/questions/next')
+            //     .then(function (response) {
+            //         self.nodes.push(response.data);
+            //     })
+            //     .catch(function (error) {
+            //         console.log("error occured");
+            //         console.log(error);
+            //     });
 
             this.on_n += 1;
         }
@@ -48512,7 +48513,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48535,6 +48536,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -48545,25 +48551,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            selected: { selectables: [] }
+            selected: []
         };
     },
 
 
     methods: {
         onSelect: function onSelect(value) {
-            // value is the index of the selectable selected
-            var selected = this.linker.selectables[value];
-            this.selected.selectables.push(selected);
+            if (this.selected.length >= this.linker.maximum) return;
+
+            this.selected.push(value);
 
             this.$emit('input', this.selected);
         },
         onUnselect: function onUnselect(value) {
-            // value is the index of the selectable selected
-            var selected = this.linker.selectables[value];
-
-            var index = this.selected.selectables.indexOf(selected);
-            if (index !== -1) this.selected.selectables.splice(index, 1);
+            var index = this.selected.indexOf(value);
+            if (index !== -1) this.selected.splice(index, 1);
 
             this.$emit('input', this.selected);
         }
@@ -48587,7 +48590,10 @@ var render = function() {
         {
           key: index,
           staticClass: "text-center",
-          attrs: { value: index },
+          attrs: {
+            value: index,
+            "is-selected": _vm.selected.indexOf(index) !== -1
+          },
           on: { selected: _vm.onSelect, unselected: _vm.onUnselect }
         },
         [

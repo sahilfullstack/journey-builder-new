@@ -48,7 +48,6 @@ class UserController extends Controller
 
     public function storePath(StorePathRequest $request, User $user, Journey $journey)
     {
-         dd(auth()->user());   
         $node = $this->dispatch(new GetNextQuestion($user, $journey));
 
         $response =  $request->get('response');

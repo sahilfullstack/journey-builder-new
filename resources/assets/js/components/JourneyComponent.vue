@@ -83,18 +83,17 @@
                 this.on_n -= 1;
             },
             saveResponse() {
-                    let self = this;
-                    console.log(this.path);
-                  axios.post('/api/users/1/journeys/1/paths',  {response: this.path[this.on_n - 1]})
-                    .then(function (response) {
-                        console.log("successfull response submitted");                  
+                let self = this;
+                
+                axios.post('/api/users/1/journeys/1/paths',  {response: this.path[this.on_n - 1]})
+                    .then(function (response) {                
                         self.nodes.push(response.data);
                         self.path.push(undefined);
                         Vue.nextTick(() => {
-                        $('.question')[self.on_n - 1].scrollIntoView({ 
-                            behavior: 'smooth' 
+                            $('.question')[self.on_n - 1].scrollIntoView({ 
+                                behavior: 'smooth' 
+                            });
                         });
-                    });
                         self.on_n += 1;
                     })
                     .catch(function (error) {
@@ -116,7 +115,7 @@
                         "linker": {
                             "to": 5,
                             "type": "select_many",
-                            "maximum": 6,
+                            "maximum": 3,
                             "minimum": 1,
                             "selectables": [
                                 {
@@ -192,19 +191,18 @@
                     }
                 ];
 
-                let self = this;
-                axios.get('/api/users/1/journeys/1/questions/next')
-                    .then(function (response) {
-                        self.nodes.push(response.data);
-                    })
-                    .catch(function (error) {
-                        console.log("error occured");
-                        console.log(error);
-                    });
+                this.nodes.push(available[this.on_n]);
+                this.path.push(undefined);
 
-
-//                this.nodes.push(available[this.on_n]);
-//                this.path.push(undefined);
+                // let self = this;
+                // axios.get('/api/users/1/journeys/1/questions/next')
+                //     .then(function (response) {
+                //         self.nodes.push(response.data);
+                //     })
+                //     .catch(function (error) {
+                //         console.log("error occured");
+                //         console.log(error);
+                //     });
                 
                 this.on_n += 1;
             }

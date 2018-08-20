@@ -1,7 +1,12 @@
 <template>
     
     <div class="horizontal-scroll">
-        <selectable-card v-for="(selectable, index) in this.linker.selectables" :key="index" class="text-center" :value="index" @selected="onSelect" @unselected="onUnselect">
+        <selectable-card
+            class="text-center"
+            v-for="(selectable, index) in this.linker.selectables"
+            :key="index" :value="index"
+            :is-selected="selected.indexOf(index) !== -1"
+            @selected="onSelect" @unselected="onUnselect">
             <div class="card-body">
                 <h5 class="card-title">{{ selectable.data.text }}</h5>
             </div>
@@ -20,24 +25,21 @@
         },
         data() {
             return {
-                selected: {selectables:[]}
+                selected: []
             }
         },
 
         methods: {
             onSelect(value) {
-                // value is the index of the selectable selected
-                let selected = this.linker.selectables[value];
-                this.selected.selectables.push(selected);
+                if(this.selected.length >= this.linker.maximum) return;
+                
+                this.selected.push(value);
 
                 this.$emit('input', this.selected);
             },
             onUnselect(value) {
-                // value is the index of the selectable selected
-                let selected = this.linker.selectables[value];
-                
-                let index = this.selected.selectables.indexOf(selected);
-                if (index !== -1) this.selected.selectables.splice(index, 1);
+                let index = this.selected.indexOf(value);
+                if (index !== -1) this.selected.splice(index, 1);
 
                 this.$emit('input', this.selected);
             }

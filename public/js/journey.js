@@ -50069,7 +50069,7 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
                 }
             }];
 
-            this.nodes.push(available[0]);
+            this.nodes.push(available[1]);
             this.path.push(undefined);
             this.validated.push(false);
 
@@ -51344,7 +51344,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51383,6 +51383,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         emit: function emit(event) {
             this.$emit('input', this.value);
+            if (this.value.response.length > 0) this.$emit('can-next');
+            if (this.value.response.length == 0) this.$emit('cannot-next');
         }
     }
 });

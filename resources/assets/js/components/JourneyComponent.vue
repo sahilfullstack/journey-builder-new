@@ -210,7 +210,7 @@
                     }
                 ];
 
-                this.nodes.push(available[0]);
+                this.nodes.push(available[1]);
                 this.path.push(undefined);
                 this.validated.push(false);
 

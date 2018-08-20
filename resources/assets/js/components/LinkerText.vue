@@ -25,6 +25,8 @@
         methods: {
             emit(event) {
                 this.$emit('input', this.value);
+                if(this.value.response.length > 0) this.$emit('can-next');
+                if(this.value.response.length == 0) this.$emit('cannot-next');
             }
         }
     }

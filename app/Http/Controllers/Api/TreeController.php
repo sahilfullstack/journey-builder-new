@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Tree;
 use App\Jobs\Tree\{ListTrees, GetTree, GetFirstQuestion};
@@ -13,7 +13,7 @@ class TreeController extends Controller
 {
     public function list(ListTreesRequest $request)
     {
-    	$trees = $this->dispatch(new ListTrees);
+        $trees = $this->dispatch(new ListTrees);
 
         return TreeResource::collection($trees);
     }
@@ -27,8 +27,8 @@ class TreeController extends Controller
 
     public function showQuestion(Tree $tree)
     {
-	    $tree = $this->dispatch(new GetFirstQuestion($tree));
-	    	
-		return new QuestionResource($tree);
+        $tree = $this->dispatch(new GetFirstQuestion($tree));
+            
+        return new QuestionResource($tree);
     }
 }

@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/trees', ['as' => 'api.tree.list', 'uses' => 'TreeController@list']);
+Route::get('/trees/{tree}', ['as' => 'api.tree.show', 'uses' => 'TreeController@show']);
+Route::get('/trees/{tree}/question', ['as' => 'api.tree.showQuestion', 'uses' => 'TreeController@showQuestion']);
 
 // list  journeys
 Route::get('/users/{user}/journeys', ['as' => 'api.user.journey.list', 'uses' => 'UserController@listJourneys']);

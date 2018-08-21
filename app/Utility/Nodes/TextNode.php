@@ -17,7 +17,7 @@ class TextNode implements QuestionInterface {
 		$linker = [
 			'type'     => $node->linker['type'],
 			'to'       => $node->linker['to'],
-			'response' => $response['response']
+			'response' => $response
 		];
 
 		return $linker;	
@@ -26,7 +26,7 @@ class TextNode implements QuestionInterface {
 	public function getRules()
 	{
 		return [
-			'response.response' => 'required'
+			'response' => 'required'
 		];
 	}
 

@@ -17,7 +17,7 @@ class NumberNode implements QuestionInterface {
 		$linker = [
 			'type'     => $node->linker['type'],
 			'to'       => $node->linker['to'],
-			'response' => $response['response']
+			'response' => $response
 		];
 
 		return $linker;	
@@ -26,7 +26,7 @@ class NumberNode implements QuestionInterface {
 	public function getRules()
 	{
 		return [
-			'response.response' => 'required'
+			'response' => 'required'
 		];
 	}
 

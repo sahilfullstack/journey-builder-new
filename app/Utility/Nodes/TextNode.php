@@ -12,12 +12,12 @@ class TextNode implements QuestionInterface {
 		$this->operationManager = $operationManager;
 	}
 
-	public function prepareLinkerForPath(Node $node, Array $response)
+	public function prepareLinkerForPath(Node $node, $response)
 	{
 		$linker = [
 			'type'     => $node->linker['type'],
 			'to'       => $node->linker['to'],
-			'response' => $response['response']
+			'response' => $response
 		];
 
 		return $linker;	
@@ -26,7 +26,7 @@ class TextNode implements QuestionInterface {
 	public function getRules()
 	{
 		return [
-			'response.response' => 'required'
+			'response' => 'required'
 		];
 	}
 

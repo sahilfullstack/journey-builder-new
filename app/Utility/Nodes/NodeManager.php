@@ -8,7 +8,7 @@ class NodeManager {
 
 	public function __construct() {}
 
-	public function preparePath(Journey $journey, Node $node, Array $response)
+	public function preparePath(Journey $journey, Node $node, $response)
 	{
         $nodeType = studly_case($node->linker['type']);
 

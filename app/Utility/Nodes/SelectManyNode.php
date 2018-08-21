@@ -15,11 +15,10 @@ class SelectManyNode implements QuestionInterface {
 	{
 		$selectables = [];
 
-		// foreach ($response['selectables'] as $key => $order) 
-		// {
-		// 	$selectables[] = array_get($node->linker['selectables'], $order);
-		// }
-		$selectables = $response['selectables'];
+		foreach ($response as $key => $order) 
+		{
+			$selectables[] = array_get($node->linker['selectables'], $order+1);
+		}
 
 		$linker = [
 			'type' => $node->linker['type'],
@@ -34,7 +33,7 @@ class SelectManyNode implements QuestionInterface {
 	public function getRules()
 	{
 		return [
-			'response.selectables' => 'required'
+			'response' => 'required'
 		];
 	}
 

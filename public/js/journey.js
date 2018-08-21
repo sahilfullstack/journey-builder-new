@@ -50542,7 +50542,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "main container-fluid" }, [
-    _c("div", { staticClass: "row h-100" }, [
+    _c("div", { staticClass: "row node-area" }, [
       _vm._m(0),
       _vm._v(" "),
       _c(

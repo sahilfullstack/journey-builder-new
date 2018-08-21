@@ -51,6 +51,11 @@ section.main {
     align-items: center;
 }
 
+.node-area {
+    overflow: hidden;
+    height: 100%;
+}
+
 .navigator {
     overflow: hidden;
     .btn-group {

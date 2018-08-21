@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12">
             <!-- <label for="text">First Name</label> -->
-            <input type="number"v-model="value" @input="emit">
+            <input type="number" v-model="value" @input="emit">
         </div>
     </div>
 </template>

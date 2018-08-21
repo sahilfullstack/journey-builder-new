@@ -1,6 +1,6 @@
 <template>
     <section class="main container-fluid">
-        <div class="row h-100">
+        <div class="row node-area">
             <aside class="col-md-4 bg-primary d-none d-md-block sidebar">
                 <p class="text-white">Some info about the journey.</p>
             </aside>

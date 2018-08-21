@@ -6,7 +6,6 @@ use App\Jobs\User\{CreateAnonomousUser};
 use App\Jobs\Journey\{StartJourney};
 use App\Http\Controllers\Controller;
 use App\Models\Tree;
-use App\User, Auth;
 
 class JourneyController extends Controller
 {

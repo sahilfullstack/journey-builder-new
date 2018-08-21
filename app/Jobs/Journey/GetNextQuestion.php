@@ -10,8 +10,7 @@ use Illuminate\Support\Str;
 use App\Repos\Path\PathRepo;
 use App\Utility\Nodes\NodeManager;
 
-use App\Models\{Path, Node, Journey};
-use App\User;
+use App\Models\{Path, Node, Journey, User};
 use App\Utility\Journey\JourneyManager;
 
 class GetNextQuestion

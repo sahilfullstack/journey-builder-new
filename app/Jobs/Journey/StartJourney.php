@@ -6,8 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
 
 use App\Repos\Journey\JourneyRepo;
-use App\Models\{Journey, Tree};
-use App\User;
+use App\Models\{Journey, Tree, User};
 
 class StartJourney
 {

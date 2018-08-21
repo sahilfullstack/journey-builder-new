@@ -7,7 +7,6 @@ use Illuminate\Foundation\Bus\Dispatchable;
 
 use App\Repos\Journey\JourneyRepo;
 use App\Models\Journey;
-use App\User;
 use App\Utility\Journey\JourneyManager;
 
 class EvaluateJourney

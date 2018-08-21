@@ -4,8 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Tree;
-use App\User;
-use App\Models\{Journey, Path, Node};
+use App\Models\{Journey, Path, Node, User};
 use App\Utility\Journey\JourneyManager;
 use Illuminate\Http\Request;
 use App\Jobs\Path\StorePath;

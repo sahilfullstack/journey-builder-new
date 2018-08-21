@@ -28,11 +28,6 @@
             return {
                 value: undefined
             }
-        },
-        methods: {
-            // canNext() {
-            //     this.$emit('can-next');
-            // }
         }
     }
 </script>

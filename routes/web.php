@@ -25,9 +25,3 @@ Route::get('/journey', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/trees', 'TreeController@list');
-// trees
-Route::get('/trees', 'TreeController@list');
-Route::get('/trees/{tree}', 'TreeController@show');
-Route::get('/trees/{tree}/question', 'TreeController@showQuestion');

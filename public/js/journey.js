@@ -49854,7 +49854,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49951,6 +49951,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        journeyId: {
+            type: Number,
+            required: true
+        }
+    },
     data: function data() {
         return {
             is_onboarded: false,
@@ -49973,8 +49979,9 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
         onboard: function onboard() {
             var _this = this;
 
+            console.log(this.journeyId);
             // onboard the user properly here. currently just fetching the next question.
-            axios.get('/api/users/1/journeys/1/questions/next').then(function (response) {
+            axios.get('/api/journeys/' + this.journeyId + '/questions/next').then(function (response) {
                 _this.nodes.push(response.data);
                 _this.path.push(undefined);
                 _this.validated.push(false);
@@ -50010,7 +50017,7 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
         saveResponse: function saveResponse() {
             var self = this;
 
-            axios.post('/api/users/1/journeys/1/paths', { response: this.path[this.on_n - 1] }).then(function (response) {
+            axios.post('/api/journeys/' + this.journeyId + '/paths', { response: this.path[this.on_n - 1] }).then(function (response) {
                 self.nodes.push(response.data);
                 self.path.push(undefined);
                 self.validated.push(false);
@@ -50109,7 +50116,7 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
             // this.validated.push(false);
 
             var self = this;
-            axios.get('/api/users/1/journeys/1/questions/next').then(function (response) {
+            axios.get('/api/journeys/' + this.journeyId + '/questions/next').then(function (response) {
                 self.nodes.push(response.data);
                 self.path.push(undefined);
                 self.validated.push(false);

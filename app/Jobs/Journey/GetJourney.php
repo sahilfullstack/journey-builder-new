@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
 
 use App\Repos\Journey\JourneyRepo;
-use App\Models\{Journey, User};
+use App\Models\Journey;
 
 class GetJourney
 {
@@ -15,16 +15,15 @@ class GetJourney
     /**
      * Instance of App\Models\Journey
      */
-    protected $journey, $user;
+    protected $journey;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user, Journey $journey)
+    public function __construct(Journey $journey)
     {
-        $this->user    = $user;
         $this->journey = $journey;
     }
 

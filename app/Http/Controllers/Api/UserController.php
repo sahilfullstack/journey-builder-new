@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function __construct()
     {        
-        $this->middleware('auth:api');
+        // $this->middleware('auth:api');
     }
 
     public function listJourneys(ListJourneysRequest $request, User $user)
@@ -31,23 +31,23 @@ class UserController extends Controller
         return JourneyResource::collection($journeys);
     }
 
-    public function getJourney(GetJourneyRequest $request, User $user, Journey $journey)
+    public function getJourney(GetJourneyRequest $request, Journey $journey)
     {
-    	$journey = $this->dispatch(new GetJourney($user, $journey));
+    	$journey = $this->dispatch(new GetJourney($journey));
 
         return new JourneyResource($journey);
     }
 
-    public function getNextQuestion(GetNextQuestionRequest $request, User $user, Journey $journey)
+    public function getNextQuestion(GetNextQuestionRequest $request, Journey $journey)
     {
-        $node = $this->dispatch(new GetNextQuestion($user, $journey));
+        $node = $this->dispatch(new GetNextQuestion($journey));
 
         return new QuestionResource($node);
     }
 
-    public function storePath(StorePathRequest $request, User $user, Journey $journey)
+    public function storePath(StorePathRequest $request, Journey $journey)
     {
-        $node = $this->dispatch(new GetNextQuestion($user, $journey));
+        $node = $this->dispatch(new GetNextQuestion($journey));
 
         $response =  $request->get('response');
 
@@ -56,7 +56,7 @@ class UserController extends Controller
 
         $this->dispatch(new StorePath($journey, $node,  $response));
 
-        $node = $this->dispatch(new GetNextQuestion($user, $journey));
+        $node = $this->dispatch(new GetNextQuestion($journey));
 
          return new QuestionResource($node);
     }

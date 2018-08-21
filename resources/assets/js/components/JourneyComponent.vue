@@ -82,6 +82,12 @@
     smoothscroll.polyfill();
 
     export default {
+        props: {                
+            journeyId: {
+                type: Number,
+                required: true,
+            }
+        },
         data() {
             return {
                 is_onboarded: false,
@@ -101,8 +107,9 @@
         },
         methods: {
             onboard() {
+                console.log(this.journeyId);
                 // onboard the user properly here. currently just fetching the next question.
-                axios.get('/api/users/1/journeys/1/questions/next')
+                axios.get('/api/journeys/'+ this.journeyId +'/questions/next')
                     .then((response) => {
                         this.nodes.push(response.data);
                         this.path.push(undefined);
@@ -137,7 +144,7 @@
             saveResponse() {
                 let self = this;
                 
-                axios.post('/api/users/1/journeys/1/paths',  {response: this.path[this.on_n - 1]})
+                axios.post('/api/journeys/'+ this.journeyId +'/paths',  {response: this.path[this.on_n - 1]})
                     .then(function (response) {                
                         self.nodes.push(response.data);
                         self.path.push(undefined);
@@ -249,7 +256,7 @@
                 // this.validated.push(false);
 
                 let self = this;
-                axios.get('/api/users/1/journeys/1/questions/next')
+                axios.get('/api/journeys/'+ this.journeyId +'/questions/next')
                     .then(function (response) {
                         self.nodes.push(response.data);
                         self.path.push(undefined);

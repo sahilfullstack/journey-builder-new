@@ -10,23 +10,22 @@ use Illuminate\Support\Str;
 use App\Repos\Path\PathRepo;
 use App\Utility\Nodes\NodeManager;
 
-use App\Models\{Path, Node, Journey, User};
+use App\Models\{Path, Node, Journey};
 use App\Utility\Journey\JourneyManager;
 
 class GetNextQuestion
 {
     use Dispatchable, Queueable;
 
-    protected $user, $journey;
+    protected $journey;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user, Journey $journey)
+    public function __construct(Journey $journey)
     {
-        $this->user    = $user;
         $this->journey = $journey;
     }
 

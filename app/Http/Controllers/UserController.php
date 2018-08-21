@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\User\{CreateAnonomousUser};
+use App\Jobs\User\CreateAnonomousUser;
+use App\Jobs\Journey\StartJourney;
 use App\Http\Controllers\Controller;
 use App\Models\Tree;
 
@@ -13,9 +14,8 @@ class UserController extends Controller
         // Create Anonomous user
         $user = $this->dispatch(new CreateAnonomousUser);
                 
-        // return with user login
-        auth()->login($user, true);
+        $journey = $this->dispatch(new StartJourney($tree, $user));  
 
-        return view('onboard');
+        return redirect("journeys/{$journey->getRouteKey()}");
     }
 }

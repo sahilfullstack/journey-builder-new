@@ -10,7 +10,8 @@
 </head>
 <body>
     <div id="app">
-        <journey></journey>
+
+        <journey :journey-id="{{ $journey->getRouteKey() }}"></journey>
 
         <!-- <footer class="footer d-block d-md-none">
             <div class="container">

@@ -16,11 +16,9 @@ Route::get('/', function () {
 });
 
 // onboard a user and return token
-Route::get('/onboard', ['as' => 'user.onboard', 'uses' => 'UserController@onboard']);
+Route::get('/trees/{tree}/onboard', ['as' => 'user.onboard', 'uses' => 'UserController@onboard']);
 
-Route::get('/journey', function () {
-    return view('journey');
-});
+Route::get('/journeys/{journey}', ['as' => 'journey.continue', 'uses' => 'JourneyController@continue']);
 
 Auth::routes();
 

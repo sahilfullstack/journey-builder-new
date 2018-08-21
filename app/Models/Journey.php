@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Traits\ContainsSoftDeletableUniques;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\User;
 
 class Journey extends Model
 {

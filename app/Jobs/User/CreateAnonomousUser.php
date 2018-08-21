@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
 
 use App\Repos\User\UserRepo;
-use App\User;
+use App\Models\User;
 
 class CreateAnonomousUser
 {

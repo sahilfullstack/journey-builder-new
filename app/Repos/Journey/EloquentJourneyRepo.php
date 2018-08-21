@@ -7,8 +7,7 @@ use Carbon\Carbon;
 use Exception;
 use ModelNotFoundException, MassAssignmentException;
 
-use App\Models\Journey;
-use App\User;
+use App\Models\{Journey, User};
 
 class EloquentJourneyRepo implements JourneyRepo {
 

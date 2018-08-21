@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\{Journey, Node};
+use App\Models\{Journey, Node, User};
 use App\Jobs\Journey\{ListJourneys, GetJourney, GetNextQuestion};
 use App\Jobs\Path\{StorePath};
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Journey\{ListJourneysRequest, GetJourneyRequest, GetNextQuestionRequest};
 use App\Http\Requests\Path\{StorePathRequest};
-use App\User;
 use App\Http\Resources\Journey as JourneyResource;
 use App\Http\Resources\Question as QuestionResource;
 use Illuminate\Support\Facades\Auth;

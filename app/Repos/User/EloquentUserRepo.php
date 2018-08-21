@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use Exception;
 use ModelNotFoundException, MassAssignmentException;
 
-use App\User;
+use App\Models\User;
 
 class EloquentUserRepo implements UserRepo {
 

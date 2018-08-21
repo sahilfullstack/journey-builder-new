@@ -50713,7 +50713,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50754,12 +50754,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             value: undefined
         };
-    },
-
-    methods: {
-        // canNext() {
-        //     this.$emit('can-next');
-        // }
     }
 });
 
@@ -51342,7 +51336,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51379,7 +51373,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         emit: function emit(event) {
             this.$emit('input', this.value);
-            console.log(this.value.length);
             if (this.value.length > 0) this.$emit('can-next');
             if (this.value.length == 0) this.$emit('cannot-next');
         }

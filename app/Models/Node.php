@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Traits\ContainsSoftDeletableUniques;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Cog\Laravel\Optimus\Traits\OptimusEncodedRouteKey;
 
 class Node extends Model
 {
-    use ContainsSoftDeletableUniques, SoftDeletes;
+    use ContainsSoftDeletableUniques, SoftDeletes, OptimusEncodedRouteKey;
 
     const SOFT_DELETION_TOKEN = 'deleted_at_millis';
 

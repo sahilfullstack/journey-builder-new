@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12">
             <!-- <label for="text">Your answer</label> -->
-            <input type="text" v-model="value.response" @input="emit">
+            <input type="text" v-model="value" @input="emit">
         </div>
     </div>
 </template>
@@ -17,16 +17,14 @@
         },
         data() {
             return {
-                value: {
-                    response : ''
-                }
+                value: ''
             }
         },
         methods: {
             emit(event) {
                 this.$emit('input', this.value);
-                if(this.value.response.length > 0) this.$emit('can-next');
-                if(this.value.response.length == 0) this.$emit('cannot-next');
+                if(this.value.length > 0) this.$emit('can-next');
+                if(this.value.length == 0) this.$emit('cannot-next');
             }
         }
     }

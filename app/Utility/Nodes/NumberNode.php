@@ -12,7 +12,7 @@ class NumberNode implements QuestionInterface {
 		$this->operationManager = $operationManager;
 	}
 
-	public function prepareLinkerForPath(Node $node, Array $response)
+	public function prepareLinkerForPath(Node $node, $response)
 	{
 		$linker = [
 			'type'     => $node->linker['type'],

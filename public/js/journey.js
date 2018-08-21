@@ -51342,7 +51342,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51372,17 +51372,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            value: {
-                response: ''
-            }
+            value: ''
         };
     },
 
     methods: {
         emit: function emit(event) {
             this.$emit('input', this.value);
-            if (this.value.response.length > 0) this.$emit('can-next');
-            if (this.value.response.length == 0) this.$emit('cannot-next');
+            console.log(this.value.length);
+            if (this.value.length > 0) this.$emit('can-next');
+            if (this.value.length == 0) this.$emit('cannot-next');
         }
     }
 });
@@ -51402,19 +51401,19 @@ var render = function() {
           {
             name: "model",
             rawName: "v-model",
-            value: _vm.value.response,
-            expression: "value.response"
+            value: _vm.value,
+            expression: "value"
           }
         ],
         attrs: { type: "text" },
-        domProps: { value: _vm.value.response },
+        domProps: { value: _vm.value },
         on: {
           input: [
             function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.value, "response", $event.target.value)
+              _vm.value = $event.target.value
             },
             _vm.emit
           ]
@@ -51519,7 +51518,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51549,15 +51548,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            value: {
-                response: ''
-            }
+            value: ''
         };
     },
 
     methods: {
         emit: function emit(event) {
             this.$emit('input', this.value);
+            if (this.value.length > 0) this.$emit('can-next');
+            if (this.value.length == 0) this.$emit('cannot-next');
         }
     }
 });
@@ -51577,19 +51576,19 @@ var render = function() {
           {
             name: "model",
             rawName: "v-model",
-            value: _vm.value.response,
-            expression: "value.response"
+            value: _vm.value,
+            expression: "value"
           }
         ],
         attrs: { type: "number" },
-        domProps: { value: _vm.value.response },
+        domProps: { value: _vm.value },
         on: {
           input: [
             function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.value, "response", $event.target.value)
+              _vm.value = $event.target.value
             },
             _vm.emit
           ]

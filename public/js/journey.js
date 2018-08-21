@@ -49854,7 +49854,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49929,6 +49929,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -49938,6 +49953,7 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
+            is_onboarded: false,
             nodes: [],
             path: [],
             on_n: 0,
@@ -49945,8 +49961,7 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
         };
     },
     created: function created() {
-        this.on_n = 0;
-        this.goToNext();
+        // this.goToNext();
     },
 
     computed: {
@@ -49955,6 +49970,26 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
         }
     },
     methods: {
+        onboard: function onboard() {
+            var _this = this;
+
+            // onboard the user properly here. currently just fetching the next question.
+            axios.get('/api/users/1/journeys/1/questions/next').then(function (response) {
+                _this.nodes.push(response.data);
+                _this.path.push(undefined);
+                _this.validated.push(false);
+                _this.is_onboarded = true;
+                Vue.nextTick(function () {
+                    $('.question')[_this.on_n - 1].scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            this.on_n += 1;
+            // if it's a new user, we will create a new anonymous user and will store a cookie
+            // if it's a returning user, we will continue the journey based on the cookie
+        },
         onCanNext: function onCanNext(index) {
             this.validated[index] = true;
         },
@@ -49962,10 +49997,10 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
             this.validated[index] = false;
         },
         goToPrevious: function goToPrevious() {
-            var _this = this;
+            var _this2 = this;
 
             Vue.nextTick(function () {
-                $('.question')[_this.on_n - 1].scrollIntoView({
+                $('.question')[_this2.on_n - 1].scrollIntoView({
                     behavior: 'smooth'
                 });
             });
@@ -50078,9 +50113,12 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
                 self.nodes.push(response.data);
                 self.path.push(undefined);
                 self.validated.push(false);
-            }).catch(function (error) {
-                console.log("error occured");
-                console.log(error);
+
+                Vue.nextTick(function () {
+                    $('.question')[self.on_n - 1].scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
             });
 
             this.on_n += 1;
@@ -50542,67 +50580,113 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "main container-fluid" }, [
-    _c("div", { staticClass: "row node-area" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "section",
-        { staticClass: "col-sm-12 col-md-8 offset-md-4" },
-        _vm._l(this.nodes, function(node, index) {
-          return _c("node", {
-            key: index,
-            attrs: { node: node },
-            on: {
-              "can-next": function($event) {
-                _vm.onCanNext(index)
-              },
-              "cannot-next": function($event) {
-                _vm.onCannotNext(index)
-              }
-            },
-            model: {
-              value: _vm.path[index],
-              callback: function($$v) {
-                _vm.$set(_vm.path, index, $$v)
-              },
-              expression: "path[index]"
-            }
-          })
-        })
-      )
-    ]),
+    !_vm.is_onboarded
+      ? _c("div", { staticClass: "row node-area" }, [_vm._m(0)])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.is_onboarded
+      ? _c("div", { staticClass: "row node-area" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "section",
+            { staticClass: "col-sm-12 col-md-8 offset-md-4" },
+            _vm._l(this.nodes, function(node, index) {
+              return _c("node", {
+                key: index,
+                attrs: { node: node },
+                on: {
+                  "can-next": function($event) {
+                    _vm.onCanNext(index)
+                  },
+                  "cannot-next": function($event) {
+                    _vm.onCannotNext(index)
+                  }
+                },
+                model: {
+                  value: _vm.path[index],
+                  callback: function($$v) {
+                    _vm.$set(_vm.path, index, $$v)
+                  },
+                  expression: "path[index]"
+                }
+              })
+            })
+          )
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "row navigator" }, [
       _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4 p-0" }, [
-        _c("div", { staticClass: "btn-group", attrs: { role: "group" } }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-back",
-              attrs: { type: "button" },
-              on: { click: _vm.goToPrevious }
-            },
-            [_c("i", { staticClass: "fas fa-chevron-left fa-fw" })]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary btn-next",
-              attrs: { type: "button", disabled: !_vm.validated[_vm.on_n - 1] },
-              on: { click: _vm.saveResponse }
-            },
-            [
-              _vm._v("Next "),
-              _c("i", { staticClass: "fas fa-chevron-right fa-fw" })
-            ]
-          )
-        ])
+        _vm.is_onboarded
+          ? _c("div", { staticClass: "btn-group", attrs: { role: "group" } }, [
+              this.on_n > 1
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-back",
+                      attrs: { type: "button" },
+                      on: { click: _vm.goToPrevious }
+                    },
+                    [_c("i", { staticClass: "fas fa-chevron-left fa-fw" })]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary btn-next",
+                  attrs: {
+                    type: "button",
+                    disabled: !_vm.validated[_vm.on_n - 1]
+                  },
+                  on: { click: _vm.saveResponse }
+                },
+                [
+                  _vm._v("Next "),
+                  _c("i", { staticClass: "fas fa-chevron-right fa-fw" })
+                ]
+              )
+            ])
+          : _c("div", { staticClass: "btn-group", attrs: { role: "group" } }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary btn-next",
+                  attrs: { type: "button" },
+                  on: { click: _vm.onboard }
+                },
+                [
+                  _vm._v("START "),
+                  _c("i", { staticClass: "fas fa-chevron-right fa-fw" })
+                ]
+              )
+            ])
       ])
     ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "col-sm-12" }, [
+      _c("div", { staticClass: "question" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm-12" }, [
+            _c("h2", [_vm._v("General Assessment")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quisquam saepe, distinctio eius incidunt nemo, eos modi reiciendis consequuntur sequi deleniti! Laudantium error reiciendis aliquam consequuntur similique nam pariatur amet!"
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

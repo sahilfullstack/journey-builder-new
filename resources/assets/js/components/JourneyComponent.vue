@@ -1,6 +1,18 @@
 <template>
     <section class="main container-fluid">
-        <div class="row node-area">
+        <div class="row node-area" v-if="!is_onboarded">
+            <section class="col-sm-12">
+                <div class="question">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>General Assessment</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quisquam saepe, distinctio eius incidunt nemo, eos modi reiciendis consequuntur sequi deleniti! Laudantium error reiciendis aliquam consequuntur similique nam pariatur amet!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="row node-area" v-if="is_onboarded">
             <aside class="col-md-4 bg-primary d-none d-md-block sidebar">
                 <p class="text-white">Some info about the journey.</p>
             </aside>
@@ -51,9 +63,12 @@
         </div>
         <div class="row navigator">
             <div class="col-sm-12 col-md-8 offset-md-4 p-0">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-back" @click="goToPrevious"><i class="fas fa-chevron-left fa-fw"></i></button>
+                <div class="btn-group" role="group" v-if="is_onboarded">
+                    <button type="button" class="btn btn-back" @click="goToPrevious" v-if="this.on_n > 1"><i class="fas fa-chevron-left fa-fw"></i></button>
                     <button type="button" class="btn btn-primary btn-next" :disabled="! validated[on_n - 1]" @click="saveResponse">Next <i class="fas fa-chevron-right fa-fw"></i></button>
+                </div>
+                <div class="btn-group" role="group" v-else>
+                    <button type="button" class="btn btn-primary btn-next" @click="onboard">START <i class="fas fa-chevron-right fa-fw"></i></button>
                 </div>
             </div>
         </div>
@@ -69,6 +84,7 @@
     export default {
         data() {
             return {
+                is_onboarded: false,
                 nodes: [],
                 path: [],
                 on_n: 0,
@@ -76,8 +92,7 @@
             }
         },
         created() {
-            this.on_n = 0;
-            this.goToNext();
+            // this.goToNext();
         },
         computed: {
             canNext() {
@@ -85,6 +100,25 @@
             }
         },
         methods: {
+            onboard() {
+                // onboard the user properly here. currently just fetching the next question.
+                axios.get('/api/users/1/journeys/1/questions/next')
+                    .then((response) => {
+                        this.nodes.push(response.data);
+                        this.path.push(undefined);
+                        this.validated.push(false);
+                        this.is_onboarded = true;
+                        Vue.nextTick(() => {
+                            $('.question')[this.on_n - 1].scrollIntoView({ 
+                                behavior: 'smooth' 
+                            });
+                        });
+                    });
+                
+                this.on_n += 1;
+                // if it's a new user, we will create a new anonymous user and will store a cookie
+                // if it's a returning user, we will continue the journey based on the cookie
+            },
             onCanNext(index) {
                 this.validated[index] = true;
             },
@@ -220,10 +254,12 @@
                         self.nodes.push(response.data);
                         self.path.push(undefined);
                         self.validated.push(false);
-                    })
-                    .catch(function (error) {
-                        console.log("error occured");
-                        console.log(error);
+
+                        Vue.nextTick(() => {
+                            $('.question')[self.on_n - 1].scrollIntoView({ 
+                                behavior: 'smooth' 
+                            });
+                        });
                     });
                 
                 this.on_n += 1;

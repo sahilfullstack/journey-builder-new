@@ -2,7 +2,7 @@
     <section class="main container-fluid">
         <div class="row node-area">
             <aside class="col-md-4 bg-primary text-white d-none d-md-block sidebar">
-                <div class="question">
+                <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
                             <h2>{{ journey.tree.name }}</h2>
@@ -93,10 +93,10 @@
         },
         methods: {
             resume() {
-                axios.get('/api/journeys/'+ this.journeyId)
-                    .then((response) => {
-                        // this.journey = response.data.data;
-                    });
+                // axios.get('/api/journeys/'+ this.journeyId)
+                //     .then((response) => {
+                //         // this.journey = response.data.data;
+                //     });
 
                 axios.get('/api/journeys/'+ this.journeyId +'/nodes')
                     .then((response) => {
@@ -131,21 +131,19 @@
                 this.on_n -= 1;
             },
             saveResponse() {
-                let self = this;
-                
                 axios.post('/api/journeys/'+ this.journeyId +'/nodes/' + this.nodes[this.on_n - 1].id,  {
                     response: this.path[this.on_n - 1]
                 })
-                    .then(function (response) {                
-                        self.nodes.push(response.data);
-                        self.path.push(undefined);
-                        self.validated.push(false);
+                    .then((response) => {
+                        this.nodes.push(response.data);
+                        this.path.push(undefined);
+                        this.validated.push(false);
                         Vue.nextTick(() => {
-                            $('.question')[self.on_n - 1].scrollIntoView({ 
+                            $('.question')[this.on_n - 1].scrollIntoView({ 
                                 behavior: 'smooth' 
                             });
                         });
-                        self.on_n += 1;
+                        this.on_n += 1;
                     })
                     .catch(function (error) {
                         console.log("error occured");

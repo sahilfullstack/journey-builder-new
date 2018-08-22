@@ -49854,7 +49854,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49965,9 +49965,10 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
         resume: function resume() {
             var _this = this;
 
-            axios.get('/api/journeys/' + this.journeyId).then(function (response) {
-                // this.journey = response.data.data;
-            });
+            // axios.get('/api/journeys/'+ this.journeyId)
+            //     .then((response) => {
+            //         // this.journey = response.data.data;
+            //     });
 
             axios.get('/api/journeys/' + this.journeyId + '/nodes').then(function (response) {
                 response.data.data.forEach(function (node) {
@@ -50003,20 +50004,20 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
             this.on_n -= 1;
         },
         saveResponse: function saveResponse() {
-            var self = this;
+            var _this3 = this;
 
             axios.post('/api/journeys/' + this.journeyId + '/nodes/' + this.nodes[this.on_n - 1].id, {
                 response: this.path[this.on_n - 1]
             }).then(function (response) {
-                self.nodes.push(response.data);
-                self.path.push(undefined);
-                self.validated.push(false);
+                _this3.nodes.push(response.data);
+                _this3.path.push(undefined);
+                _this3.validated.push(false);
                 Vue.nextTick(function () {
-                    $('.question')[self.on_n - 1].scrollIntoView({
+                    $('.question')[_this3.on_n - 1].scrollIntoView({
                         behavior: 'smooth'
                     });
                 });
-                self.on_n += 1;
+                _this3.on_n += 1;
             }).catch(function (error) {
                 console.log("error occured");
                 console.log(error);
@@ -50487,7 +50488,7 @@ var render = function() {
             "col-md-4 bg-primary text-white d-none d-md-block sidebar"
         },
         [
-          _c("div", { staticClass: "question" }, [
+          _c("div", { staticClass: "container" }, [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-sm-12" }, [
                 _c("h2", [_vm._v(_vm._s(_vm.journey.tree.name))]),

@@ -19,10 +19,4 @@ class JourneyManager {
 	{
 		return $this->nodeManager->next($journey);
 	}
-
-	public function previousNode(Journey $journey)
-	{
-		return $this->nodeManager->previous($journey);
-	}
-
 }

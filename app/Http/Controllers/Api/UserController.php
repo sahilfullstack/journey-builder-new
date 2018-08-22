@@ -45,13 +45,6 @@ class UserController extends Controller
         return new QuestionResource($node);
     }
 
-    public function getPrevQuestion(GetPrevQuestionRequest $request, Journey $journey)
-    {
-        $node = $this->dispatch(new GetPreviousQuestion($journey));
-
-        return new QuestionResource($node);
-    }
-
     public function storePath(StorePathRequest $request, Journey $journey)
     {
         $node = $this->dispatch(new GetNextQuestion($journey));

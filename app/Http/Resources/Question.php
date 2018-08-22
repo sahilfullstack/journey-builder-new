@@ -18,8 +18,7 @@ class Question extends JsonResource
             'id'         => $this->getRouteKey(),
             'identifier' => $this->identifier,
             'data'       => $this->data,
-            'linker'     => $this->linker,
-            // 'path'       => new Path($this->whenLoaded('path'))
+            'linker'     => $this->linker
         ];
     }
 }

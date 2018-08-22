@@ -49965,10 +49965,9 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
         resume: function resume() {
             var _this = this;
 
-            // axios.get('/api/journeys/'+ this.journeyId)
-            //     .then((response) => {
-            //         // this.journey = response.data.data;
-            //     });
+            axios.get('/api/journeys/' + this.journeyId).then(function (response) {
+                _this.journey = response.data.data;
+            });
 
             axios.get('/api/journeys/' + this.journeyId + '/nodes').then(function (response) {
                 response.data.data.forEach(function (node) {

@@ -93,10 +93,10 @@
         },
         methods: {
             resume() {
-                // axios.get('/api/journeys/'+ this.journeyId)
-                //     .then((response) => {
-                //         // this.journey = response.data.data;
-                //     });
+                 axios.get('/api/journeys/'+ this.journeyId)
+                     .then((response) => {
+                         this.journey = response.data.data;
+                     });
 
                 axios.get('/api/journeys/'+ this.journeyId +'/nodes')
                     .then((response) => {

@@ -16,6 +16,7 @@ class Journey extends JsonResource
     {
         return [
             'id'          => $this->getRouteKey(),
+            'tree'        => new Tree($this->tree), 
             'is_finished' => $this->is_finished  
         ];
     }

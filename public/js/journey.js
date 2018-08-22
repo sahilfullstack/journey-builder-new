@@ -49854,7 +49854,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49867,32 +49867,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -49959,7 +49933,6 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
     },
     data: function data() {
         return {
-            is_onboarded: false,
             nodes: [],
             path: [],
             on_n: 0,
@@ -49967,7 +49940,7 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
         };
     },
     created: function created() {
-        // this.goToNext();
+        this.onboard();
     },
 
     computed: {
@@ -49979,7 +49952,6 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
         onboard: function onboard() {
             var _this = this;
 
-            console.log(this.journeyId);
             // onboard the user properly here. currently just fetching the next question.
             axios.get('/api/journeys/' + this.journeyId + '/questions/next').then(function (response) {
                 _this.nodes.push(response.data);
@@ -49994,8 +49966,6 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
             });
 
             this.on_n += 1;
-            // if it's a new user, we will create a new anonymous user and will store a cookie
-            // if it's a returning user, we will continue the journey based on the cookie
         },
         onCanNext: function onCanNext(index) {
             this.validated[index] = true;
@@ -50587,113 +50557,74 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "main container-fluid" }, [
-    !_vm.is_onboarded
-      ? _c("div", { staticClass: "row node-area" }, [_vm._m(0)])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.is_onboarded
-      ? _c("div", { staticClass: "row node-area" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "section",
-            { staticClass: "col-sm-12 col-md-8 offset-md-4" },
-            _vm._l(this.nodes, function(node, index) {
-              return _c("node", {
-                key: index,
-                attrs: { node: node },
-                on: {
-                  "can-next": function($event) {
-                    _vm.onCanNext(index)
-                  },
-                  "cannot-next": function($event) {
-                    _vm.onCannotNext(index)
-                  }
+    _c("div", { staticClass: "row node-area" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "section",
+        { staticClass: "col-sm-12 col-md-8 offset-md-4" },
+        [
+          _vm._l(this.nodes, function(node, index) {
+            return _c("node", {
+              key: index,
+              attrs: { node: node },
+              on: {
+                "can-next": function($event) {
+                  _vm.onCanNext(index)
                 },
-                model: {
-                  value: _vm.path[index],
-                  callback: function($$v) {
-                    _vm.$set(_vm.path, index, $$v)
-                  },
-                  expression: "path[index]"
+                "cannot-next": function($event) {
+                  _vm.onCannotNext(index)
                 }
-              })
+              },
+              model: {
+                value: _vm.path[index],
+                callback: function($$v) {
+                  _vm.$set(_vm.path, index, $$v)
+                },
+                expression: "path[index]"
+              }
             })
-          )
-        ])
-      : _vm._e(),
+          }),
+          _vm._v(" "),
+          _vm._m(1)
+        ],
+        2
+      )
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row navigator" }, [
       _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4 p-0" }, [
-        _vm.is_onboarded
-          ? _c("div", { staticClass: "btn-group", attrs: { role: "group" } }, [
-              this.on_n > 1
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-back",
-                      attrs: { type: "button" },
-                      on: { click: _vm.goToPrevious }
-                    },
-                    [_c("i", { staticClass: "fas fa-chevron-left fa-fw" })]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
+        _c("div", { staticClass: "btn-group", attrs: { role: "group" } }, [
+          this.on_n > 1
+            ? _c(
                 "button",
                 {
-                  staticClass: "btn btn-primary btn-next",
-                  attrs: {
-                    type: "button",
-                    disabled: !_vm.validated[_vm.on_n - 1]
-                  },
-                  on: { click: _vm.saveResponse }
-                },
-                [
-                  _vm._v("Next "),
-                  _c("i", { staticClass: "fas fa-chevron-right fa-fw" })
-                ]
-              )
-            ])
-          : _c("div", { staticClass: "btn-group", attrs: { role: "group" } }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary btn-next",
+                  staticClass: "btn btn-back",
                   attrs: { type: "button" },
-                  on: { click: _vm.onboard }
+                  on: { click: _vm.goToPrevious }
                 },
-                [
-                  _vm._v("START "),
-                  _c("i", { staticClass: "fas fa-chevron-right fa-fw" })
-                ]
+                [_c("i", { staticClass: "fas fa-chevron-left fa-fw" })]
               )
-            ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-next",
+              attrs: { type: "button", disabled: !_vm.validated[_vm.on_n - 1] },
+              on: { click: _vm.saveResponse }
+            },
+            [
+              _vm._v("Next "),
+              _c("i", { staticClass: "fas fa-chevron-right fa-fw" })
+            ]
+          )
+        ])
       ])
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "col-sm-12" }, [
-      _c("div", { staticClass: "question" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c("h2", [_vm._v("General Assessment")]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quisquam saepe, distinctio eius incidunt nemo, eos modi reiciendis consequuntur sequi deleniti! Laudantium error reiciendis aliquam consequuntur similique nam pariatur amet!"
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -50707,6 +50638,36 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "question container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-12" }, [
+          _c("div", { staticClass: "answerable" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("label", { attrs: { for: "last-name" } }, [
+                  _vm._v("Last Name")
+                ]),
+                _vm._v(" "),
+                _c("input", { attrs: { type: "text", id: "last-name" } })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("label", { attrs: { for: "last-name" } }, [
+                  _vm._v("Last Name")
+                ]),
+                _vm._v(" "),
+                _c("input", { attrs: { type: "text", id: "last-name" } })
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true

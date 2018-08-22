@@ -1,18 +1,6 @@
 <template>
     <section class="main container-fluid">
-        <div class="row node-area" v-if="!is_onboarded">
-            <section class="col-sm-12">
-                <div class="question">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h2>General Assessment</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quisquam saepe, distinctio eius incidunt nemo, eos modi reiciendis consequuntur sequi deleniti! Laudantium error reiciendis aliquam consequuntur similique nam pariatur amet!</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <div class="row node-area" v-if="is_onboarded">
+        <div class="row node-area">
             <aside class="col-md-4 bg-primary d-none d-md-block sidebar">
                 <p class="text-white">Some info about the journey.</p>
             </aside>
@@ -24,20 +12,21 @@
                     v-model="path[index]"
                     @can-next="onCanNext(index)" @cannot-next="onCannotNext(index)">
                 </node>
-                <!-- <question--select-many></question--select-many>
-                <div class="question">
+                
+                <div class="question container">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h1>What is your name?</h1>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque corrupti voluptatum placeat suscipit molestias, voluptates saepe eligendi mollitia, omnis architecto sint officia provident minima maxime porro praesentium repudiandae pariatur aliquam.</p>
+                            <!-- <h1>What?</h1> -->
+                            <!-- <h1>What is your name?</h1> -->
+                            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque corrupti voluptatum placeat suscipit molestias, voluptates saepe eligendi mollitia, omnis architecto sint officia provident minima maxime porro praesentium repudiandae pariatur aliquam.</p> -->
             
                             <div class="answerable">
+
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="first-name">First Name</label>
-                                        <input type="text" id="first-name">
+                                        <label for="last-name">Last Name</label>
+                                        <input type="text" id="last-name">
                                     </div>
-                                    
                                     <div class="col-md-6">
                                         <label for="last-name">Last Name</label>
                                         <input type="text" id="last-name">
@@ -47,28 +36,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="question">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h1>What is your gender?</h1>
-                            
-                            <div class="linker">
-                                <button class="btn btn-block btn-outline-primary">Male</button>
-                                <button class="btn btn-block btn-outline-primary">Female</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </section>
         </div>
         <div class="row navigator">
             <div class="col-sm-12 col-md-8 offset-md-4 p-0">
-                <div class="btn-group" role="group" v-if="is_onboarded">
+                <div class="btn-group" role="group">
                     <button type="button" class="btn btn-back" @click="goToPrevious" v-if="this.on_n > 1"><i class="fas fa-chevron-left fa-fw"></i></button>
                     <button type="button" class="btn btn-primary btn-next" :disabled="! validated[on_n - 1]" @click="saveResponse">Next <i class="fas fa-chevron-right fa-fw"></i></button>
-                </div>
-                <div class="btn-group" role="group" v-else>
-                    <button type="button" class="btn btn-primary btn-next" @click="onboard">START <i class="fas fa-chevron-right fa-fw"></i></button>
                 </div>
             </div>
         </div>
@@ -90,7 +64,6 @@
         },
         data() {
             return {
-                is_onboarded: false,
                 nodes: [],
                 path: [],
                 on_n: 0,
@@ -98,7 +71,7 @@
             }
         },
         created() {
-            // this.goToNext();
+            this.onboard();
         },
         computed: {
             canNext() {
@@ -107,7 +80,6 @@
         },
         methods: {
             onboard() {
-                console.log(this.journeyId);
                 // onboard the user properly here. currently just fetching the next question.
                 axios.get('/api/journeys/'+ this.journeyId +'/questions/next')
                     .then((response) => {
@@ -123,8 +95,6 @@
                     });
                 
                 this.on_n += 1;
-                // if it's a new user, we will create a new anonymous user and will store a cookie
-                // if it's a returning user, we will continue the journey based on the cookie
             },
             onCanNext(index) {
                 this.validated[index] = true;

@@ -24,14 +24,14 @@ Route::get('/users/{user}/journeys', ['as' => 'api.user.journey.list', 'uses' =>
 Route::post('/trees/{tree}/journeys/start', ['as' => 'api.journey.start', 'uses' => 'JourneyController@start']);
 
 // get a journey
-Route::get('journeys/{journey}', ['as' => 'api.user.journey.get', 'uses' => 'UserController@getJourney']);
+Route::get('journeys/{journey}', ['as' => 'api.journey.get', 'uses' => 'UserController@getJourney']);
 
 // get all the nodes
-Route::get('journeys/{journey}/nodes', ['as' => 'api.user.journey.get', 'uses' => 'UserController@getJourneyNodes']);
+Route::get('journeys/{journey}/nodes', ['as' => 'api.journey.nodes.get', 'uses' => 'UserController@getJourneyNodes']);
 
-Route::post('journeys/{journey}/paths', ['as' => 'api.user.store.path.get', 'uses' => 'UserController@storePath']);
+Route::post('journeys/{journey}/nodes/{node}', ['as' => 'api.user.store.path', 'uses' => 'UserController@storePath']);
 
-Route::get('journeys/{journey}/questions/next', ['as' => 'api.user.next.path.get', 'uses' => 'UserController@getNextQuestion']);
+Route::get('journeys/{journey}/questions/next', ['as' => 'api.user.next.path', 'uses' => 'UserController@getNextQuestion']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

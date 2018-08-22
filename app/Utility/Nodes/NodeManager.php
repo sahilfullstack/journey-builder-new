@@ -53,9 +53,7 @@ class NodeManager {
 
 		// merging responses in the node object
 		$nodes = $nodes->map(function ($node) use($paths) {
-
-			$pathLinker = $paths->where('node_id', $node->id)->first()->linker;			
-			$node->response = $pathLinker;
+			$node->response = $paths->where('node_id', $node->id)->first()->linker;
 			return $node; 
 		});
 

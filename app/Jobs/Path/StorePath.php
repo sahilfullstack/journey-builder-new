@@ -13,6 +13,7 @@ use App\Utility\Nodes\NodeManager;
 use App\Models\{Path, Node, Journey};
 use App\Http\Requests\Path\{ValidatePathResponseRequest};
 use App\Jobs\Journey\MarkFinished;
+use App\Exceptions\InvalidInputException;
 
 class StorePath
 {
@@ -41,6 +42,35 @@ class StorePath
     {       
         $path = $nodeManager->preparePath($this->journey, $this->node, $this->response);
 
+        if( ! $this->isNextNode($nodeManager))
+        {
+            // check for valid node
+            $this->isNodeValid();
+
+            // delete child paths
+            $paths = $this->journey->paths()->where('node_id', '>=', $this->node->id)->get();
+
+            foreach ($paths as $oldPath) 
+            {
+                $oldPath->delete();
+            }
+        }
+        
+        $this->save($path, $pathRepo);
+    }
+
+    private function isNodeValid()
+    {
+        $node = $this->journey->paths()->where('node_id', '=', $this->node->id)->notDeleted()->first();
+
+        if(is_null($node))
+        {
+            throw new InvalidInputException("Node is invalid.");
+        }
+    }
+
+    private function save($path, PathRepo $pathRepo)
+    {
         $pathModel = new Path($path);
 
         $pathRepo->store($pathModel);
@@ -49,5 +79,12 @@ class StorePath
         {
             dispatch(new MarkFinished($this->journey));
         }
+    }
+
+    private function isNextNode(NodeManager $nodeManager)
+    {
+        $nextNode = $nodeManager->next($this->journey);
+
+        return ($nextNode->id == $this->node->id);
     }
 }

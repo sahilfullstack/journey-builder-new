@@ -52,10 +52,8 @@ class UserController extends Controller
         return new QuestionResource($node);
     }
 
-    public function storePath(StorePathRequest $request, Journey $journey)
+    public function storePath(StorePathRequest $request, Journey $journey, Node $node)
     {
-        $node = $this->dispatch(new GetNextQuestion($journey));
-
         $response =  $request->get('response');
 
         // merging the node to request object for future validation

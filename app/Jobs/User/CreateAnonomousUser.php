@@ -26,12 +26,7 @@ class CreateAnonomousUser
      */
     public function handle(UserRepo $userRepo)
     {       
-        $userModel = new User([
-            'name' => str_random(10),
-            'email' => str_random(10),
-            'password' => str_random(10),
-            'remember_token' => str_random(10)
-        ]);
+        $userModel = new User([]);
 
         return $userRepo->store($userModel);
     }

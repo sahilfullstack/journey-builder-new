@@ -49,9 +49,10 @@ class StorePath
 
             // delete child paths
             $paths = $this->journey->paths()->where('node_id', '>=', $this->node->id)->get();
-            foreach ($paths as $path) 
+
+            foreach ($paths as $oldPath) 
             {
-                $path->delete();
+                $oldPath->delete();
             }
         }
         

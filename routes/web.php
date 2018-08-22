@@ -16,7 +16,11 @@ Route::get('/', function () {
 });
 
 // onboard a user and return token
-Route::get('/t/{slug}', ['as' => 'user.onboard', 'uses' => 'UserController@onboard']);
+
+// Route::get('/t/{slug}', ['as' => 'user.onboard', 'uses' => 'UserController@onboard']);
+Route::get('/t/{slug}', ['as' => 'tree.show', 'uses' => 'TreeController@show']);
+Route::get('/t/{tree}/onboard', ['as' => 'user.onboard', 'uses' => 'UserController@onboard']);
+
 
 Route::get('/journeys/{journey}', ['as' => 'journey.continue', 'uses' => 'JourneyController@continue']);
 

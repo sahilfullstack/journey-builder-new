@@ -21,11 +21,14 @@
             linker: {
                 type: Object,
                 required: true
+            },
+            value: {
+                required: true
             }
         },
         data() {
             return {
-                selected: []
+                selected: this.value || []
             }
         },
 

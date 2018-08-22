@@ -9,12 +9,8 @@ use App\Models\Tree;
 
 class UserController extends Controller
 {
-    public function onboard($slug)
+    public function onboard(Tree $tree)
     {
-    	$tree = Tree::whereSlug($slug)->first();
-
-    	if(is_null($tree)) redirect('/');
-
         // Create Anonomous user
         $user = $this->dispatch(new CreateAnonomousUser);
                 

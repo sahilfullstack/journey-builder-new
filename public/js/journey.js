@@ -49854,7 +49854,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49867,25 +49867,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -49959,15 +49940,20 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
     },
     data: function data() {
         return {
-            is_onboarded: false,
+            journey: {
+                tree: {
+                    name: 'Some name',
+                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi possimus quaerat nulla sunt molestias sapiente magni sit harum expedita, quo nesciunt laboriosam minima deserunt necessitatibus maxime cupiditate cum labore vel.'
+                }
+            },
             nodes: [],
             path: [],
-            on_n: 0,
-            validated: []
+            validated: [],
+            on_n: 0
         };
     },
     created: function created() {
-        // this.goToNext();
+        this.resume();
     },
 
     computed: {
@@ -49976,26 +49962,29 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
         }
     },
     methods: {
-        onboard: function onboard() {
+        resume: function resume() {
             var _this = this;
 
-            console.log(this.journeyId);
-            // onboard the user properly here. currently just fetching the next question.
-            axios.get('/api/journeys/' + this.journeyId + '/questions/next').then(function (response) {
-                _this.nodes.push(response.data);
-                _this.path.push(undefined);
-                _this.validated.push(false);
-                _this.is_onboarded = true;
+            // axios.get('/api/journeys/'+ this.journeyId)
+            //     .then((response) => {
+            //         // this.journey = response.data.data;
+            //     });
+
+            axios.get('/api/journeys/' + this.journeyId + '/nodes').then(function (response) {
+                response.data.data.forEach(function (node) {
+                    _this.path.push(node.response != null ? node.response.response : undefined);
+                    _this.nodes.push(node);
+                    _this.validated.push(true);
+                    _this.on_n += 1;
+                });
+                _this.validated[_this.validated.length - 1] = false;
+
                 Vue.nextTick(function () {
                     $('.question')[_this.on_n - 1].scrollIntoView({
                         behavior: 'smooth'
                     });
                 });
             });
-
-            this.on_n += 1;
-            // if it's a new user, we will create a new anonymous user and will store a cookie
-            // if it's a returning user, we will continue the journey based on the cookie
         },
         onCanNext: function onCanNext(index) {
             this.validated[index] = true;
@@ -50015,120 +50004,24 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
             this.on_n -= 1;
         },
         saveResponse: function saveResponse() {
-            var self = this;
+            var _this3 = this;
 
-            axios.post('/api/journeys/' + this.journeyId + '/paths', { response: this.path[this.on_n - 1] }).then(function (response) {
-                self.nodes.push(response.data);
-                self.path.push(undefined);
-                self.validated.push(false);
+            axios.post('/api/journeys/' + this.journeyId + '/nodes/' + this.nodes[this.on_n - 1].id, {
+                response: this.path[this.on_n - 1]
+            }).then(function (response) {
+                _this3.nodes.push(response.data);
+                _this3.path.push(undefined);
+                _this3.validated.push(false);
                 Vue.nextTick(function () {
-                    $('.question')[self.on_n - 1].scrollIntoView({
+                    $('.question')[_this3.on_n - 1].scrollIntoView({
                         behavior: 'smooth'
                     });
                 });
-                self.on_n += 1;
+                _this3.on_n += 1;
             }).catch(function (error) {
                 console.log("error occured");
                 console.log(error);
             });
-        },
-        goToNext: function goToNext() {
-
-            var available = [{
-                "id": 4,
-                "tree_id": 2,
-                "identifier": 4,
-                "data": {
-                    "body": "",
-                    "title": "Which of the following food items you consume in your diet?"
-                },
-                "linker": {
-                    "to": 5,
-                    "type": "select_many",
-                    "maximum": 3,
-                    "minimum": 2,
-                    "selectables": [{
-                        "to": 5,
-                        "data": {
-                            "text": "Vegetables"
-                        },
-                        "operations": []
-                    }, {
-                        "to": 5,
-                        "data": {
-                            "text": "Fruits"
-                        },
-                        "operations": []
-                    }, {
-                        "to": 5,
-                        "data": {
-                            "text": "Meat"
-                        },
-                        "operations": []
-                    }, {
-                        "to": 5,
-                        "data": {
-                            "text": "Egg"
-                        },
-                        "operations": []
-                    }, {
-                        "to": 5,
-                        "data": {
-                            "text": "Dairy Products"
-                        },
-                        "operations": []
-                    }, {
-                        "to": 5,
-                        "data": {
-                            "text": "Fish"
-                        },
-                        "operations": []
-                    }]
-                }
-            }, {
-                "id": 4,
-                "tree_id": 2,
-                "identifier": 4,
-                "data": {
-                    "body": "",
-                    "title": "Which of the following food items you consume in your diet?"
-                },
-                "linker": {
-                    "type": "text",
-                    "to": 15
-                }
-            }, {
-                "id": 4,
-                "tree_id": 2,
-                "identifier": 4,
-                "data": {
-                    "body": "",
-                    "title": "Which of the following food items you consume in your diet?"
-                },
-                "linker": {
-                    "type": "number",
-                    "to": 15
-                }
-            }];
-
-            // this.nodes.push(available[1]);
-            // this.path.push(undefined);
-            // this.validated.push(false);
-
-            var self = this;
-            axios.get('/api/journeys/' + this.journeyId + '/questions/next').then(function (response) {
-                self.nodes.push(response.data);
-                self.path.push(undefined);
-                self.validated.push(false);
-
-                Vue.nextTick(function () {
-                    $('.question')[self.on_n - 1].scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-
-            this.on_n += 1;
         }
     }
 });
@@ -50587,128 +50480,86 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "main container-fluid" }, [
-    !_vm.is_onboarded
-      ? _c("div", { staticClass: "row node-area" }, [_vm._m(0)])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.is_onboarded
-      ? _c("div", { staticClass: "row node-area" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "section",
-            { staticClass: "col-sm-12 col-md-8 offset-md-4" },
-            _vm._l(this.nodes, function(node, index) {
-              return _c("node", {
-                key: index,
-                attrs: { node: node },
-                on: {
-                  "can-next": function($event) {
-                    _vm.onCanNext(index)
-                  },
-                  "cannot-next": function($event) {
-                    _vm.onCannotNext(index)
-                  }
-                },
-                model: {
-                  value: _vm.path[index],
-                  callback: function($$v) {
-                    _vm.$set(_vm.path, index, $$v)
-                  },
-                  expression: "path[index]"
-                }
-              })
-            })
-          )
-        ])
-      : _vm._e(),
+    _c("div", { staticClass: "row node-area" }, [
+      _c(
+        "aside",
+        {
+          staticClass:
+            "col-md-4 bg-primary text-white d-none d-md-block sidebar"
+        },
+        [
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-12" }, [
+                _c("h2", [_vm._v(_vm._s(_vm.journey.tree.name))]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.journey.tree.description))])
+              ])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "section",
+        { staticClass: "col-sm-12 col-md-8 offset-md-4" },
+        _vm._l(this.nodes, function(node, index) {
+          return _c("node", {
+            key: index,
+            attrs: { node: node },
+            on: {
+              "can-next": function($event) {
+                _vm.onCanNext(index)
+              },
+              "cannot-next": function($event) {
+                _vm.onCannotNext(index)
+              }
+            },
+            model: {
+              value: _vm.path[index],
+              callback: function($$v) {
+                _vm.$set(_vm.path, index, $$v)
+              },
+              expression: "path[index]"
+            }
+          })
+        })
+      )
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row navigator" }, [
       _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4 p-0" }, [
-        _vm.is_onboarded
-          ? _c("div", { staticClass: "btn-group", attrs: { role: "group" } }, [
-              this.on_n > 1
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-back",
-                      attrs: { type: "button" },
-                      on: { click: _vm.goToPrevious }
-                    },
-                    [_c("i", { staticClass: "fas fa-chevron-left fa-fw" })]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
+        _c("div", { staticClass: "btn-group", attrs: { role: "group" } }, [
+          this.on_n > 1
+            ? _c(
                 "button",
                 {
-                  staticClass: "btn btn-primary btn-next",
-                  attrs: {
-                    type: "button",
-                    disabled: !_vm.validated[_vm.on_n - 1]
-                  },
-                  on: { click: _vm.saveResponse }
-                },
-                [
-                  _vm._v("Next "),
-                  _c("i", { staticClass: "fas fa-chevron-right fa-fw" })
-                ]
-              )
-            ])
-          : _c("div", { staticClass: "btn-group", attrs: { role: "group" } }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary btn-next",
+                  staticClass: "btn btn-back",
                   attrs: { type: "button" },
-                  on: { click: _vm.onboard }
+                  on: { click: _vm.goToPrevious }
                 },
-                [
-                  _vm._v("START "),
-                  _c("i", { staticClass: "fas fa-chevron-right fa-fw" })
-                ]
+                [_c("i", { staticClass: "fas fa-chevron-left fa-fw" })]
               )
-            ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-next",
+              attrs: { type: "button", disabled: !_vm.validated[_vm.on_n - 1] },
+              on: { click: _vm.saveResponse }
+            },
+            [
+              _vm._v("Next "),
+              _c("i", { staticClass: "fas fa-chevron-right fa-fw" })
+            ]
+          )
+        ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "col-sm-12" }, [
-      _c("div", { staticClass: "question" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c("h2", [_vm._v("General Assessment")]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quisquam saepe, distinctio eius incidunt nemo, eos modi reiciendis consequuntur sequi deleniti! Laudantium error reiciendis aliquam consequuntur similique nam pariatur amet!"
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "aside",
-      { staticClass: "col-md-4 bg-primary d-none d-md-block sidebar" },
-      [
-        _c("p", { staticClass: "text-white" }, [
-          _vm._v("Some info about the journey.")
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -50804,7 +50655,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50839,11 +50690,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         node: {
             type: Object,
             required: true
+        },
+        value: {
+            required: true
         }
     },
     data: function data() {
         return {
-            value: undefined
+            // value: undefined
         };
     }
 });
@@ -50871,16 +50725,7 @@ var render = function() {
               ? _c(
                   "linker--select-many",
                   _vm._g(
-                    {
-                      attrs: { linker: this.node.linker },
-                      model: {
-                        value: _vm.value,
-                        callback: function($$v) {
-                          _vm.value = $$v
-                        },
-                        expression: "value"
-                      }
-                    },
+                    { attrs: { linker: this.node.linker, value: _vm.value } },
                     _vm.$listeners
                   )
                 )
@@ -50890,16 +50735,7 @@ var render = function() {
               ? _c(
                   "linker--select-one",
                   _vm._g(
-                    {
-                      attrs: { linker: this.node.linker },
-                      model: {
-                        value: _vm.value,
-                        callback: function($$v) {
-                          _vm.value = $$v
-                        },
-                        expression: "value"
-                      }
-                    },
+                    { attrs: { linker: this.node.linker, value: _vm.value } },
                     _vm.$listeners
                   )
                 )
@@ -50909,16 +50745,7 @@ var render = function() {
               ? _c(
                   "linker--text",
                   _vm._g(
-                    {
-                      attrs: { linker: this.node.linker },
-                      model: {
-                        value: _vm.value,
-                        callback: function($$v) {
-                          _vm.value = $$v
-                        },
-                        expression: "value"
-                      }
-                    },
+                    { attrs: { linker: this.node.linker, value: _vm.value } },
                     _vm.$listeners
                   )
                 )
@@ -50928,16 +50755,7 @@ var render = function() {
               ? _c(
                   "linker--number",
                   _vm._g(
-                    {
-                      attrs: { linker: this.node.linker },
-                      model: {
-                        value: _vm.value,
-                        callback: function($$v) {
-                          _vm.value = $$v
-                        },
-                        expression: "value"
-                      }
-                    },
+                    { attrs: { linker: this.node.linker, value: _vm.value } },
                     _vm.$listeners
                   )
                 )
@@ -51045,7 +50863,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51079,11 +50897,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         linker: {
             type: Object,
             required: true
+        },
+        value: {
+            required: true
         }
     },
     data: function data() {
         return {
-            selected: []
+            selected: this.value || []
         };
     },
 
@@ -51238,7 +51059,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51272,11 +51093,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         linker: {
             type: Object,
             required: true
+        },
+        value: {
+            required: true
         }
     },
     data: function data() {
         return {
-            selected: []
+            selected: this.value || []
         };
     },
 
@@ -51427,7 +51251,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51453,11 +51277,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         linker: {
             type: Object,
             required: true
+        },
+        value: {
+            required: true
         }
     },
     data: function data() {
         return {
-            value: ''
+            value: this.value || ''
         };
     },
 
@@ -51602,7 +51429,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51628,11 +51455,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         linker: {
             type: Object,
             required: true
+        },
+        value: {
+            required: true
         }
     },
     data: function data() {
         return {
-            value: ''
+            value: this.value || ''
         };
     },
 

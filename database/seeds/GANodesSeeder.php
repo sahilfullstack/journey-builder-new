@@ -14,13 +14,13 @@ class GANodesSeeder extends Seeder
     public function run()
     {
         $trees = [
-            str_slug('General Assessment') => Tree::notDeleted()->whereSlug(str_slug('General Assessment'))->first()->id,
+            'ga' => Tree::notDeleted()->whereSlug('ga')->first()->id,
         ];
 
 
         $nodes = [
           [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 1,
               'data' => [
                 'title' => 'What is your opinion about your health?',
@@ -61,7 +61,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 2,
               'data' => [
                 'title' => 'Which of the following food items you consume regularly in your diet?',
@@ -126,7 +126,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 3,
               'data' => [
                 'title' => 'How is your appetite?',
@@ -174,7 +174,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 4,
               'data' => [
                 'title' => 'Do you frequently encounter any of these gastric complaints?',
@@ -232,7 +232,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 5,
               'data' => [
                 'title' => 'Which of the following food do you enjoy more?',
@@ -280,7 +280,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 6,
               'data' => [
                 'title' => 'How much of plain water do you drink per day?',
@@ -314,7 +314,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 7,
               'data' => [
                 'title' => 'Which of the following you drink on a daily basis?',
@@ -387,7 +387,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 8,
               'data' => [
                 'title' => 'How are your bowel movements?',
@@ -435,7 +435,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 9,
               'data' => [
                 'title' => 'How often do you smoke?',
@@ -476,7 +476,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
                         [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 10,
               'data' => [
                 'title' => 'How often do you consume alcohol?',
@@ -517,7 +517,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 11,
               'data' => [
                 'title' => 'How often do you eat out?',
@@ -559,7 +559,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 12,
               'data' => [
                 'title' => 'How many times a day do you use social media platforms (Facebook, Instagram, twitter, snapchat etc.)?',
@@ -608,7 +608,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
              [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 13,
               'data' => [
                 'title' => 'At what age did you start with your menses?',
@@ -621,7 +621,7 @@ class GANodesSeeder extends Seeder
             ],
 
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 14,
               'data' => [
                 'title' => 'How is your menstrual cycle?',
@@ -662,7 +662,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 15,
               'data' => [
                 'title' => 'How heavy is your menstrual flow usually?',
@@ -714,7 +714,7 @@ class GANodesSeeder extends Seeder
             ],
 
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 16,
               'data' => [
                 'title' => 'Do you experience any of the following symptoms before or during menses?',
@@ -829,7 +829,7 @@ class GANodesSeeder extends Seeder
             ],
 
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 17,
               'data' => [
                 'title' => 'Have you ever noticed any lumps or swelling in your breasts?',
@@ -864,7 +864,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 18,
               'data' => [
                 'title' => 'Do you have any white discharge complaint?',
@@ -912,7 +912,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 19,
               'data' => [
                 'title' => 'Do you have any urinary complaints?',
@@ -981,7 +981,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 20,
               'data' => [
                 'title' => 'Are you pregnant or suspect that you might be?',
@@ -1008,7 +1008,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 21,
               'data' => [
                 'title' => 'Number of vaginal deliveries',
@@ -1020,7 +1020,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 22,
               'data' => [
                 'title' => 'Number of Caesarian deliverie',
@@ -1032,7 +1032,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 23,
               'data' => [
                 'title' => 'Number of abortions',
@@ -1045,7 +1045,7 @@ class GANodesSeeder extends Seeder
             ],
 
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 24,
               'data' => [
                 'title' => 'If you are currently Peri / Pre/ Post-menopausal, do you experience any of the following symptoms?',
@@ -1121,7 +1121,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 25,
               'data' => [
                 'title' => 'Do you have any history of medical illness?',
@@ -1148,7 +1148,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 26,
               'data' => [
                 'title' => 'Specify history of any medical illness?',
@@ -1160,7 +1160,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 27,
               'data' => [
                 'title' => 'Do you have any medical conditions currently?',
@@ -1214,7 +1214,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 28,
               'data' => [
                 'title' => 'Please Specify your medical condition?',
@@ -1226,7 +1226,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 29,
               'data' => [
                 'title' => 'Do you have any known allergies currently?',
@@ -1317,7 +1317,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 30,
               'data' => [
                 'title' => 'Does any of your direct blood relatives* have or had any medical conditions?',
@@ -1442,7 +1442,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 31,
               'data' => [
                 'title' => 'Are you taking any medications currently?',
@@ -1612,7 +1612,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 32,
               'data' => [
                 'title' => 'How would you rate your sleep?',
@@ -1653,7 +1653,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 33,
               'data' => [
                 'title' => 'Do you wake up feeling refreshed?',
@@ -1695,7 +1695,7 @@ class GANodesSeeder extends Seeder
             ],
 
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 34,
               'data' => [
                 'title' => 'Do you snore or have sleep apnea?',
@@ -1736,7 +1736,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 35,
               'data' => [
                 'title' => 'What kind of dreams do you have?',
@@ -1777,7 +1777,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 36,
               'data' => [
                 'title' => 'How often do you engage in Exercise / Physical Activity',
@@ -1818,7 +1818,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 37,
               'data' => [
                 'title' => 'What form of physical activity you engage in?',
@@ -1911,7 +1911,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 38,
               'data' => [
                 'title' => 'How would you rate your current stress level?',
@@ -1946,7 +1946,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 39,
               'data' => [
                 'title' => 'What is your source of current stress?',
@@ -2015,7 +2015,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 40,
               'data' => [
                 'title' => 'How are your social skills?',
@@ -2050,7 +2050,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 41,
               'data' => [
                 'title' => 'Any major incident/ grief/ stress/ that has had an impact on your overall emotional state?',
@@ -2078,7 +2078,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 42,
               'data' => [
                 'title' => 'Specify incident/ grief/ stress/ that has had an impact on your overall emotional state?',
@@ -2090,7 +2090,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 43,
               'data' => [
                 'title' => 'When upset, do you:',
@@ -2124,7 +2124,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 44,
               'data' => [
                 'title' => 'Are you particular about:',
@@ -2179,7 +2179,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 45,
               'data' => [
                 'title' => 'Do you fear:',
@@ -2231,7 +2231,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 46,
               'data' => [
                 'title' => 'When things don’t go according to your wish, how do you react?',
@@ -2279,7 +2279,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 47,
               'data' => [
                 'title' => 'Do you have anxiety attacks?',
@@ -2313,7 +2313,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 48,
               'data' => [
                 'title' => 'Have you had thoughts of harming yourself?',
@@ -2347,7 +2347,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 49,
               'data' => [
                 'title' => 'Which of the following describe your present state of personality the best?',
@@ -2532,7 +2532,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 50,
               'data' => [
                 'title' => 'How is your thought pattern?',
@@ -2587,7 +2587,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 51,
               'data' => [
                 'title' => 'How is your memory?',
@@ -2628,7 +2628,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 52,
               'data' => [
                 'title' => 'Are you currently sexually active?',
@@ -2656,7 +2656,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 53,
               'data' => [
                 'title' => 'Which of the following symptoms you experience?',
@@ -2717,7 +2717,7 @@ class GANodesSeeder extends Seeder
                 ]                  
               ]
             ],[
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 54,
               'data' => [
                 'title' => 'Describe your Skin texture?',
@@ -2757,7 +2757,7 @@ class GANodesSeeder extends Seeder
                 ]                  
               ]
             ],[
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 55,
               'data' => [
                 'title' => 'Describe your complexion?',
@@ -2805,7 +2805,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 56,
               'data' => [
                 'title' => 'Describe your Hair quality?',
@@ -2883,7 +2883,7 @@ class GANodesSeeder extends Seeder
                 ]                  
               ]
             ],[
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 57,
               'data' => [
                 'title' => 'Describe your built',
@@ -2962,7 +2962,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
             [
-              'tree_id' => $trees[str_slug('General Assessment')],
+              'tree_id' => $trees['ga'],
               'identifier' => 58,
               'data' => [
                 'title' => 'How is your thermal reaction?',
@@ -3017,7 +3017,7 @@ class GANodesSeeder extends Seeder
               ]
             ],
            [
-            'tree_id' => $trees[str_slug('General Assessment')],
+            'tree_id' => $trees['ga'],
             'identifier' => 60,
             'data' => [
               'title' => 'What is your name ?',
@@ -3029,7 +3029,7 @@ class GANodesSeeder extends Seeder
             ]
           ],
           [
-            'tree_id' => $trees[str_slug('General Assessment')],
+            'tree_id' => $trees['ga'],
             'identifier' => 61,
             'data' => [
               'title' => 'What is your phone number?',
@@ -3041,7 +3041,7 @@ class GANodesSeeder extends Seeder
             ]
           ],
           [
-            'tree_id' => $trees[str_slug('General Assessment')],
+            'tree_id' => $trees['ga'],
             'identifier' => 62,
             'data' => [
               'title' => 'What is your Date of Birth?',
@@ -3053,7 +3053,7 @@ class GANodesSeeder extends Seeder
             ]
           ],
           [
-            'tree_id' => $trees[str_slug('General Assessment')],
+            'tree_id' => $trees['ga'],
             'identifier' => 63,
             'data' => [
               'title' => 'What is your Height?',
@@ -3065,7 +3065,7 @@ class GANodesSeeder extends Seeder
             ]
           ],
           [
-            'tree_id' => $trees[str_slug('General Assessment')],
+            'tree_id' => $trees['ga'],
             'identifier' => 64,
             'data' => [
               'title' => 'What is your Weight?',
@@ -3077,7 +3077,7 @@ class GANodesSeeder extends Seeder
             ]
           ],
           [
-            'tree_id' => $trees[str_slug('General Assessment')],
+            'tree_id' => $trees['ga'],
             'identifier' => 65,
             'data' => [
               'title' => 'What is your Height?',

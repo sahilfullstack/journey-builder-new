@@ -49854,7 +49854,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49867,6 +49867,13 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49933,14 +49940,20 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
     },
     data: function data() {
         return {
+            journey: {
+                tree: {
+                    name: 'Some name',
+                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi possimus quaerat nulla sunt molestias sapiente magni sit harum expedita, quo nesciunt laboriosam minima deserunt necessitatibus maxime cupiditate cum labore vel.'
+                }
+            },
             nodes: [],
             path: [],
-            on_n: 0,
-            validated: []
+            validated: [],
+            on_n: 0
         };
     },
     created: function created() {
-        this.onboard();
+        this.resume();
     },
 
     computed: {
@@ -49949,23 +49962,28 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
         }
     },
     methods: {
-        onboard: function onboard() {
+        resume: function resume() {
             var _this = this;
 
-            // onboard the user properly here. currently just fetching the next question.
-            axios.get('/api/journeys/' + this.journeyId + '/questions/next').then(function (response) {
-                _this.nodes.push(response.data);
-                _this.path.push(undefined);
-                _this.validated.push(false);
-                _this.is_onboarded = true;
+            axios.get('/api/journeys/' + this.journeyId).then(function (response) {
+                // this.journey = response.data.data;
+            });
+
+            axios.get('/api/journeys/' + this.journeyId + '/nodes').then(function (response) {
+                response.data.data.forEach(function (node) {
+                    _this.path.push(node.response != null ? node.response.response : undefined);
+                    _this.nodes.push(node);
+                    _this.validated.push(true);
+                    _this.on_n += 1;
+                });
+                _this.validated[_this.validated.length - 1] = false;
+
                 Vue.nextTick(function () {
                     $('.question')[_this.on_n - 1].scrollIntoView({
                         behavior: 'smooth'
                     });
                 });
             });
-
-            this.on_n += 1;
         },
         onCanNext: function onCanNext(index) {
             this.validated[index] = true;
@@ -49987,7 +50005,9 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
         saveResponse: function saveResponse() {
             var self = this;
 
-            axios.post('/api/journeys/' + this.journeyId + '/paths', { response: this.path[this.on_n - 1] }).then(function (response) {
+            axios.post('/api/journeys/' + this.journeyId + '/nodes/' + this.nodes[this.on_n - 1].id, {
+                response: this.path[this.on_n - 1]
+            }).then(function (response) {
                 self.nodes.push(response.data);
                 self.path.push(undefined);
                 self.validated.push(false);
@@ -50001,104 +50021,6 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
                 console.log("error occured");
                 console.log(error);
             });
-        },
-        goToNext: function goToNext() {
-
-            var available = [{
-                "id": 4,
-                "tree_id": 2,
-                "identifier": 4,
-                "data": {
-                    "body": "",
-                    "title": "Which of the following food items you consume in your diet?"
-                },
-                "linker": {
-                    "to": 5,
-                    "type": "select_many",
-                    "maximum": 3,
-                    "minimum": 2,
-                    "selectables": [{
-                        "to": 5,
-                        "data": {
-                            "text": "Vegetables"
-                        },
-                        "operations": []
-                    }, {
-                        "to": 5,
-                        "data": {
-                            "text": "Fruits"
-                        },
-                        "operations": []
-                    }, {
-                        "to": 5,
-                        "data": {
-                            "text": "Meat"
-                        },
-                        "operations": []
-                    }, {
-                        "to": 5,
-                        "data": {
-                            "text": "Egg"
-                        },
-                        "operations": []
-                    }, {
-                        "to": 5,
-                        "data": {
-                            "text": "Dairy Products"
-                        },
-                        "operations": []
-                    }, {
-                        "to": 5,
-                        "data": {
-                            "text": "Fish"
-                        },
-                        "operations": []
-                    }]
-                }
-            }, {
-                "id": 4,
-                "tree_id": 2,
-                "identifier": 4,
-                "data": {
-                    "body": "",
-                    "title": "Which of the following food items you consume in your diet?"
-                },
-                "linker": {
-                    "type": "text",
-                    "to": 15
-                }
-            }, {
-                "id": 4,
-                "tree_id": 2,
-                "identifier": 4,
-                "data": {
-                    "body": "",
-                    "title": "Which of the following food items you consume in your diet?"
-                },
-                "linker": {
-                    "type": "number",
-                    "to": 15
-                }
-            }];
-
-            // this.nodes.push(available[1]);
-            // this.path.push(undefined);
-            // this.validated.push(false);
-
-            var self = this;
-            axios.get('/api/journeys/' + this.journeyId + '/questions/next').then(function (response) {
-                self.nodes.push(response.data);
-                self.path.push(undefined);
-                self.validated.push(false);
-
-                Vue.nextTick(function () {
-                    $('.question')[self.on_n - 1].scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-
-            this.on_n += 1;
         }
     }
 });
@@ -50558,37 +50480,49 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "main container-fluid" }, [
     _c("div", { staticClass: "row node-area" }, [
-      _vm._m(0),
+      _c(
+        "aside",
+        {
+          staticClass:
+            "col-md-4 bg-primary text-white d-none d-md-block sidebar"
+        },
+        [
+          _c("div", { staticClass: "question" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-12" }, [
+                _c("h2", [_vm._v(_vm._s(_vm.journey.tree.name))]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.journey.tree.description))])
+              ])
+            ])
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c(
         "section",
         { staticClass: "col-sm-12 col-md-8 offset-md-4" },
-        [
-          _vm._l(this.nodes, function(node, index) {
-            return _c("node", {
-              key: index,
-              attrs: { node: node },
-              on: {
-                "can-next": function($event) {
-                  _vm.onCanNext(index)
-                },
-                "cannot-next": function($event) {
-                  _vm.onCannotNext(index)
-                }
+        _vm._l(this.nodes, function(node, index) {
+          return _c("node", {
+            key: index,
+            attrs: { node: node },
+            on: {
+              "can-next": function($event) {
+                _vm.onCanNext(index)
               },
-              model: {
-                value: _vm.path[index],
-                callback: function($$v) {
-                  _vm.$set(_vm.path, index, $$v)
-                },
-                expression: "path[index]"
+              "cannot-next": function($event) {
+                _vm.onCannotNext(index)
               }
-            })
-          }),
-          _vm._v(" "),
-          _vm._m(1)
-        ],
-        2
+            },
+            model: {
+              value: _vm.path[index],
+              callback: function($$v) {
+                _vm.$set(_vm.path, index, $$v)
+              },
+              expression: "path[index]"
+            }
+          })
+        })
       )
     ]),
     _vm._v(" "),
@@ -50624,52 +50558,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "aside",
-      { staticClass: "col-md-4 bg-primary d-none d-md-block sidebar" },
-      [
-        _c("p", { staticClass: "text-white" }, [
-          _vm._v("Some info about the journey.")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "question container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-12" }, [
-          _c("div", { staticClass: "answerable" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("label", { attrs: { for: "last-name" } }, [
-                  _vm._v("Last Name")
-                ]),
-                _vm._v(" "),
-                _c("input", { attrs: { type: "text", id: "last-name" } })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("label", { attrs: { for: "last-name" } }, [
-                  _vm._v("Last Name")
-                ]),
-                _vm._v(" "),
-                _c("input", { attrs: { type: "text", id: "last-name" } })
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -50765,7 +50654,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50800,11 +50689,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         node: {
             type: Object,
             required: true
+        },
+        value: {
+            required: true
         }
     },
     data: function data() {
         return {
-            value: undefined
+            // value: undefined
         };
     }
 });
@@ -50832,16 +50724,7 @@ var render = function() {
               ? _c(
                   "linker--select-many",
                   _vm._g(
-                    {
-                      attrs: { linker: this.node.linker },
-                      model: {
-                        value: _vm.value,
-                        callback: function($$v) {
-                          _vm.value = $$v
-                        },
-                        expression: "value"
-                      }
-                    },
+                    { attrs: { linker: this.node.linker, value: _vm.value } },
                     _vm.$listeners
                   )
                 )
@@ -50851,16 +50734,7 @@ var render = function() {
               ? _c(
                   "linker--select-one",
                   _vm._g(
-                    {
-                      attrs: { linker: this.node.linker },
-                      model: {
-                        value: _vm.value,
-                        callback: function($$v) {
-                          _vm.value = $$v
-                        },
-                        expression: "value"
-                      }
-                    },
+                    { attrs: { linker: this.node.linker, value: _vm.value } },
                     _vm.$listeners
                   )
                 )
@@ -50870,16 +50744,7 @@ var render = function() {
               ? _c(
                   "linker--text",
                   _vm._g(
-                    {
-                      attrs: { linker: this.node.linker },
-                      model: {
-                        value: _vm.value,
-                        callback: function($$v) {
-                          _vm.value = $$v
-                        },
-                        expression: "value"
-                      }
-                    },
+                    { attrs: { linker: this.node.linker, value: _vm.value } },
                     _vm.$listeners
                   )
                 )
@@ -50889,16 +50754,7 @@ var render = function() {
               ? _c(
                   "linker--number",
                   _vm._g(
-                    {
-                      attrs: { linker: this.node.linker },
-                      model: {
-                        value: _vm.value,
-                        callback: function($$v) {
-                          _vm.value = $$v
-                        },
-                        expression: "value"
-                      }
-                    },
+                    { attrs: { linker: this.node.linker, value: _vm.value } },
                     _vm.$listeners
                   )
                 )
@@ -51006,7 +50862,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51040,11 +50896,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         linker: {
             type: Object,
             required: true
+        },
+        value: {
+            required: true
         }
     },
     data: function data() {
         return {
-            selected: []
+            selected: this.value || []
         };
     },
 
@@ -51199,7 +51058,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51233,11 +51092,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         linker: {
             type: Object,
             required: true
+        },
+        value: {
+            required: true
         }
     },
     data: function data() {
         return {
-            selected: []
+            selected: this.value || []
         };
     },
 
@@ -51388,7 +51250,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51414,11 +51276,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         linker: {
             type: Object,
             required: true
+        },
+        value: {
+            required: true
         }
     },
     data: function data() {
         return {
-            value: ''
+            value: this.value || ''
         };
     },
 
@@ -51563,7 +51428,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51589,11 +51454,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         linker: {
             type: Object,
             required: true
+        },
+        value: {
+            required: true
         }
     },
     data: function data() {
         return {
-            value: ''
+            value: this.value || ''
         };
     },
 

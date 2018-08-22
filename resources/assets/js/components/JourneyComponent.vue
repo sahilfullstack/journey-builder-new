@@ -1,8 +1,15 @@
 <template>
     <section class="main container-fluid">
         <div class="row node-area">
-            <aside class="col-md-4 bg-primary d-none d-md-block sidebar">
-                <p class="text-white">Some info about the journey.</p>
+            <aside class="col-md-4 bg-primary text-white d-none d-md-block sidebar">
+                <div class="question">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>{{ journey.tree.name }}</h2>
+                            <p>{{ journey.tree.description }}</p>
+                        </div>
+                    </div>
+                </div>
             </aside>
             <section class="col-sm-12 col-md-8 offset-md-4">
                 <node 
@@ -13,12 +20,12 @@
                     @can-next="onCanNext(index)" @cannot-next="onCannotNext(index)">
                 </node>
                 
-                <div class="question container">
+                <!-- <div class="question container">
                     <div class="row">
                         <div class="col-sm-12">
-                            <!-- <h1>What?</h1> -->
-                            <!-- <h1>What is your name?</h1> -->
-                            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque corrupti voluptatum placeat suscipit molestias, voluptates saepe eligendi mollitia, omnis architecto sint officia provident minima maxime porro praesentium repudiandae pariatur aliquam.</p> -->
+                            <h1>What?</h1>
+                            <h1>What is your name?</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque corrupti voluptatum placeat suscipit molestias, voluptates saepe eligendi mollitia, omnis architecto sint officia provident minima maxime porro praesentium repudiandae pariatur aliquam.</p>
             
                             <div class="answerable">
 
@@ -35,7 +42,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </section>
         </div>
         <div class="row navigator">
@@ -64,14 +71,20 @@
         },
         data() {
             return {
+                journey: {
+                    tree: {
+                        name: 'Some name',
+                        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi possimus quaerat nulla sunt molestias sapiente magni sit harum expedita, quo nesciunt laboriosam minima deserunt necessitatibus maxime cupiditate cum labore vel.'
+                    }
+                },
                 nodes: [],
                 path: [],
-                on_n: 0,
-                validated: []
+                validated: [],
+                on_n: 0
             }
         },
         created() {
-            this.onboard();
+            this.resume();
         },
         computed: {
             canNext() {
@@ -79,22 +92,28 @@
             }
         },
         methods: {
-            onboard() {
-                // onboard the user properly here. currently just fetching the next question.
-                axios.get('/api/journeys/'+ this.journeyId +'/questions/next')
+            resume() {
+                axios.get('/api/journeys/'+ this.journeyId)
                     .then((response) => {
-                        this.nodes.push(response.data);
-                        this.path.push(undefined);
-                        this.validated.push(false);
-                        this.is_onboarded = true;
+                        // this.journey = response.data.data;
+                    });
+
+                axios.get('/api/journeys/'+ this.journeyId +'/nodes')
+                    .then((response) => {
+                        response.data.data.forEach(node => {
+                            this.path.push(node.response != null ? node.response.response : undefined);
+                            this.nodes.push(node);
+                            this.validated.push(true);
+                            this.on_n += 1;
+                        });
+                        this.validated[this.validated.length - 1] = false;
+                        
                         Vue.nextTick(() => {
                             $('.question')[this.on_n - 1].scrollIntoView({ 
                                 behavior: 'smooth' 
                             });
                         });
                     });
-                
-                this.on_n += 1;
             },
             onCanNext(index) {
                 this.validated[index] = true;
@@ -114,7 +133,9 @@
             saveResponse() {
                 let self = this;
                 
-                axios.post('/api/journeys/'+ this.journeyId +'/paths',  {response: this.path[this.on_n - 1]})
+                axios.post('/api/journeys/'+ this.journeyId +'/nodes/' + this.nodes[this.on_n - 1].id,  {
+                    response: this.path[this.on_n - 1]
+                })
                     .then(function (response) {                
                         self.nodes.push(response.data);
                         self.path.push(undefined);
@@ -130,116 +151,6 @@
                         console.log("error occured");
                         console.log(error);
                     });
-            },
-            goToNext() {
-                
-                let available = [
-                    {
-                        "id": 4,
-                        "tree_id": 2,
-                        "identifier": 4,
-                        "data": {
-                            "body": "",
-                            "title": "Which of the following food items you consume in your diet?"
-                        },
-                        "linker": {
-                            "to": 5,
-                            "type": "select_many",
-                            "maximum": 3,
-                            "minimum": 2,
-                            "selectables": [
-                                {
-                                    "to": 5,
-                                    "data": {
-                                        "text": "Vegetables"
-                                    },
-                                    "operations": []
-                                },
-                                {
-                                    "to": 5,
-                                    "data": {
-                                        "text": "Fruits"
-                                    },
-                                    "operations": []
-                                },
-                                {
-                                    "to": 5,
-                                    "data": {
-                                        "text": "Meat"
-                                    },
-                                    "operations": []
-                                },
-                                {
-                                    "to": 5,
-                                    "data": {
-                                        "text": "Egg"
-                                    },
-                                    "operations": []
-                                },
-                                {
-                                    "to": 5,
-                                    "data": {
-                                        "text": "Dairy Products"
-                                    },
-                                    "operations": []
-                                },
-                                {
-                                    "to": 5,
-                                    "data": {
-                                        "text": "Fish"
-                                    },
-                                    "operations": []
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "id": 4,
-                        "tree_id": 2,
-                        "identifier": 4,
-                        "data": {
-                            "body": "",
-                            "title": "Which of the following food items you consume in your diet?"
-                        },
-                        "linker": {
-                            "type": "text",
-                            "to": 15
-                        }
-                    },
-                    {
-                        "id": 4,
-                        "tree_id": 2,
-                        "identifier": 4,
-                        "data": {
-                            "body": "",
-                            "title": "Which of the following food items you consume in your diet?"
-                        },
-                        "linker": {
-                            "type": "number",
-                            "to": 15
-                        }
-                    }
-                ];
-
-                // this.nodes.push(available[1]);
-                // this.path.push(undefined);
-                // this.validated.push(false);
-
-                let self = this;
-                axios.get('/api/journeys/'+ this.journeyId +'/questions/next')
-                    .then(function (response) {
-                        self.nodes.push(response.data);
-                        self.path.push(undefined);
-                        self.validated.push(false);
-
-                        Vue.nextTick(() => {
-                            $('.question')[self.on_n - 1].scrollIntoView({ 
-                                behavior: 'smooth' 
-                            });
-                        });
-                    });
-                
-                this.on_n += 1;
             }
         }
     }

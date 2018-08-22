@@ -13,11 +13,14 @@
             linker: {
                 type: Object,
                 required: true
+            },
+            value: {
+                required: true
             }
         },
         data() {
             return {
-                value: ''
+                value: this.value || ''
             }
         },
         methods: {

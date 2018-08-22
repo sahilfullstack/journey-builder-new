@@ -48,7 +48,11 @@ class StorePath
             $this->isNodeValid();
 
             // delete child paths
-            $this->journey->paths()->where('node_id', '>=', $this->node->id)->delete();
+            $paths = $this->journey->paths()->where('node_id', '>=', $this->node->id)->get();
+            foreach ($paths as $path) 
+            {
+                $path->delete();
+            }
         }
         
         $this->save($path, $pathRepo);

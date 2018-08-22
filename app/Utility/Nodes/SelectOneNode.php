@@ -14,7 +14,7 @@ class SelectOneNode implements QuestionInterface {
 
 	public function prepareLinkerForPath(Node $node, Array $response)
 	{
-		$selectables = array_get($node->linker['selectables'], array_values($response)[0]+1);
+		$selectables = array_get($node->linker['selectables'], array_values($response)[0]);
 
 		$linker = [
 			'type' => $node->linker['type'],

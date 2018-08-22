@@ -18,7 +18,7 @@ class SelectOneNode implements QuestionInterface {
 
 		$linker = [
 			'type' => $node->linker['type'],
-			'to' => $selectables,
+			'to' => $selectables['to'],
 			'selectables' => $selectables
 		];
 

@@ -41,6 +41,25 @@ class NodeManager {
 		return $nextNode;
 	}
 
+	public function previous(Journey $journey, $currentPath = null)
+	{
+		if($this->isJourneyEmpty($journey)) return $this->getFirstNode($journey);
+
+		if(is_null($currentPath))
+		{
+			$userLastJourneyPath = $journey->paths()->orderBy('id', 'desc')->first();
+		}
+		else
+		{
+			$userLastJourneyPath = $journey->paths()->orderBy('id', 'desc')->where('id', '<', $currentPath)->first();			
+		}
+
+		$node = Node::where('id', $userLastJourneyPath->node_id)->first();
+		$node->path = $userLastJourneyPath;
+
+		return $node;
+	}
+
 	private function isJourneyEmpty(Journey $journey)
 	{
 		return count($journey->paths) == 0;

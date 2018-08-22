@@ -28,9 +28,9 @@ Route::get('journeys/{journey}', ['as' => 'api.user.journey.get', 'uses' => 'Use
 
 Route::post('journeys/{journey}/paths', ['as' => 'api.user.store.path.get', 'uses' => 'UserController@storePath']);
 
+Route::get('journeys/{journey}/questions/prev', ['as' => 'api.user.prev.path.get', 'uses' => 'UserController@getPrevQuestion']);
 Route::get('journeys/{journey}/questions/next', ['as' => 'api.user.next.path.get', 'uses' => 'UserController@getNextQuestion']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Question extends JsonResource
+class Path extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,10 +15,10 @@ class Question extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'         => $this->getRouteKey(),
-            'identifier' => $this->identifier,
-            'data'       => $this->data,
-            'linker'     => $this->linker,
+            // 'id'         => $this->getRouteKey(),
+            // 'identifier' => $this->identifier,
+            // 'data'       => $this->data,
+            // 'linker'     => $this->linker,
             // 'path'       => new Path($this->whenLoaded('path'))
         ];
     }

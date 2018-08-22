@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\{Journey, Node, User};
-use App\Jobs\Journey\{ListJourneys, GetJourney, GetNextQuestion};
+use App\Jobs\Journey\{ListJourneys, GetJourney, GetNextQuestion, GetPreviousQuestion};
 use App\Jobs\Path\{StorePath};
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Journey\{ListJourneysRequest, GetJourneyRequest, GetNextQuestionRequest};
+use App\Http\Requests\Journey\{ListJourneysRequest, GetJourneyRequest, GetNextQuestionRequest, GetPrevQuestionRequest};
 use App\Http\Requests\Path\{StorePathRequest};
 use App\Http\Resources\Journey as JourneyResource;
 use App\Http\Resources\Question as QuestionResource;
@@ -41,6 +41,13 @@ class UserController extends Controller
     public function getNextQuestion(GetNextQuestionRequest $request, Journey $journey)
     {
         $node = $this->dispatch(new GetNextQuestion($journey));
+
+        return new QuestionResource($node);
+    }
+
+    public function getPrevQuestion(GetPrevQuestionRequest $request, Journey $journey)
+    {
+        $node = $this->dispatch(new GetPreviousQuestion($journey));
 
         return new QuestionResource($node);
     }

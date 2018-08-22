@@ -44,6 +44,4 @@ class EloquentPathRepo implements PathRepo {
 			throw $e;
 		}
 	}
-
-
 }

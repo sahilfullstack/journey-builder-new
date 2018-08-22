@@ -17,8 +17,8 @@
                     <div class="question">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h2>General Assessment</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quisquam saepe, distinctio eius incidunt nemo, eos modi reiciendis consequuntur sequi deleniti! Laudantium error reiciendis aliquam consequuntur similique nam pariatur amet!</p>
+                                <h2>{{ $tree->name }}</h2>
+                                <p>{{ $tree->description }}</p>
 
                                 <hr>
 

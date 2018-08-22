@@ -13,23 +13,26 @@ class TreesSeeder extends Seeder
     public function run()
     {
         $trees = [
-            'General Assessment' => 'The tree for General Assessment',
-            'Acne' => 'The tree for acne',
+            [
+                'name' => 'General Assessment',
+                'description' => 'The tree for General Assessment',
+                'slug'  => 'ga'
+            ]
         ];
 
-        foreach ($trees as $tree => $description) {
+        foreach ($trees as $tree) {
             try {
                 $found = Tree::where([
-                    'slug' => str_slug($tree),
+                    'slug' => str_slug($tree['slug']),
                     'deleted_at_millis' => 0
                 ])->first();
 
                 if (!is_null($found)) continue;
                 
                 Tree::create([
-                    'name' => $tree,
-                    'description' => $description,
-                    'slug' => str_slug($tree)
+                    'name' => $tree['name'],
+                    'description' => $tree['description'],
+                    'slug' => $tree['slug']
                 ]);
             } catch (PDOException $e) {
                 

@@ -1212,6 +1212,7 @@ class GANodesSeeder extends Seeder
                     'operations' => []                   
                   ],      
               ]
+            ]
             ],
             [
               'tree_id' => $trees['ga'],
@@ -1437,7 +1438,7 @@ class GANodesSeeder extends Seeder
                     ],
                     'to' => 31,
                     'operations' => []                   
-                  ],
+                  ]
                 ]                  
               ]
             ],
@@ -3018,13 +3019,25 @@ class GANodesSeeder extends Seeder
             ],
            [
             'tree_id' => $trees['ga'],
-            'identifier' => 60,
+            'identifier' => 59,
             'data' => [
               'title' => 'What is your name ?',
               'body' => '',
             ],               
             'linker' => [                  
               'type' => 'text',
+              'to' => 60              
+            ]
+          ],
+          [
+            'tree_id' => $trees['ga'],
+            'identifier' => 60,
+            'data' => [
+              'title' => 'What is your phone number?',
+              'body' => '',
+            ],               
+            'linker' => [                  
+              'type' => 'number',
               'to' => 61              
             ]
           ],
@@ -3032,11 +3045,11 @@ class GANodesSeeder extends Seeder
             'tree_id' => $trees['ga'],
             'identifier' => 61,
             'data' => [
-              'title' => 'What is your phone number?',
+              'title' => 'What is your Date of Birth?',
               'body' => '',
             ],               
             'linker' => [                  
-              'type' => 'number',
+              'type' => 'text',
               'to' => 62              
             ]
           ],
@@ -3044,7 +3057,7 @@ class GANodesSeeder extends Seeder
             'tree_id' => $trees['ga'],
             'identifier' => 62,
             'data' => [
-              'title' => 'What is your Date of Birth?',
+              'title' => 'What is your Height?',
               'body' => '',
             ],               
             'linker' => [                  
@@ -3056,7 +3069,7 @@ class GANodesSeeder extends Seeder
             'tree_id' => $trees['ga'],
             'identifier' => 63,
             'data' => [
-              'title' => 'What is your Height?',
+              'title' => 'What is your Weight?',
               'body' => '',
             ],               
             'linker' => [                  
@@ -3068,18 +3081,6 @@ class GANodesSeeder extends Seeder
             'tree_id' => $trees['ga'],
             'identifier' => 64,
             'data' => [
-              'title' => 'What is your Weight?',
-              'body' => '',
-            ],               
-            'linker' => [                  
-              'type' => 'text',
-              'to' => 65              
-            ]
-          ],
-          [
-            'tree_id' => $trees['ga'],
-            'identifier' => 65,
-            'data' => [
               'title' => 'What is your Height?',
               'body' => '',
             ],               
@@ -3088,8 +3089,7 @@ class GANodesSeeder extends Seeder
               'to' => null              
             ]
           ]
-        ]
-      ];
+        ];
 
         foreach ($nodes as $node) 
         {

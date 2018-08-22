@@ -41,6 +41,30 @@ class NodeManager {
 		return $nextNode;
 	}
 
+	public function all(Journey $journey)
+	{
+		if($this->isJourneyEmpty($journey)) return Node::whereTreeId($journey->tree_id)->whereIdentifier(1)->get();
+
+		// getting all the paths of a journey
+		$paths = $journey->paths()->with('node')->get();
+
+		// plucking their nodes
+		$nodes = $paths->pluck('node');
+
+		// merging responses in the node object
+		$nodes = $nodes->map(function ($node) use($paths) {
+
+			$pathLinker = $paths->where('node_id', $node->id)->first()->linker;			
+			$node->response = $pathLinker;
+			return $node; 
+		});
+
+		// also merging the next node
+		$nodes = $nodes->push($this->next($journey));
+
+		return $nodes;
+	}
+
 	private function isJourneyEmpty(Journey $journey)
 	{
 		return count($journey->paths) == 0;

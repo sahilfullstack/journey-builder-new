@@ -19,4 +19,9 @@ class JourneyManager {
 	{
 		return $this->nodeManager->next($journey);
 	}
+
+	public function nodes(Journey $journey)
+	{
+		return $this->nodeManager->all($journey);
+	}
 }

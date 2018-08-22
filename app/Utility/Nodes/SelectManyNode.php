@@ -13,18 +13,11 @@ class SelectManyNode implements QuestionInterface {
 	}
 	public function prepareLinkerForPath(Node $node, Array $response)
 	{
-		$selectables = [];
-
-		foreach ($response as $key => $order) 
-		{
-			$selectables[] = array_get($node->linker['selectables'], $order+1);
-		}
-
 		$linker = [
 			'type' => $node->linker['type'],
 			'to' => $node->linker['to'],
 			'operations' => isset($node->linker['operations']) ?: [] ,
-			'selectables' => $selectables
+			'response' => $response
 		];
 
 		return $linker;	

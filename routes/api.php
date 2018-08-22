@@ -26,6 +26,9 @@ Route::post('/trees/{tree}/journeys/start', ['as' => 'api.journey.start', 'uses'
 // get a journey
 Route::get('journeys/{journey}', ['as' => 'api.user.journey.get', 'uses' => 'UserController@getJourney']);
 
+// get all the nodes
+Route::get('journeys/{journey}/nodes', ['as' => 'api.user.journey.get', 'uses' => 'UserController@getJourneyNodes']);
+
 Route::post('journeys/{journey}/paths', ['as' => 'api.user.store.path.get', 'uses' => 'UserController@storePath']);
 
 Route::get('journeys/{journey}/questions/next', ['as' => 'api.user.next.path.get', 'uses' => 'UserController@getNextQuestion']);

@@ -50483,8 +50483,7 @@ var render = function() {
       _c(
         "aside",
         {
-          staticClass:
-            "col-md-4 bg-primary text-white d-none d-md-block sidebar"
+          staticClass: "col-md-4 bg-primary text-white d-none d-md-flex sidebar"
         },
         [
           _c("div", { staticClass: "container" }, [

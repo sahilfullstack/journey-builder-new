@@ -1,7 +1,7 @@
 <template>
     <section class="main container-fluid">
         <div class="row node-area">
-            <aside class="col-md-4 bg-primary text-white d-none d-md-block sidebar">
+            <aside class="col-md-4 bg-primary text-white d-none d-md-flex sidebar">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">

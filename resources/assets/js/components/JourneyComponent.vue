@@ -1,7 +1,7 @@
 <template>
     <section class="main container-fluid">
         <div class="row node-area">
-            <aside class="col-md-4 bg-primary text-white d-none d-md-block sidebar">
+            <aside class="col-md-4 bg-primary text-white d-none d-md-flex sidebar">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
@@ -49,7 +49,7 @@
             <div class="col-sm-12 col-md-8 offset-md-4 p-0">
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-back" @click="goToPrevious" v-if="this.on_n > 1"><i class="fas fa-chevron-left fa-fw"></i></button>
-                    <button type="button" class="btn btn-primary btn-next" :disabled="! validated[on_n - 1]" @click="saveResponse">Next <i class="fas fa-chevron-right fa-fw"></i></button>
+                    <button type="button" class="btn btn-danger btn-next" :disabled="! validated[on_n - 1]" @click="saveResponse">Next <i class="fas fa-chevron-right fa-fw"></i></button>
                 </div>
             </div>
         </div>
@@ -57,10 +57,12 @@
 </template>
 
 <script>
-    import smoothscroll from 'smoothscroll-polyfill';
+    // import smoothscroll from 'smoothscroll-polyfill';
+    // import raf from 'raf';
 
     // kick off the polyfill!
-    smoothscroll.polyfill();
+    // raf.polyfill();
+    // smoothscroll.polyfill();
 
     export default {
         props: {                
@@ -73,8 +75,8 @@
             return {
                 journey: {
                     tree: {
-                        name: 'Some name',
-                        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi possimus quaerat nulla sunt molestias sapiente magni sit harum expedita, quo nesciunt laboriosam minima deserunt necessitatibus maxime cupiditate cum labore vel.'
+                        name: '',
+                        description: ''
                     }
                 },
                 nodes: [],
@@ -109,9 +111,11 @@
                         this.validated[this.validated.length - 1] = false;
                         
                         Vue.nextTick(() => {
-                            $('.question')[this.on_n - 1].scrollIntoView({ 
-                                behavior: 'smooth' 
-                            });
+                            setTimeout(() => {
+                                $('.question')[this.on_n - 1].scrollIntoView({
+                                    behavior: 'smooth'
+                                });
+                            }, 1000);
                         });
                     });
             },
@@ -139,8 +143,8 @@
                         this.path.push(undefined);
                         this.validated.push(false);
                         Vue.nextTick(() => {
-                            $('.question')[this.on_n - 1].scrollIntoView({ 
-                                behavior: 'smooth' 
+                            $('.question')[this.on_n - 1].scrollIntoView({
+                                behavior: 'smooth'
                             });
                         });
                         this.on_n += 1;

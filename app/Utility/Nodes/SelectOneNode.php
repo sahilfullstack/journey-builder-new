@@ -3,6 +3,8 @@
 namespace App\Utility\Nodes;
 
 use App\Models\Node;
+use App\Exceptions\InvalidInputException;
+use Illuminate\Validation\ValidationException;
 
 class SelectOneNode implements QuestionInterface {
 
@@ -14,6 +16,13 @@ class SelectOneNode implements QuestionInterface {
 
 	public function prepareLinkerForPath(Node $node, Array $response)
 	{
+		$keys = array_keys($node->linker['selectables']);
+
+		if( (! is_array($response)) || (count(array_diff($response, $keys)) > 0))
+		{
+			throw new InvalidInputException("response is invalid");
+		}
+
 		$selectables = array_get($node->linker['selectables'], array_values($response)[0]);
 
 		$linker = [
@@ -26,9 +35,9 @@ class SelectOneNode implements QuestionInterface {
 	}
 
 	public function getRules()
-	{
+	{		
 		return [
-			'response' => 'required'
+			'response' => 'required|array'
 		];
 	}
 

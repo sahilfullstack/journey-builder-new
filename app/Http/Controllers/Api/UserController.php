@@ -61,7 +61,7 @@ class UserController extends Controller
 
         $this->dispatch(new StorePath($journey, $node,  $response));
 
-        $node = $this->dispatch(new GetNextQuestion($journey));
+        $node = $this->dispatch(new GetNextQuestion($journey->fresh()));
 
          return new QuestionResource($node);
     }

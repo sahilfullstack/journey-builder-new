@@ -15,7 +15,7 @@ class Question extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'         => $this->getRouteKey(),
+            'id'         => is_null($this->id) ? null : $this->getRouteKey(),
             'identifier' => $this->identifier,
             'data'       => $this->data,
             'linker'     => $this->linker,

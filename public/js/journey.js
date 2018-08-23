@@ -49985,7 +49985,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         $('.question')[_this.on_n - 1].scrollIntoView({
                             behavior: 'smooth'
                         });
-                    }, 100);
+                    }, 1000);
                 });
             });
         },

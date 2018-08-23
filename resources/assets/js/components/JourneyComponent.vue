@@ -115,7 +115,7 @@
                                 $('.question')[this.on_n - 1].scrollIntoView({
                                     behavior: 'smooth'
                                 });
-                            }, 100);
+                            }, 1000);
                         });
                     });
             },

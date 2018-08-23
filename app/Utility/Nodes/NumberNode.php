@@ -26,7 +26,7 @@ class NumberNode implements QuestionInterface {
 	public function getRules()
 	{
 		return [
-			'response' => 'required'
+			'response' => 'required|integer'
 		];
 	}
 

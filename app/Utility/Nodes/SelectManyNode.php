@@ -3,6 +3,7 @@
 namespace App\Utility\Nodes;
 
 use App\Models\Node;
+use App\Exceptions\InvalidInputException;
 
 class SelectManyNode implements QuestionInterface {
 
@@ -13,6 +14,13 @@ class SelectManyNode implements QuestionInterface {
 	}
 	public function prepareLinkerForPath(Node $node, Array $response)
 	{
+		$keys = array_keys($node->linker['selectables']);
+
+		if( (! is_array($response)) || (count(array_diff($response, $keys)) > 0))
+		{
+			throw new InvalidInputException("response is invalid");
+		}
+
 		$linker = [
 			'type' => $node->linker['type'],
 			'to' => $node->linker['to'],
@@ -26,7 +34,7 @@ class SelectManyNode implements QuestionInterface {
 	public function getRules()
 	{
 		return [
-			'response' => 'required'
+			'response' => 'required|array'
 		];
 	}
 

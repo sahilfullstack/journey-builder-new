@@ -26,7 +26,7 @@ class TextNode implements QuestionInterface {
 	public function getRules()
 	{
 		return [
-			'response' => 'required'
+			'response' => 'required|string'
 		];
 	}
 

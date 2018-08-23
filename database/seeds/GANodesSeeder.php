@@ -3074,18 +3074,6 @@ class GANodesSeeder extends Seeder
             ],               
             'linker' => [                  
               'type' => 'text',
-              'to' => 64              
-            ]
-          ],
-          [
-            'tree_id' => $trees['ga'],
-            'identifier' => 64,
-            'data' => [
-              'title' => 'What is your Height?',
-              'body' => '',
-            ],               
-            'linker' => [                  
-              'type' => 'text',
               'to' => null              
             ]
           ]

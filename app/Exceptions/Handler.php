@@ -59,7 +59,6 @@ class Handler extends ExceptionHandler
                 );
         }
         
-
         if($exception instanceof AuthenticationException)
         {
             return (new UnauthorisedException)->getJsonResponse();
@@ -70,9 +69,14 @@ class Handler extends ExceptionHandler
             return (new ForbiddenException)->getJsonResponse();
         }
 
+        if($exception instanceof InvalidInputException)
+        {
+            return (new InvalidInputException)->getJsonResponse();
+        }
+
         if($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException)
         {
-            return (new NotFoundException)->getJsonResponse();
+            return redirect('/');
         }
 
         if($exception instanceof AuthorizationException)

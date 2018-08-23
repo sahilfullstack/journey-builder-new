@@ -59,8 +59,12 @@ class NodeManager {
 			return $node; 
 		});
 
-		// also merging the next node
-		$nodes = $nodes->push($this->next($journey));
+
+		if(! $journey->finished())
+		{		
+			// also merging the next node
+			$nodes = $nodes->push($this->next($journey));
+		}
 
 		return $nodes;
 	}

@@ -134,9 +134,7 @@
                     });
                     this.scrolling = false;
                 });
-                this.nodes.splice(this.on_n);
-                this.push.splice(this.on_n);
-                this.validated.splice(this.on_n);
+                
                 this.on_n -= 1;
             },
             saveResponse() {
@@ -144,6 +142,13 @@
                     response: this.path[this.on_n - 1]
                 })
                     .then((response) => {
+                        // if the user goes back and changes the answer,
+                        // we will remove the nodes after the current node
+                        this.nodes.splice(this.on_n);
+                        this.path.splice(this.on_n);
+                        this.validated.splice(this.on_n);
+
+                        // adding new one
                         this.nodes.push(response.data);
                         this.path.push(undefined);
                         this.validated.push(false);

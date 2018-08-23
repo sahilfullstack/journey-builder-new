@@ -1,6 +1,6 @@
 <template>
     <section class="main container-fluid">
-        <div class="row node-area">
+        <div class="row node-area" :class="!scrolling ? 'noscroll' : ''">
             <aside class="col-md-4 bg-primary text-white d-none d-md-flex sidebar">
                 <div class="container">
                     <div class="row">
@@ -57,12 +57,10 @@
 </template>
 
 <script>
-    // import smoothscroll from 'smoothscroll-polyfill';
-    // import raf from 'raf';
-
+    import smoothscroll from 'smoothscroll-polyfill';
+    
     // kick off the polyfill!
-    // raf.polyfill();
-    // smoothscroll.polyfill();
+    smoothscroll.polyfill();
 
     export default {
         props: {                
@@ -79,13 +77,14 @@
                         description: ''
                     }
                 },
+                scrolling: false,
                 nodes: [],
                 path: [],
                 validated: [],
                 on_n: 0
             }
         },
-        created() {
+        mounted() {
             this.resume();
         },
         computed: {
@@ -111,10 +110,12 @@
                         this.validated[this.validated.length - 1] = false;
                         
                         Vue.nextTick(() => {
+                            this.scrolling = true;
                             setTimeout(() => {
                                 $('.question')[this.on_n - 1].scrollIntoView({
                                     behavior: 'smooth'
                                 });
+                                this.scrolling = false;
                             }, 1000);
                         });
                     });
@@ -126,12 +127,13 @@
                 this.validated[index] = false;
             },
             goToPrevious() {
+                this.scrolling = true;
                 Vue.nextTick(() => {
-                    $('.question')[this.on_n - 1].scrollIntoView({ 
-                        behavior: 'smooth' 
+                    $('.question')[this.on_n - 1].scrollIntoView({
+                        behavior: 'smooth'
                     });
+                    this.scrolling = false;
                 });
-                
                 this.on_n -= 1;
             },
             saveResponse() {
@@ -142,10 +144,12 @@
                         this.nodes.push(response.data);
                         this.path.push(undefined);
                         this.validated.push(false);
+                        this.scrolling = true;
                         Vue.nextTick(() => {
                             $('.question')[this.on_n - 1].scrollIntoView({
                                 behavior: 'smooth'
                             });
+                            this.scrolling = false;
                         });
                         this.on_n += 1;
                     })

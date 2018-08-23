@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/o', function () {
+    return view('onboard');
 });
+Route::get('/o2', function () {
+    return view('onboard2');
+});
+
 
 // onboard a user and return token
 

@@ -6494,6 +6494,10 @@ a.text-dark:focus {
   overflow-x: hidden;
 }
 
+.noscroll {
+  overflow: hidden;
+}
+
 html,
 body,
 div#app,
@@ -6550,7 +6554,6 @@ section.main {
 }
 
 .node-area {
-  overflow: hidden;
   height: 100%;
 }
 

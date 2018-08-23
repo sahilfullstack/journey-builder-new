@@ -141,8 +141,11 @@
                     response: this.path[this.on_n - 1]
                 })
                     .then((response) => {
+                        this.nodes.splice(this.on_n);
                         this.nodes.push(response.data);
+                        this.push.splice(this.on_n);
                         this.path.push(undefined);
+                        this.validated.splice(this.on_n);
                         this.validated.push(false);
                         this.scrolling = true;
                         Vue.nextTick(() => {

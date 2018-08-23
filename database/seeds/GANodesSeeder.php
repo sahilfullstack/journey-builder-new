@@ -3057,7 +3057,7 @@ class GANodesSeeder extends Seeder
             'tree_id' => $trees['ga'],
             'identifier' => 62,
             'data' => [
-              'title' => 'What is your Height?',
+              'title' => 'What is your height?',
               'body' => '',
             ],               
             'linker' => [                  
@@ -3069,7 +3069,7 @@ class GANodesSeeder extends Seeder
             'tree_id' => $trees['ga'],
             'identifier' => 63,
             'data' => [
-              'title' => 'What is your Weight?',
+              'title' => 'What is your weight?',
               'body' => '',
             ],               
             'linker' => [                  
@@ -3081,7 +3081,7 @@ class GANodesSeeder extends Seeder
             'tree_id' => $trees['ga'],
             'identifier' => 64,
             'data' => [
-              'title' => 'Thank You for your response.',
+              'title' => 'Thank You!',
               'body' => '',
             ],               
             'linker' => [                  

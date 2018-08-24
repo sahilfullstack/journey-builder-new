@@ -59,7 +59,6 @@ class NodeManager {
 			return $node; 
 		});
 
-
 		if(! $journey->finished())
 		{		
 			// also merging the next node

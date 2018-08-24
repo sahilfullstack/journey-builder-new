@@ -45,7 +45,7 @@
                 </div> -->
             </section>
         </div>
-        <div class="row navigator">
+        <div class="row navigator" v-if="this.nodes[this.on_n - 1].linker.type != 'terminal'">
             <div class="col-sm-12 col-md-8 offset-md-4 p-0">
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-back" @click="goToPrevious" v-if="this.on_n > 1"><i class="fas fa-chevron-left fa-fw"></i></button>

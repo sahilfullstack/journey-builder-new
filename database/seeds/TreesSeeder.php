@@ -15,7 +15,7 @@ class TreesSeeder extends Seeder
         $trees = [
             [
                 'name' => 'General Assessment',
-                'description' => 'The tree for General Assessment',
+                'description' => 'The description of the journey goes here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi possimus quaerat nulla sunt molestias sapiente magni sit harum expedita, quo nesciunt laboriosam minima deserunt necessitatibus maxime cupiditate cum labore vel.',
                 'slug'  => 'ga'
             ]
         ];

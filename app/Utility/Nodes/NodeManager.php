@@ -28,9 +28,7 @@ class NodeManager {
 		$userLastJourneyPath = $journey->lastPath();
 
 		$nextNode = Node::whereTreeId($journey->tree_id)->whereIdentifier($userLastJourneyPath->linker['to'])->first();
-
-		if(is_null($nextNode)) return $this->returnTerminalNode();
-
+	
 		$nodeType = studly_case($nextNode->linker['type']);
 
 		$nodeClass = app("App\\Utility\\Nodes\\{$nodeType}Node");
@@ -76,21 +74,5 @@ class NodeManager {
 	private function getFirstNode(Journey $journey)
 	{
 		return Node::whereTreeId($journey->tree_id)->whereIdentifier(1)->first();
-	}
-
-	private function returnTerminalNode()
-	{
-		return new Node([
-            'identifier' => null,
-            'data'       => [
-            	'title' => 'Thank You for your response.',
-            	'body' => ''
-            ],
-            'linker'     => [
-				'type' => 'terminal',
-				'to'   => null
-            ],
-            'response'   => null
-        ]);
 	}
 }

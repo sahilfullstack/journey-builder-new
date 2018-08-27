@@ -39,25 +39,6 @@ class DecisionMaker {
 
 	public function isLogicValid($when, $scores)
 	{
-		$when =  [
-		  "acne_score" => [
-		    "eq" => 3,
-		    "or" => [
-		    	"habits_score" => [
-				    "eq" => 3
-				]
-		    ]
-		  ]
-		];
-
-		$scores = [
-		  "age_score" => 3,
-		  "skin_score" => 5,
-		  "habits_score" => 2,
-		  "acne_score" => 3,
-		  "cause_score" => 6
-		];
-
 		$element = array_keys($when)[0];
 
 		return $this->applyOperations($element, $when[$element], $scores);

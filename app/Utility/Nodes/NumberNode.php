@@ -15,9 +15,10 @@ class NumberNode implements QuestionInterface {
 	public function prepareLinkerForPath(Node $node, $response)
 	{
 		$linker = [
-			'type'     => $node->linker['type'],
-			'to'       => $node->linker['to'],
-			'response' => $response
+			'type'       => $node->linker['type'],
+			'to'         => $node->linker['to'],
+			'operations' => isset($node->linker['operations']) ?: [],
+			'response'   => $response
 		];
 
 		return $linker;	

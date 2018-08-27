@@ -17,6 +17,7 @@ class TextNode implements QuestionInterface {
 		$linker = [
 			'type'     => $node->linker['type'],
 			'to'       => $node->linker['to'],
+			'operations' => isset($node->linker['operations']) ?: [],
 			'response' => $response
 		];
 

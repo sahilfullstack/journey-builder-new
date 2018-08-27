@@ -17,7 +17,7 @@ class LogicNode implements DeciderInterface {
 	public function decide(Journey $journey, Node $node)
 	{
         $linkers = $journey->linkers();
-	
+
 		$scores = $this->evaluateLinkers($linkers);
 
 		$node = $this->decisionMaker->applyLogic($node, $scores);

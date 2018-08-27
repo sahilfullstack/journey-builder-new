@@ -26,9 +26,10 @@ class SelectOneNode implements QuestionInterface {
 		$selectables = array_get($node->linker['selectables'], array_values($response)[0]);
 
 		$linker = [
-			'type' => $node->linker['type'],
-			'to' => $selectables['to'],
-			'response' => $response
+			'type'       => $node->linker['type'],
+			'to'         => $selectables['to'],
+			'operations' => $selectables['operations'],
+			'response'   => $response
 		];
 
 		return $linker;
@@ -43,6 +44,8 @@ class SelectOneNode implements QuestionInterface {
 
 	public function evaluateLinker($linker, $scores)
 	{
-		return $this->operationManager->applyOperations($linker['selectables']['operations'], $scores);
+		if(! isset($linker['operations']) or empty($linker['operations'])) return $scores;
+		
+		return $this->operationManager->applyOperations($linker['operations'], $scores);
 	}
 }

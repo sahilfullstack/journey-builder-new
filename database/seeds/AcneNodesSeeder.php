@@ -13,14 +13,14 @@ class AcneNodesSeeder extends Seeder
      */
     public function run()
     {
- 		$trees = [
-            str_slug('Acne') => Tree::notDeleted()->whereSlug(str_slug('Acne'))->first()->id,
-        ];
 
+		$trees = [
+            'acne' => Tree::notDeleted()->whereSlug('acne')->first()->id,
+        ];
         $nodes = [
             [
             	'identifier' => 1,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'How old are you ?',
             		'body' => '',
@@ -72,7 +72,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 2,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'For how long have you had acne?',
             		'body' => '',
@@ -106,7 +106,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 3,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Have you tried any treatment for a significant (at least a month or more) period of time? (Multiple Choice can be selected)',
             		'body' => '',
@@ -164,7 +164,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 4,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Do you have sensitive skin?',
             		'body' => '',
@@ -216,7 +216,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 5,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'What is your skin type?',
             		'body' => '',
@@ -294,7 +294,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 6,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'How many times do you wash your face per day with soap/facewash?',
             		'body' => '',
@@ -346,7 +346,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 7,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Do you have dandruff?',
             		'body' => '',
@@ -398,7 +398,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 8,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Describe your acne',
             		'body' => '',
@@ -461,7 +461,7 @@ class AcneNodesSeeder extends Seeder
             ], 
             [
             	'identifier' => 9,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Which of the following best describes your acne?',
             		'body' => '',
@@ -516,7 +516,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 10,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Is your acne painful ?',
             		'body' => '',
@@ -555,7 +555,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 11,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'How is your face affected by acne ?',
             		'body' => '',
@@ -620,7 +620,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 12,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Select all that apply (Multiple choice can be selected)',
             		'body' => '',
@@ -678,7 +678,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 13,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'What would be the approximate no. of acne on your face?',
             		'body' => '',
@@ -756,7 +756,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 16,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Does your acne leave behind',
             		'body' => '',
@@ -808,7 +808,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 17,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Does anyone else in your immediate family have acne ?',
             		'body' => '',
@@ -847,7 +847,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 18,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Do you notice acne breakouts prior to periods?',
             		'body' => '',
@@ -899,7 +899,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 19,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'How are your periods?',
             		'body' => '',
@@ -938,7 +938,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 20,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'PolyCystic Ovary Syndrome (PCOS) is a condition that affects women&#39;s hormonal levels.	Have you been diagnosed with PCOS?',
             		'body' => '',
@@ -990,7 +990,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 21,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Now tell us a little about your nutrition and habits ! This helps us in suggesting better treatment methods :)',
             		'body' => 'It is predicted that you have Grade I Acne (Very Mild).',
@@ -1016,7 +1016,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 22,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
 					'title' => 'Now tell us a little about your nutrition and habits ! This helps us in suggesting better treatment methods :)',
 					'body'  => 'It is predicted that you have Grade II Acne (Mild).',
@@ -1042,7 +1042,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 23,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Now tell us a little about your nutrition and habits ! This helps us in suggesting better treatment methods :)',
             		'body' => 'It is predicted that you have Grade III Acne (Moderate).',
@@ -1068,7 +1068,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 24,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Now tell us a little about your nutrition and habits ! This helps us in suggesting better treatment methods :)',
             		'body' => 'It is predicted that you have Grade IV Acne (Severe).',
@@ -1094,7 +1094,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 25,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Now tell us a little about your nutrition and habits ! This helps us in suggesting better treatment methods :)',
             		'body' => 'It is predicted that you have Grade V Acne (Very Severe).',
@@ -1120,7 +1120,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 26,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [],
 				'linker' => [
 	                'type' => 'logic',
@@ -1171,7 +1171,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 27,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
 					'title' => 'How much of plain water do you drink per day?',
 					'body'  => 'The next few questions will be related to your nutrition !',
@@ -1223,7 +1223,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 28,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'How often do you consume dairy products?',
             		'body' => '',
@@ -1301,7 +1301,7 @@ class AcneNodesSeeder extends Seeder
             ], 
             [
             	'identifier' => 29,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'How often do you consume oily/fried/fast/sugary foods at home or out?',
             		'body' => '',
@@ -1367,7 +1367,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 30,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'How is your bowel movement?',
             		'body' => '',
@@ -1407,7 +1407,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 31,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'What is the frequency of passing the stool?',
             		'body' => '',
@@ -1461,7 +1461,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 33,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Do you regularly experience any of the following symptoms?',
             		'body' => '',
@@ -1517,19 +1517,19 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 38,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'We regret that you cannot take this journey as we do not offer alternative treatments for blackheads !',
             		'body' => '',
             	],
                 'linker' => [
-	                'type' => 'info',
+	                'type' => 'terminal',
 	                'to' => null
   				]              
             ], 
             [
             	'identifier' => 39,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Do you regularly smoke or use tobacco products?',
             		'body' => 'The next few questions will be related to your habits !',
@@ -1568,7 +1568,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 40,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Do you regularly consume alcohol?',
             		'body' => '',
@@ -1607,7 +1607,7 @@ class AcneNodesSeeder extends Seeder
             ], 
             [
             	'identifier' => 41,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Over the last 12 weeks (at most times) what has been your state of mind?',
             		'body' => '',
@@ -1685,7 +1685,7 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 42,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Any known allergies or sensitivities?',
             		'body' => '',
@@ -1737,27 +1737,19 @@ class AcneNodesSeeder extends Seeder
             ],
             [
             	'identifier' => 43,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
-            		'title' => 'Your report will be generated shortly !',
+            		'title' => 'Thank You! Your report will be generated shortly !',
             		'body' => '',
             	],
             	'linker' => [
-	                'type' => 'select_one',
-	                'selectables' => [
-	                	[
-				            'data' => [
-								'text'  => 'Continue',
-				            ],
-				            'to' => null,
-				            'operations' => []                		
-	                	]                		
-	                ]
+	                'type' => 'terminal',
+	                'to' => null
 				]                
             ],             
             [
             	'identifier' => 49,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Do you have acne on other parts of your body ?',
             		'body' => '',
@@ -1784,7 +1776,7 @@ class AcneNodesSeeder extends Seeder
             ],                     
             [
             	'identifier' => 50,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Select all that apply (Multiple choice can be selected)',
             		'body' => '',
@@ -1793,7 +1785,7 @@ class AcneNodesSeeder extends Seeder
 	                'type' => 'select_many',
 	                'minimum' => 1, 
 			        'maximum' => 4, 
-			        'to' => 10,
+			        'to' => 16,
 	                'selectables' => [
 	                	[
 				            'data' => [
@@ -1828,7 +1820,7 @@ class AcneNodesSeeder extends Seeder
             ],             
             [
             	'identifier' => 53,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Select all that apply (Multiple choice can be selected)',
             		'body' => '',
@@ -1872,7 +1864,7 @@ class AcneNodesSeeder extends Seeder
             ], 
             [
             	'identifier' => 54,
-                'tree_id' => $trees[str_slug('Acne')],
+                'tree_id' => $trees['acne'],
             	'data' => [
             		'title' => 'Any known allergies or sensitivities?',
             		'body' => '',

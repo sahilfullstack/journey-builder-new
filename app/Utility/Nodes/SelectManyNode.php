@@ -24,7 +24,7 @@ class SelectManyNode implements QuestionInterface {
 		$linker = [
 			'type' => $node->linker['type'],
 			'to' => $node->linker['to'],
-			'operations' => isset($node->linker['operations']) ?: [] ,
+			'operations' => isset($node->linker['operations']) ?: [],
 			'response' => $response
 		];
 

@@ -7,6 +7,7 @@
             :key="index" :value="index"
             :is-selected="selected.indexOf(index) !== -1"
             @selected="onSelect" @unselected="onUnselect">
+            <img class="card-img-top" :src="selectable.data.image_url" v-if="selectable.data.image_url">
             <div class="card-body d-flex align-items-center">
                 <p class="m-0">{{ selectable.data.text }}</p>
             </div>

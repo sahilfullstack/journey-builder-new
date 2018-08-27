@@ -51083,7 +51083,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51094,7 +51094,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -51171,10 +51170,6 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "card-body d-flex align-items-center" }, [
-            selectable.data.image_url
-              ? _c("img", { attrs: { src: selectable.data.image_url } })
-              : _vm._e(),
-            _vm._v(" "),
             _c("p", { staticClass: "m-0" }, [
               _vm._v(_vm._s(selectable.data.text))
             ])

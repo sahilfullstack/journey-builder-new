@@ -62,6 +62,9 @@ class NodeManager {
 			$nodes = $nodes->push($this->next($journey));
 		}
 
+		// *testing only*
+		$nodes = $nodes->push(Node::find(59));
+
 		return $nodes;
 	}
 

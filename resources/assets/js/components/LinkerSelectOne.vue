@@ -50,6 +50,31 @@
     }
 </script>
 
-<style scoped>
+<style>
+@keyframes swipable {
+    from,
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translate3d(-40px, 0, 0);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translate3d(40px, 0, 0);
+    }
+}
 
+.swipable {
+    animation-name: swipable;
+    animation-duration: 1000ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
 </style>

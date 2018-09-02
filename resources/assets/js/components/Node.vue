@@ -10,6 +10,7 @@
                     <linker--select-one v-if="this.node.linker.type == 'select_one'" :linker="this.node.linker" v-bind:value="value" v-on="$listeners"></linker--select-one>
                     <linker--text v-if="this.node.linker.type == 'text'" :linker="this.node.linker" v-bind:value="value" v-on="$listeners"></linker--text>
                     <linker--number v-if="this.node.linker.type == 'number'" :linker="this.node.linker" v-bind:value="value" v-on="$listeners"></linker--number>
+                    <linker--full-name v-if="this.node.linker.type == 'full_name'" :linker="this.node.linker" v-bind:value="value" v-on="$listeners"></linker--full-name>
                 </div>
             </div>
         </div>

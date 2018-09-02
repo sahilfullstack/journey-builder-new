@@ -19,30 +19,6 @@
                     v-model="path[index]"
                     @can-next="onCanNext(index)" @cannot-next="onCannotNext(index)">
                 </node>
-                
-                <!-- <div class="question container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h1>What?</h1>
-                            <h1>What is your name?</h1>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque corrupti voluptatum placeat suscipit molestias, voluptates saepe eligendi mollitia, omnis architecto sint officia provident minima maxime porro praesentium repudiandae pariatur aliquam.</p>
-            
-                            <div class="answerable">
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="last-name">Last Name</label>
-                                        <input type="text" id="last-name">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="last-name">Last Name</label>
-                                        <input type="text" id="last-name">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </section>
         </div>
         <div class="row navigator" v-if="this.nodes[this.on_n - 1].linker.type != 'terminal'">

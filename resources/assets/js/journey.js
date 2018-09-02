@@ -23,6 +23,7 @@ Vue.component('linker--text', require('./components/LinkerText.vue'));
 Vue.component('linker--number', require('./components/LinkerNumber.vue'));
 Vue.component('linker--full-name', require('./components/LinkerFullName.vue'));
 Vue.component('linker--date', require('./components/LinkerDate.vue'));
+Vue.component('linker--weight', require('./components/LinkerWeight.vue'));
 
 /**
  * Icons

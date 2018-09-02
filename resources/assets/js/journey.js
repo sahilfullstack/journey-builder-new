@@ -24,6 +24,7 @@ Vue.component('linker--number', require('./components/LinkerNumber.vue'));
 Vue.component('linker--full-name', require('./components/LinkerFullName.vue'));
 Vue.component('linker--date', require('./components/LinkerDate.vue'));
 Vue.component('linker--weight', require('./components/LinkerWeight.vue'));
+Vue.component('linker--height', require('./components/LinkerHeight.vue'));
 
 /**
  * Icons

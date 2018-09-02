@@ -3025,7 +3025,7 @@ class GANodesSeeder extends Seeder
               'body' => '',
             ],               
             'linker' => [                  
-              'type' => 'text',
+              'type' => 'full_name',
               'to' => 60              
             ]
           ],

@@ -44,7 +44,6 @@ class NodeManager {
 	public function all(Journey $journey)
 	{
 		if($this->isJourneyEmpty($journey)) return Node::whereTreeId($journey->tree_id)->whereIdentifier(1)->get();
-
 		// getting all the paths of a journey
 		$paths = $journey->paths()->with('node')->get();
 

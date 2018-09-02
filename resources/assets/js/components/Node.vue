@@ -11,6 +11,7 @@
                     <linker--text v-if="this.node.linker.type == 'text'" :linker="this.node.linker" v-bind:value="value" v-on="$listeners"></linker--text>
                     <linker--number v-if="this.node.linker.type == 'number'" :linker="this.node.linker" v-bind:value="value" v-on="$listeners"></linker--number>
                     <linker--full-name v-if="this.node.linker.type == 'full_name'" :linker="this.node.linker" v-bind:value="value" v-on="$listeners"></linker--full-name>
+                    <linker--date v-if="this.node.linker.type == 'date'" :linker="this.node.linker" v-bind:value="value" v-on="$listeners"></linker--date>
                 </div>
             </div>
         </div>

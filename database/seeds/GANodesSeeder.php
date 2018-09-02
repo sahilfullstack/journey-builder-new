@@ -3049,7 +3049,7 @@ class GANodesSeeder extends Seeder
               'body' => '',
             ],               
             'linker' => [                  
-              'type' => 'text',
+              'type' => 'date',
               'to' => 62              
             ]
           ],
@@ -3061,7 +3061,7 @@ class GANodesSeeder extends Seeder
               'body' => '',
             ],               
             'linker' => [                  
-              'type' => 'text',
+              'type' => 'height',
               'to' => 63              
             ]
           ],
@@ -3073,7 +3073,7 @@ class GANodesSeeder extends Seeder
               'body' => '',
             ],               
             'linker' => [                  
-              'type' => 'text',
+              'type' => 'weight',
               'to' => 64              
             ]
           ],

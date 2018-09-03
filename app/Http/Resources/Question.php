@@ -15,11 +15,13 @@ class Question extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'         => is_null($this->id) ? null : $this->getRouteKey(),
-            'identifier' => $this->identifier,
-            'data'       => $this->data,
-            'linker'     => $this->linker,
-            'response'   => isset($this->response) ? $this->response : null,            
+            'id'               => is_null($this->id) ? null : $this->getRouteKey(),
+            'identifier'       => $this->identifier,
+            'data'             => $this->data,
+            'linker'           => $this->linker,
+            'section'          => new Section($this->section),
+            'response'         => isset($this->response) ? $this->response : null,
+            'section_question' => isset($this->section_question) ? $this->section_question : null,
         ];
     }
 }

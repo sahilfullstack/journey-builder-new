@@ -27,7 +27,7 @@ class HeightNode implements QuestionInterface {
 	public function getRules()
 	{
 		return [
-			'response' => 'required|string'
+			'response' => 'required|array'
 		];
 	}
 

@@ -19,7 +19,7 @@ class Node extends Model
      * @var array
      */
     protected $fillable = [
-        'tree_id', 'data', 'linker', 'identifier'
+        'tree_id', 'section_id', 'data', 'linker', 'identifier'
     ];
 
     /**
@@ -53,5 +53,10 @@ class Node extends Model
     public function tree()
     {
         return $this->belongsTo(Tree::class);
+    }
+
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
     }
 }

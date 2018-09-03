@@ -50488,7 +50488,20 @@ var render = function() {
   return _c("section", { staticClass: "main container-fluid" }, [
     _vm._m(0),
     _vm._v(" "),
-    _vm._m(1),
+    _c("div", { staticClass: "row section noscroll" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4" }, [
+        _c("h5", [_vm._v(_vm._s(_vm.nodes[_vm.on_n - 1].section.title))]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            _vm._s(
+              _vm.nodes[_vm.on_n - 1].section.description ||
+                _vm.nodes[_vm.on_n - 1].section.title
+            )
+          )
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -50592,22 +50605,6 @@ var staticRenderFns = [
             id: "icon"
           }
         })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row section noscroll" }, [
-      _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4" }, [
-        _c("h5", [_vm._v("Section Name")]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fuga deserunt. lorem"
-          )
-        ])
       ])
     ])
   }

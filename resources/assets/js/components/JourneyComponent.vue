@@ -7,8 +7,8 @@
         </div>
         <div class="row section noscroll">
             <div class="col-sm-12 col-md-8 offset-md-4">
-                <h5>Section Name</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fuga deserunt. lorem</p>
+                <h5>{{ nodes[on_n - 1].section.title }}</h5>
+                <p>{{ nodes[on_n - 1].section.description || nodes[on_n - 1].section.title }}</p>
             </div>
         </div>
         <div class="row node-area" :class="!scrolling ? 'noscroll' : ''">

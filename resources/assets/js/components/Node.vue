@@ -2,7 +2,7 @@
     <div class="question">
         <div class="row">
             <div class="col-sm-12">
-                <h2>{{ this.node.data.title }}</h2>
+                <h3>{{ this.node.data.title }}</h3>
                 <p>{{ this.node.data.body }}</p>
 
                 <div class="answerable">

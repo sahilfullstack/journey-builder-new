@@ -1,5 +1,16 @@
 <template>
     <section class="main container-fluid">
+        <div class="row d-md-none noscroll">
+            <div class="col-sm-12">
+                <img src="/images/shematters-icon-color.png" alt="SheMatters" id="icon">
+            </div>
+        </div>
+        <div class="row section noscroll">
+            <div class="col-sm-12 col-md-8 offset-md-4">
+                <h5>Section Name</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fuga deserunt. lorem</p>
+            </div>
+        </div>
         <div class="row node-area" :class="!scrolling ? 'noscroll' : ''">
             <aside class="col-md-4 bg-primary text-white d-none d-md-flex sidebar">
                 <div class="container">

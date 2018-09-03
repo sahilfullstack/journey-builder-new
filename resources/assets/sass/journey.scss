@@ -42,6 +42,27 @@ section.main {
     flex: 1;
     overflow-y: auto;
     flex-direction: column;
+
+    img#icon {
+        width: 3rem;
+        display: block;
+        margin: 0 auto 1rem;
+        overflow: hidden;
+    }
+
+    .section {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        color: $gray-300;
+        h5 {
+            color: $gray-600;
+            font-weight: bold;
+        }
+        p {
+            margin-bottom: 0;
+        }
+    }
 }
 
 .sidebar {

@@ -17003,6 +17003,29 @@ section.main {
           flex-direction: column;
 }
 
+section.main img#icon {
+  width: 3rem;
+  display: block;
+  margin: 0 auto 1rem;
+  overflow: hidden;
+}
+
+section.main .section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: #dee2e6;
+}
+
+section.main .section h5 {
+  color: #6c757d;
+  font-weight: bold;
+}
+
+section.main .section p {
+  margin-bottom: 0;
+}
+
 .sidebar {
   position: fixed;
   top: 0;

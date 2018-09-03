@@ -2,6 +2,7 @@
     <div class="question">
         <div class="row">
             <div class="col-sm-12">
+                <p class="h5 text-muted">#{{ this.node.section_question }}</p>
                 <h3>{{ this.node.data.title }}</h3>
                 <p>{{ this.node.data.body }}</p>
 

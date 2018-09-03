@@ -17057,6 +17057,16 @@ section.main .section p {
   overflow: hidden;
 }
 
+.navigator .progress {
+  border-radius: 0;
+  height: 3px;
+  background-color: #e6faee;
+}
+
+.navigator .progress .progress-bar {
+  background: #1C9249;
+}
+
 .navigator .btn-group {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17152,6 +17162,27 @@ input:focus {
 
 .horizontal-scroll .card .card-body {
   padding: 1rem;
+}
+
+@media (max-width: 575.98px) {
+  .card-columns {
+    -webkit-column-count: 1;
+            column-count: 1;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .card-columns {
+    -webkit-column-count: 4;
+            column-count: 4;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+    -webkit-column-count: 5;
+            column-count: 5;
+  }
 }
 
 footer.footer {

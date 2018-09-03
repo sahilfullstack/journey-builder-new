@@ -16,6 +16,7 @@ class CreateNodesTable extends Migration
         Schema::create('nodes', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('tree_id');
+            $table->unsignedInteger('section_id')->nullable();
             $table->unsignedInteger('identifier');
             $table->json('data')->nullable();
             $table->json('linker')->nullable();

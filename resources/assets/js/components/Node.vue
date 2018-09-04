@@ -3,8 +3,8 @@
         <div class="row" :class="is_section_fading_out ? 'fadeOutUp' : ''" v-if="is_section_shown">
             <div class="col-sm-12 col-md-12 text-center">
                 <h3>{{ this.node.section.title }}</h3>
-                <p>{{ this.node.section.description }}</p>
-                <a href @click.prevent="showQuestion">Next</a>
+                <p>{{ this.node.section.description || 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium est fugiat aperiam saepe'}}</p>
+                <a href @click.prevent="showQuestion">START SECTION</a>
             </div>
         </div>
         <div class="row" :class="is_question_fading_in ? 'fadeInUp' : ''" v-else>

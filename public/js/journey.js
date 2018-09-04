@@ -50861,7 +50861,14 @@ var render = function() {
             _c("div", { staticClass: "col-sm-12 col-md-12 text-center" }, [
               _c("h3", [_vm._v(_vm._s(this.node.section.title))]),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(this.node.section.description))]),
+              _c("p", [
+                _vm._v(
+                  _vm._s(
+                    this.node.section.description ||
+                      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium est fugiat aperiam saepe"
+                  )
+                )
+              ]),
               _vm._v(" "),
               _c(
                 "a",
@@ -50874,7 +50881,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Next")]
+                [_vm._v("START SECTION")]
               )
             ])
           ]

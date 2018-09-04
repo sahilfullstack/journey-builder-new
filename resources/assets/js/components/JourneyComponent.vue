@@ -36,7 +36,7 @@
         <div class="row navigator" v-if="this.nodes[this.on_n - 1] && this.nodes[this.on_n - 1].linker.type != 'terminal'">
             <div class="col-sm-12 col-md-8 offset-md-4 p-0">
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" role="progressbar" :style="'width: ' + journeyCompleted + '%'"></div>
                 </div>
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-back" @click="goToPrevious" v-if="this.on_n > 1"><i class="fas fa-chevron-left fa-fw"></i></button>
@@ -89,12 +89,18 @@
                 return this.nodes[this.on_n - 1];
             },
             sectionMustBeShown() {
-                console.log('computing...');
                 if( ! this.lastNode) return false;
 
                 // when the current node is the first question in the section, and the it is not responded yet,
                 // we will not show the section heading as we'll later animate it in.
                 return (this.lastNode.section_question == 1 && this.lastNode.response);
+            },
+            journeyCompleted() {
+                let r = 0.9, a = 10;
+
+                var sum = (a * (1 - Math.pow(r, this.on_n))) / (1 - r);
+
+                return sum;
             }
         },
         methods: {

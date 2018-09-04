@@ -49963,12 +49963,19 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
             return this.nodes[this.on_n - 1];
         },
         sectionMustBeShown: function sectionMustBeShown() {
-            console.log('computing...');
             if (!this.lastNode) return false;
 
             // when the current node is the first question in the section, and the it is not responded yet,
             // we will not show the section heading as we'll later animate it in.
             return this.lastNode.section_question == 1 && this.lastNode.response;
+        },
+        journeyCompleted: function journeyCompleted() {
+            var r = 0.9,
+                a = 10;
+
+            var sum = a * (1 - Math.pow(r, this.on_n)) / (1 - r);
+
+            return sum;
         }
     },
     methods: {
@@ -50596,7 +50603,13 @@ var render = function() {
     this.nodes[this.on_n - 1].linker.type != "terminal"
       ? _c("div", { staticClass: "row navigator" }, [
           _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4 p-0" }, [
-            _vm._m(1),
+            _c("div", { staticClass: "progress" }, [
+              _c("div", {
+                staticClass: "progress-bar",
+                style: "width: " + _vm.journeyCompleted + "%",
+                attrs: { role: "progressbar" }
+              })
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "btn-group", attrs: { role: "group" } }, [
               this.on_n > 1
@@ -50647,23 +50660,6 @@ var staticRenderFns = [
           }
         })
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "progress" }, [
-      _c("div", {
-        staticClass: "progress-bar",
-        staticStyle: { width: "25%" },
-        attrs: {
-          role: "progressbar",
-          "aria-valuenow": "25",
-          "aria-valuemin": "0",
-          "aria-valuemax": "100"
-        }
-      })
     ])
   }
 ]

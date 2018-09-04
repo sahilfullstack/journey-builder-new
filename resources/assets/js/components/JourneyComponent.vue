@@ -5,7 +5,7 @@
                 <img src="/images/shematters-icon-color.png" alt="SheMatters" id="icon">
             </div>
         </div>
-        <div class="row section noscroll">
+        <div class="row section noscroll" :class="is_section_fading_in ? 'fadeInUp' : ''" v-if="is_section_shown">
             <div class="col-sm-12 col-md-8 offset-md-4">
                 <h5>{{ nodes[on_n - 1].section.title }}</h5>
                 <p>{{ nodes[on_n - 1].section.description || nodes[on_n - 1].section.title }}</p>
@@ -28,11 +28,12 @@
                     :key="index" 
                     :node="node" 
                     v-model="path[index]"
-                    @can-next="onCanNext(index)" @cannot-next="onCannotNext(index)">
+                    @can-next="onCanNext(index)" @cannot-next="onCannotNext(index)"
+                    @section-faded-out="onSectionFadedOut">
                 </node>
             </section>
         </div>
-        <div class="row navigator" v-if="this.nodes[this.on_n - 1].linker.type != 'terminal'">
+        <div class="row navigator" v-if="this.nodes[this.on_n - 1] && this.nodes[this.on_n - 1].linker.type != 'terminal'">
             <div class="col-sm-12 col-md-8 offset-md-4 p-0">
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -71,15 +72,29 @@
                 nodes: [],
                 path: [],
                 validated: [],
-                on_n: 0
+                on_n: 0,
+                is_section_shown: false,
+                is_section_fading_in: false
             }
         },
         mounted() {
             this.resume();
+            this.is_section_shown = this.sectionMustBeShown;
         },
         computed: {
             canNext() {
                 return this.validated[this.on_n - 1];
+            },
+            lastNode() {
+                return this.nodes[this.on_n - 1];
+            },
+            sectionMustBeShown() {
+                console.log('computing...');
+                if( ! this.lastNode) return false;
+
+                // when the current node is the first question in the section, and the it is not responded yet,
+                // we will not show the section heading as we'll later animate it in.
+                return (this.lastNode.section_question == 1 && this.lastNode.response);
             }
         },
         methods: {
@@ -115,6 +130,14 @@
             },
             onCannotNext(index) {
                 this.validated[index] = false;
+            },
+            onSectionFadedOut() {
+                this.is_section_fading_in = true;
+                this.is_section_shown = true;
+                
+                setTimeout(() => {
+                    this.is_section_fading_in = false;
+                }, 1000);
             },
             goToPrevious() {
                 this.scrolling = true;
@@ -161,5 +184,22 @@
 </script>
 
 <style scoped>
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
 
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
 </style>

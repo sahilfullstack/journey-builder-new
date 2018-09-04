@@ -49858,7 +49858,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n@-webkit-keyframes fadeInUp-data-v-187bd8d4 {\nfrom {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n            transform: translate3d(0, 100%, 0);\n}\nto {\n    opacity: 1;\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n}\n}\n@keyframes fadeInUp-data-v-187bd8d4 {\nfrom {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n            transform: translate3d(0, 100%, 0);\n}\nto {\n    opacity: 1;\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n}\n}\n.fadeInUp[data-v-187bd8d4] {\n  -webkit-animation-name: fadeInUp-data-v-187bd8d4;\n          animation-name: fadeInUp-data-v-187bd8d4;\n  -webkit-animation-duration: 1s;\n          animation-duration: 1s;\n  -webkit-animation-timing-function: ease-in-out;\n          animation-timing-function: ease-in-out;\n  -webkit-animation-iteration-count: 1;\n          animation-iteration-count: 1;\n}\n", ""]);
 
 // exports
 
@@ -49871,6 +49871,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill__);
+//
 //
 //
 //
@@ -49944,16 +49945,30 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
             nodes: [],
             path: [],
             validated: [],
-            on_n: 0
+            on_n: 0,
+            is_section_shown: false,
+            is_section_fading_in: false
         };
     },
     mounted: function mounted() {
         this.resume();
+        this.is_section_shown = this.sectionMustBeShown;
     },
 
     computed: {
         canNext: function canNext() {
             return this.validated[this.on_n - 1];
+        },
+        lastNode: function lastNode() {
+            return this.nodes[this.on_n - 1];
+        },
+        sectionMustBeShown: function sectionMustBeShown() {
+            console.log('computing...');
+            if (!this.lastNode) return false;
+
+            // when the current node is the first question in the section, and the it is not responded yet,
+            // we will not show the section heading as we'll later animate it in.
+            return this.lastNode.section_question == 1 && this.lastNode.response;
         }
     },
     methods: {
@@ -49990,43 +50005,53 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
         onCannotNext: function onCannotNext(index) {
             this.validated[index] = false;
         },
-        goToPrevious: function goToPrevious() {
+        onSectionFadedOut: function onSectionFadedOut() {
             var _this2 = this;
+
+            this.is_section_fading_in = true;
+            this.is_section_shown = true;
+
+            setTimeout(function () {
+                _this2.is_section_fading_in = false;
+            }, 1000);
+        },
+        goToPrevious: function goToPrevious() {
+            var _this3 = this;
 
             this.scrolling = true;
             Vue.nextTick(function () {
-                $('.question')[_this2.on_n - 1].scrollIntoView({
+                $('.question')[_this3.on_n - 1].scrollIntoView({
                     behavior: 'smooth'
                 });
-                _this2.scrolling = false;
+                _this3.scrolling = false;
             });
 
             this.on_n -= 1;
         },
         saveResponse: function saveResponse() {
-            var _this3 = this;
+            var _this4 = this;
 
             axios.post('/api/journeys/' + this.journeyId + '/nodes/' + this.nodes[this.on_n - 1].id, {
                 response: this.path[this.on_n - 1]
             }).then(function (response) {
                 // if the user goes back and changes the answer,
                 // we will remove the nodes after the current node
-                _this3.nodes.splice(_this3.on_n);
-                _this3.path.splice(_this3.on_n);
-                _this3.validated.splice(_this3.on_n);
+                _this4.nodes.splice(_this4.on_n);
+                _this4.path.splice(_this4.on_n);
+                _this4.validated.splice(_this4.on_n);
 
                 // adding new one
-                _this3.nodes.push(response.data);
-                _this3.path.push(undefined);
-                _this3.validated.push(false);
-                _this3.scrolling = true;
+                _this4.nodes.push(response.data);
+                _this4.path.push(undefined);
+                _this4.validated.push(false);
+                _this4.scrolling = true;
                 Vue.nextTick(function () {
-                    $('.question')[_this3.on_n - 1].scrollIntoView({
+                    $('.question')[_this4.on_n - 1].scrollIntoView({
                         behavior: 'smooth'
                     });
-                    _this3.scrolling = false;
+                    _this4.scrolling = false;
                 });
-                _this3.on_n += 1;
+                _this4.on_n += 1;
             }).catch(function (error) {
                 console.log("error occured");
                 console.log(error);
@@ -50491,20 +50516,29 @@ var render = function() {
   return _c("section", { staticClass: "main container-fluid" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "row section noscroll" }, [
-      _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4" }, [
-        _c("h5", [_vm._v(_vm._s(_vm.nodes[_vm.on_n - 1].section.title))]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            _vm._s(
-              _vm.nodes[_vm.on_n - 1].section.description ||
-                _vm.nodes[_vm.on_n - 1].section.title
-            )
-          )
-        ])
-      ])
-    ]),
+    _vm.is_section_shown
+      ? _c(
+          "div",
+          {
+            staticClass: "row section noscroll",
+            class: _vm.is_section_fading_in ? "fadeInUp" : ""
+          },
+          [
+            _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4" }, [
+              _c("h5", [_vm._v(_vm._s(_vm.nodes[_vm.on_n - 1].section.title))]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  _vm._s(
+                    _vm.nodes[_vm.on_n - 1].section.description ||
+                      _vm.nodes[_vm.on_n - 1].section.title
+                  )
+                )
+              ])
+            ])
+          ]
+        )
+      : _vm._e(),
     _vm._v(" "),
     _c(
       "div",
@@ -50542,7 +50576,8 @@ var render = function() {
                 },
                 "cannot-next": function($event) {
                   _vm.onCannotNext(index)
-                }
+                },
+                "section-faded-out": _vm.onSectionFadedOut
               },
               model: {
                 value: _vm.path[index],
@@ -50557,6 +50592,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
+    this.nodes[this.on_n - 1] &&
     this.nodes[this.on_n - 1].linker.type != "terminal"
       ? _c("div", { staticClass: "row navigator" }, [
           _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4 p-0" }, [
@@ -50726,7 +50762,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n@-webkit-keyframes fadeOutUp-data-v-2c677db9 {\nfrom {\n    opacity: 1;\n}\nto {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -100%, 0);\n            transform: translate3d(0, -100%, 0);\n}\n}\n@keyframes fadeOutUp-data-v-2c677db9 {\nfrom {\n    opacity: 1;\n}\nto {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -100%, 0);\n            transform: translate3d(0, -100%, 0);\n}\n}\n.fadeOutUp[data-v-2c677db9] {\n  -webkit-animation-name: fadeOutUp-data-v-2c677db9;\n          animation-name: fadeOutUp-data-v-2c677db9;\n  -webkit-animation-duration: 1s;\n          animation-duration: 1s;\n  -webkit-animation-timing-function: ease-in-out;\n          animation-timing-function: ease-in-out;\n  -webkit-animation-iteration-count: 1;\n          animation-iteration-count: 1;\n}\n@-webkit-keyframes fadeInUp-data-v-2c677db9 {\nfrom {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n            transform: translate3d(0, 100%, 0);\n}\nto {\n    opacity: 1;\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n}\n}\n@keyframes fadeInUp-data-v-2c677db9 {\nfrom {\n    opacity: 0;\n    -webkit-transform: translate3d(0, 100%, 0);\n            transform: translate3d(0, 100%, 0);\n}\nto {\n    opacity: 1;\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n}\n}\n.fadeInUp[data-v-2c677db9] {\n  -webkit-animation-name: fadeInUp-data-v-2c677db9;\n          animation-name: fadeInUp-data-v-2c677db9;\n  -webkit-animation-duration: 1s;\n          animation-duration: 1s;\n  -webkit-animation-timing-function: ease-in-out;\n          animation-timing-function: ease-in-out;\n  -webkit-animation-iteration-count: 1;\n          animation-iteration-count: 1;\n}\n", ""]);
 
 // exports
 
@@ -50737,6 +50773,13 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -50771,10 +50814,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             required: true
         }
     },
+    created: function created() {
+        this.is_section_shown = this.sectionMustBeShown;
+    },
+
+    computed: {
+        sectionMustBeShown: function sectionMustBeShown() {
+            return this.node.section_question == 1 && !this.node.response;
+        }
+    },
     data: function data() {
         return {
-            // value: undefined
+            is_section_shown: false,
+            is_section_fading_out: false,
+            is_question_fading_in: false
         };
+    },
+
+    methods: {
+        showQuestion: function showQuestion() {
+            var _this = this;
+
+            this.is_section_fading_out = true;
+            this.$emit('section-faded-out');
+            setTimeout(function () {
+                _this.is_section_shown = false;
+                _this.is_question_fading_in = true;
+            }, 1000);
+        }
     }
 });
 
@@ -50787,104 +50854,180 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "question" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12" }, [
-        _c("p", { staticClass: "h5 text-muted" }, [
-          _vm._v("#" + _vm._s(this.node.section_question))
-        ]),
-        _vm._v(" "),
-        _c("h3", [_vm._v(_vm._s(this.node.data.title))]),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(this.node.data.body))]),
-        _vm._v(" "),
-        _c(
+    _vm.is_section_shown
+      ? _c(
           "div",
-          { staticClass: "answerable" },
+          {
+            staticClass: "row",
+            class: _vm.is_section_fading_out ? "fadeOutUp" : ""
+          },
           [
-            this.node.linker.type == "select_many"
-              ? _c(
-                  "linker--select-many",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "select_one"
-              ? _c(
-                  "linker--select-one",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "text"
-              ? _c(
-                  "linker--text",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "number"
-              ? _c(
-                  "linker--number",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "full_name"
-              ? _c(
-                  "linker--full-name",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "date"
-              ? _c(
-                  "linker--date",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "weight"
-              ? _c(
-                  "linker--weight",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "height"
-              ? _c(
-                  "linker--height",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e()
-          ],
-          1
+            _c("div", { staticClass: "col-sm-12 col-md-12 text-center" }, [
+              _c("h3", [_vm._v(_vm._s(this.node.section.title))]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(this.node.section.description))]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  attrs: { href: "" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.showQuestion($event)
+                    }
+                  }
+                },
+                [_vm._v("Next")]
+              )
+            ])
+          ]
         )
-      ])
-    ])
+      : _c(
+          "div",
+          {
+            staticClass: "row",
+            class: _vm.is_question_fading_in ? "fadeInUp" : ""
+          },
+          [
+            _c("div", { staticClass: "col-sm-12" }, [
+              _c("p", { staticClass: "h5 text-muted" }, [
+                _vm._v("#" + _vm._s(this.node.section_question))
+              ]),
+              _vm._v(" "),
+              _c("h3", [_vm._v(_vm._s(this.node.data.title))]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(this.node.data.body))]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "answerable" },
+                [
+                  this.node.linker.type == "select_many"
+                    ? _c(
+                        "linker--select-many",
+                        _vm._g(
+                          {
+                            attrs: {
+                              linker: this.node.linker,
+                              value: _vm.value
+                            }
+                          },
+                          _vm.$listeners
+                        )
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.node.linker.type == "select_one"
+                    ? _c(
+                        "linker--select-one",
+                        _vm._g(
+                          {
+                            attrs: {
+                              linker: this.node.linker,
+                              value: _vm.value
+                            }
+                          },
+                          _vm.$listeners
+                        )
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.node.linker.type == "text"
+                    ? _c(
+                        "linker--text",
+                        _vm._g(
+                          {
+                            attrs: {
+                              linker: this.node.linker,
+                              value: _vm.value
+                            }
+                          },
+                          _vm.$listeners
+                        )
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.node.linker.type == "number"
+                    ? _c(
+                        "linker--number",
+                        _vm._g(
+                          {
+                            attrs: {
+                              linker: this.node.linker,
+                              value: _vm.value
+                            }
+                          },
+                          _vm.$listeners
+                        )
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.node.linker.type == "full_name"
+                    ? _c(
+                        "linker--full-name",
+                        _vm._g(
+                          {
+                            attrs: {
+                              linker: this.node.linker,
+                              value: _vm.value
+                            }
+                          },
+                          _vm.$listeners
+                        )
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.node.linker.type == "date"
+                    ? _c(
+                        "linker--date",
+                        _vm._g(
+                          {
+                            attrs: {
+                              linker: this.node.linker,
+                              value: _vm.value
+                            }
+                          },
+                          _vm.$listeners
+                        )
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.node.linker.type == "weight"
+                    ? _c(
+                        "linker--weight",
+                        _vm._g(
+                          {
+                            attrs: {
+                              linker: this.node.linker,
+                              value: _vm.value
+                            }
+                          },
+                          _vm.$listeners
+                        )
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.node.linker.type == "height"
+                    ? _c(
+                        "linker--height",
+                        _vm._g(
+                          {
+                            attrs: {
+                              linker: this.node.linker,
+                              value: _vm.value
+                            }
+                          },
+                          _vm.$listeners
+                        )
+                      )
+                    : _vm._e()
+                ],
+                1
+              )
+            ])
+          ]
+        )
   ])
 }
 var staticRenderFns = []

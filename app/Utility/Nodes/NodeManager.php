@@ -28,7 +28,7 @@ class NodeManager {
 		$userLastJourneyPath = $journey->lastPath();
 
 		$nextNode = Node::whereTreeId($journey->tree_id)->whereIdentifier($userLastJourneyPath->linker['to'])->first();
-	
+
 		$nodeType = studly_case($nextNode->linker['type']);
 
 		$nodeClass = app("App\\Utility\\Nodes\\{$nodeType}Node");
@@ -37,6 +37,17 @@ class NodeManager {
 		{
 			$nextNode = $nodeClass->decide($journey, $nextNode);
 		}
+
+		// getting all the paths of a journey
+		$paths = $journey->paths()->with('node')->get();
+
+		// plucking their nodes
+		$nodes = $paths->pluck('node');
+
+		$sectionsQuestionBank = array_count_values($nodes->pluck('section_id')->toArray());
+
+		// filling up the section question number in the node
+		list($nextNode, $sectionsQuestionBank) = $this->fillSectionQuestion($nextNode, $sectionsQuestionBank);	
 
 		return $nextNode;
 	}
@@ -65,10 +76,10 @@ class NodeManager {
 
 		if(! $journey->finished())
 		{
-			list($node, $sectionsQuestionBank) = $this->fillSectionQuestion($this->next($journey), $sectionsQuestionBank);	
+			// list($node, $sectionsQuestionBank) = $this->fillSectionQuestion($this->next($journey), $sectionsQuestionBank);	
 
 			// also merging the next node
-			$nodes = $nodes->push($node);
+			$nodes = $nodes->push($this->next($journey));
 		}
 
 		return $nodes;

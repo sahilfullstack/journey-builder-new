@@ -1,6 +1,6 @@
 <template>
     
-    <div class="horizontal-scroll">
+    <div class="card-columns horizontal-scroll">
         <selectable-card
             class="text-center"
             v-for="(selectable, index) in this.linker.selectables"

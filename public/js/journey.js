@@ -50650,11 +50650,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row d-md-none noscroll" }, [
-      _c("div", { staticClass: "col-sm-12" }, [
+    return _c("div", { staticClass: "row  noscroll" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4" }, [
         _c("img", {
           attrs: {
-            src: "/images/shematters-icon-color.png",
+            src: "/images/shematters-logo-color.png",
             alt: "SheMatters",
             id: "icon"
           }
@@ -50894,11 +50894,13 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "col-sm-12" }, [
-              _c("p", { staticClass: "h5 text-muted" }, [
-                _vm._v("#" + _vm._s(this.node.section_question))
+              _c("h3", [
+                _vm._v(
+                  _vm._s(this.node.section_question) +
+                    ". " +
+                    _vm._s(this.node.data.title)
+                )
               ]),
-              _vm._v(" "),
-              _c("h3", [_vm._v(_vm._s(this.node.data.title))]),
               _vm._v(" "),
               _c("p", [_vm._v(_vm._s(this.node.data.body))]),
               _vm._v(" "),
@@ -51206,7 +51208,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "horizontal-scroll" },
+    { staticClass: "card-columns horizontal-scroll" },
     _vm._l(this.linker.selectables, function(selectable, index) {
       return _c(
         "selectable-card",
@@ -51362,6 +51364,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -51406,7 +51409,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "horizontal-scroll" },
+    { staticClass: "card-columns" },
     _vm._l(this.linker.selectables, function(selectable, index) {
       return _c(
         "selectable-card",

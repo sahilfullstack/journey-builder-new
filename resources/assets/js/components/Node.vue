@@ -9,8 +9,8 @@
         </div>
         <div class="row" :class="is_question_fading_in ? 'fadeInUp' : ''" v-else>
             <div class="col-sm-12">
-                <p class="h5 text-muted">#{{ this.node.section_question }}</p>
-                <h3>{{ this.node.data.title }}</h3>
+                <!-- <p class="h5 text-muted">#{{ this.node.section_question }}</p> -->
+                <h3>{{ this.node.section_question }}. {{ this.node.data.title }}</h3>
                 <p>{{ this.node.data.body }}</p>
 
                 <div class="answerable">

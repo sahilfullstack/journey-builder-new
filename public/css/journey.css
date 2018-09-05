@@ -17004,10 +17004,9 @@ section.main {
 }
 
 section.main img#icon {
-  width: 3rem;
+  width: 10rem;
   display: block;
-  margin: 0 auto 1rem;
-  overflow: hidden;
+  margin: 1rem auto;
 }
 
 section.main .section {
@@ -17166,8 +17165,8 @@ input:focus {
 
 @media (max-width: 575.98px) {
   .card-columns {
-    -webkit-column-count: 1;
-            column-count: 1;
+    -webkit-column-count: 2;
+            column-count: 2;
   }
 }
 

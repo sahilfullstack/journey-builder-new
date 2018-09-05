@@ -1,8 +1,8 @@
 <template>
     <section class="main container-fluid">
-        <div class="row d-md-none noscroll">
-            <div class="col-sm-12">
-                <img src="/images/shematters-icon-color.png" alt="SheMatters" id="icon">
+        <div class="row  noscroll">
+            <div class="col-sm-12 col-md-8 offset-md-4">
+                <img src="/images/shematters-logo-color.png" alt="SheMatters" id="icon">
             </div>
         </div>
         <div class="row section noscroll" :class="is_section_fading_in ? 'fadeInUp' : ''" v-if="is_section_shown">

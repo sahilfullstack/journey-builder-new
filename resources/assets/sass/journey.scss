@@ -44,10 +44,9 @@ section.main {
     flex-direction: column;
 
     img#icon {
-        width: 3rem;
+        width: 10rem;
         display: block;
-        margin: 0 auto 1rem;
-        overflow: hidden;
+        margin: 1rem auto;
     }
 
     .section {
@@ -183,7 +182,7 @@ input {
 
 .card-columns {
     @include media-breakpoint-only(xs) {
-        column-count: 1;
+        column-count: 2;
     }
     @include media-breakpoint-only(lg) {
         column-count: 4;

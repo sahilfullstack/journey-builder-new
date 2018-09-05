@@ -5,11 +5,13 @@
                 <img src="/images/shematters-logo-color.png" alt="SheMatters" id="icon">
             </div>
         </div>
-        <div class="row section noscroll" :class="is_section_fading_in ? 'fadeInUp' : ''" v-if="is_section_shown">
+        <div class="row section bg-secondary noscroll">
             <div class="col-sm-12 col-md-8 offset-md-4">
-                <h5>{{ nodes[on_n - 1].section.title }}</h5>
-                <p>{{ nodes[on_n - 1].section.description || nodes[on_n - 1].section.title }}</p>
+                <h5 :class="section_class">{{ section.title }}</h5>
             </div>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" :style="'width: ' + journeyCompleted + '%'"></div>
         </div>
         <div class="row node-area" :class="!scrolling ? 'noscroll' : ''">
             <aside class="col-md-4 bg-primary text-white d-none d-md-flex sidebar">
@@ -35,9 +37,6 @@
         </div>
         <div class="row navigator" v-if="this.nodes[this.on_n - 1] && this.nodes[this.on_n - 1].linker.type != 'terminal'">
             <div class="col-sm-12 col-md-8 offset-md-4 p-0">
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" :style="'width: ' + journeyCompleted + '%'"></div>
-                </div>
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-back" @click="goToPrevious" v-if="this.on_n > 1"><i class="fas fa-chevron-left fa-fw"></i></button>
                     <button type="button" class="btn btn-danger btn-next" :disabled="! validated[on_n - 1]" @click="saveResponse">Next <i class="fas fa-chevron-right fa-fw"></i></button>
@@ -73,6 +72,7 @@
                 path: [],
                 validated: [],
                 on_n: 0,
+                section_class: '',
                 is_section_shown: false,
                 is_section_fading_in: false
             }
@@ -88,12 +88,17 @@
             lastNode() {
                 return this.nodes[this.on_n - 1];
             },
-            sectionMustBeShown() {
-                if( ! this.lastNode) return false;
+            section() {
+                if( ! this.lastNode) return '';
 
-                // when the current node is the first question in the section, and the it is not responded yet,
-                // we will not show the section heading as we'll later animate it in.
-                return (this.lastNode.section_question == 1 && this.lastNode.response);
+                if(this.lastNode.section_question == 1) {
+                    this.section_class = 'fadeInUp';
+                    setTimeout(() => {
+                        this.section_class = '';
+                    }, 2000);
+                }
+
+                return this.lastNode.section;
             },
             journeyCompleted() {
                 let r = 0.9, a = 10;

@@ -1,13 +1,6 @@
 <template>
     <div class="question">
-        <div class="row" :class="is_section_fading_out ? 'fadeOutUp' : ''" v-if="is_section_shown">
-            <div class="col-sm-12 col-md-12 text-center">
-                <h3>{{ this.node.section.title }}</h3>
-                <p>{{ this.node.section.description || 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium est fugiat aperiam saepe'}}</p>
-                <a href @click.prevent="showQuestion">START SECTION</a>
-            </div>
-        </div>
-        <div class="row" :class="is_question_fading_in ? 'fadeInUp' : ''" v-else>
+        <div class="row">
             <div class="col-sm-12">
                 <!-- <p class="h5 text-muted">#{{ this.node.section_question }}</p> -->
                 <h3>{{ this.node.section_question }}. {{ this.node.data.title }}</h3>

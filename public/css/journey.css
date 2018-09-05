@@ -17007,6 +17007,7 @@ section.main img#icon {
   width: 10rem;
   display: block;
   margin: 1rem auto;
+  overflow: hidden;
 }
 
 section.main .section {
@@ -17018,12 +17019,23 @@ section.main .section {
 }
 
 section.main .section h5 {
-  color: #6c757d;
+  color: #000;
   font-weight: bold;
 }
 
 section.main .section p {
   margin-bottom: 0;
+}
+
+section.main .progress {
+  border-radius: 0;
+  height: 0.5rem;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+section.main .progress .progress-bar {
+  background: #1C9249;
 }
 
 .sidebar {
@@ -17055,16 +17067,6 @@ section.main .section p {
 
 .navigator {
   overflow: hidden;
-}
-
-.navigator .progress {
-  border-radius: 0;
-  height: 3px;
-  background-color: #e6faee;
-}
-
-.navigator .progress .progress-bar {
-  background: #1C9249;
 }
 
 .navigator .btn-group {

@@ -49711,6 +49711,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -49752,15 +49754,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      class: "card " + (this.selected ? "shake bg-success text-white" : ""),
-      on: { click: _vm.toggle }
-    },
-    [_vm._t("default")],
-    2
-  )
+  return _c("div", { staticClass: "card", on: { click: _vm.toggle } }, [
+    _c(
+      "div",
+      {
+        class: this.selected ? "shake bg-success text-white" : "",
+        staticStyle: { outline: "none" }
+      },
+      [_vm._t("default")],
+      2
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -51310,7 +51314,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "horizontal-scroll" },
+    { staticClass: "horizontal-scroll card-deck" },
     _vm._l(this.linker.selectables, function(selectable, index) {
       return _c(
         "selectable-card",

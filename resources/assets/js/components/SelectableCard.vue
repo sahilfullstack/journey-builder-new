@@ -1,6 +1,8 @@
 <template>
-    <div @click="toggle" :class=" 'card ' + (this.selected ? 'shake bg-success text-white' : '')">
-        <slot></slot>
+    <div @click="toggle" class="card">
+        <div :class="this.selected ? 'shake bg-success text-white' : ''" style="outline: none;">
+            <slot></slot>
+        </div>
     </div>
 </template>
 

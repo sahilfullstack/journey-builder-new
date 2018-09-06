@@ -6,6 +6,9 @@
     <title>SheMatters Journey</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/solid.css" integrity="sha384-VGP9aw4WtGH/uPAOseYxZ+Vz/vaTb1ehm1bwx92Fm8dTrE+3boLfF1SpAtB1z7HW" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/fontawesome.css" integrity="sha384-1rquJLNOM3ijoueaaeS5m+McXPJCGdr5HcA03/VHXxcp2kX2sUrQDmFc3jR5i/C7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="/css/journey.css" />
 </head>
 <body>
@@ -55,5 +58,41 @@
             }());
     </script>
     <script src="/js/journey.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+    $(document).ready(function(){
+		$('.card-deck').slick({
+			slidesToShow: 3,
+			slidesToScroll: 1,
+			infinite: false,
+			centerMode: true,
+			// centerPadding: '30px',
+			autoplay: true,
+            autoplaySpeed: 2000,
+            arrows: false,
+            prevArrow: '<i class="fas fa-chevron-left slick-prev"></i>',
+			nextArrow: '<i class="fas fa-chevron-right slick-next"></i>',
+			responsive: [
+			{
+				breakpoint: 769,
+				settings: {
+					// arrows: true,
+					slidesToShow: 3,
+					slidesToScroll: 1
+				}
+			}
+			,
+			{
+				breakpoint: 577,
+				settings: {
+					// arrows: true,
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			}
+			]
+		});
+	});
+    </script>
 </body>
 </html>

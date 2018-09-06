@@ -17138,20 +17138,6 @@ input:focus {
  * Horizontal Scroll
  */
 
-.horizontal-scroll {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.horizontal-scroll::-webkit-scrollbar {
-  display: none;
-}
-
 .horizontal-scroll .card {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
@@ -17161,8 +17147,16 @@ input:focus {
           box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.horizontal-scroll .card:focus {
+  outline: none;
+}
+
 .horizontal-scroll .card .card-body {
   padding: 1rem;
+}
+
+.horizontal-scroll .card .card-body:focus {
+  outline: none;
 }
 
 @media (max-width: 575.98px) {

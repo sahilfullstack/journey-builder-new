@@ -51036,7 +51036,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51081,7 +51081,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             selected: this.value || []
         };
     },
-
+    mounted: function mounted() {
+        $(this.$el).slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: false,
+            centerMode: true,
+            // centerPadding: '30px',
+            autoplay: true,
+            autoplaySpeed: 2000,
+            arrows: false,
+            prevArrow: '<i class="fas fa-chevron-left slick-prev"></i>',
+            nextArrow: '<i class="fas fa-chevron-right slick-next"></i>',
+            responsive: [{
+                breakpoint: 769,
+                settings: {
+                    // arrows: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1
+                }
+            }, {
+                breakpoint: 577,
+                settings: {
+                    // arrows: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }]
+        });
+    },
 
     methods: {
         onSelect: function onSelect(value) {
@@ -51113,7 +51141,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "horizontal-scroll" },
+    { staticClass: "horizontal-scroll card-deck" },
     _vm._l(this.linker.selectables, function(selectable, index) {
       return _c(
         "selectable-card",
@@ -51269,7 +51297,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -51285,6 +51312,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             selected: this.value || []
         };
+    },
+    mounted: function mounted() {
+        $(this.$el).slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: false,
+            centerMode: true,
+            // centerPadding: '30px',
+            autoplay: true,
+            autoplaySpeed: 2000,
+            arrows: false,
+            prevArrow: '<i class="fas fa-chevron-left slick-prev"></i>',
+            nextArrow: '<i class="fas fa-chevron-right slick-next"></i>',
+            responsive: [{
+                breakpoint: 769,
+                settings: {
+                    // arrows: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1
+                }
+            }, {
+                breakpoint: 577,
+                settings: {
+                    // arrows: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }]
+        });
     },
 
     methods: {

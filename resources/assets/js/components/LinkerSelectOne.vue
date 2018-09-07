@@ -1,6 +1,5 @@
 <template>
     
-        
     <div class="horizontal-scroll card-deck">
         <selectable-card 
             class="text-center" 
@@ -32,6 +31,39 @@
             return {
                 selected: this.value || []
             }
+        },
+        mounted() {
+            $(this.$el).slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: false,
+                centerMode: true,
+                // centerPadding: '30px',
+                autoplay: true,
+                autoplaySpeed: 2000,
+                arrows: false,
+                prevArrow: '<i class="fas fa-chevron-left slick-prev"></i>',
+                nextArrow: '<i class="fas fa-chevron-right slick-next"></i>',
+                responsive: [
+                {
+                    breakpoint: 769,
+                    settings: {
+                        // arrows: true,
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                }
+                ,
+                {
+                    breakpoint: 577,
+                    settings: {
+                        // arrows: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                ]
+            });
         },
         methods: {
             onSelect(value) {

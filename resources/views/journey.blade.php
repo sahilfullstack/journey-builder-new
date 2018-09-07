@@ -60,39 +60,39 @@
     <script src="/js/journey.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
-    $(document).ready(function(){
-		$('.card-deck').slick({
-			slidesToShow: 3,
-			slidesToScroll: 1,
-			infinite: false,
-			centerMode: true,
-			// centerPadding: '30px',
-			autoplay: true,
-            autoplaySpeed: 2000,
-            arrows: false,
-            prevArrow: '<i class="fas fa-chevron-left slick-prev"></i>',
-			nextArrow: '<i class="fas fa-chevron-right slick-next"></i>',
-			responsive: [
-			{
-				breakpoint: 769,
-				settings: {
-					// arrows: true,
-					slidesToShow: 3,
-					slidesToScroll: 1
-				}
-			}
-			,
-			{
-				breakpoint: 577,
-				settings: {
-					// arrows: true,
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			}
-			]
-		});
-	});
+    window.onload = function(){
+		// $('.card-deck').slick({
+		// 	slidesToShow: 3,
+		// 	slidesToScroll: 1,
+		// 	infinite: false,
+		// 	centerMode: true,
+		// 	// centerPadding: '30px',
+		// 	autoplay: true,
+        //     autoplaySpeed: 2000,
+        //     arrows: false,
+        //     prevArrow: '<i class="fas fa-chevron-left slick-prev"></i>',
+		// 	nextArrow: '<i class="fas fa-chevron-right slick-next"></i>',
+		// 	responsive: [
+		// 	{
+		// 		breakpoint: 769,
+		// 		settings: {
+		// 			// arrows: true,
+		// 			slidesToShow: 3,
+		// 			slidesToScroll: 1
+		// 		}
+		// 	}
+		// 	,
+		// 	{
+		// 		breakpoint: 577,
+		// 		settings: {
+		// 			// arrows: true,
+		// 			slidesToShow: 1,
+		// 			slidesToScroll: 1
+		// 		}
+		// 	}
+		// 	]
+		// });
+	};
     </script>
 </body>
 </html>

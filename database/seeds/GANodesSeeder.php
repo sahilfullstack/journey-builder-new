@@ -30,7 +30,7 @@ class GANodesSeeder extends Seeder
             'SEXUAL HISTORY ASSESSMENT'         => Section::whereTitle('SEXUAL HISTORY ASSESSMENT')->first()->id,
             'PHYSICAL FEATURES ASSESSMENT'      => Section::whereTitle('PHYSICAL FEATURES ASSESSMENT')->first()->id,
             'PHYSICAL FEATURES ASSESSMENT'      => Section::whereTitle('PHYSICAL FEATURES ASSESSMENT')->first()->id,
-            'PERSONAL'      => Section::whereTitle('PERSONAL')->first()->id,
+            'PERSONAL'                          => Section::whereTitle('PERSONAL')->first()->id,
         ];
 
         $nodes = [

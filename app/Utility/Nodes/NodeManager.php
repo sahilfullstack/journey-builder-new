@@ -55,7 +55,6 @@ class NodeManager {
 	public function all(Journey $journey)
 	{
 		if($this->isJourneyEmpty($journey)) return $this->listFirstNode($journey);
-
 		// getting all the paths of a journey
 		$paths = $journey->paths()->with('node')->get();
 

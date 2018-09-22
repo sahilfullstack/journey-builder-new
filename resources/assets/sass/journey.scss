@@ -64,14 +64,14 @@ section.main {
             margin-bottom: 0;
         }
         background: #f7f7f7;
-    }
+   }
 
     .progress {
         border-radius: 0;
-        height: 0.5rem;
+        height: 3rem;
         margin-left: -15px;
         margin-right: -15px;
-        .progress-bar {
+        .progress-bar{
             background: $accent;
         }
     }
@@ -98,29 +98,49 @@ section.main {
     height: 100%;
 }
 
+
 .navigator {
     overflow: hidden;
 
-    .btn-group {
-        display: flex;
-        margin-bottom: 1rem;
         .btn {
             height: 4rem;
             border-radius: 0;
             font-weight: bold;
 
             &.btn-back {
-                background: lighten($secondary, 10%);
-                border: lighten($secondary, 10%);
-            }
-    
+            /**
+             * background: lighten($secondary, 10%);
+             * border: lighten($secondary, 10%);
+             */
+                background: rgba(204, 222, 115, 0.27);
+                border: #e9ecef;
+                
+            }             
+
             &.btn-next {
-                background: $primary;
-                flex: 1;
+                background: $primary;                
                 text-align: right;
+                
             }
-        }
-    }
+
+
+           }
+           
+}
+
+.footer-container {
+     display: flex;
+    justify-content: space-between;
+}
+.btn-back { 
+    align-self: stretch;   
+}
+.btn-next {
+    align-self: flex-end;
+}
+.progress{
+    width: 40%;
+    align-self: center;
 }
 
 /**

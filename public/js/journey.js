@@ -50542,14 +50542,6 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "progress" }, [
-      _c("div", {
-        staticClass: "progress-bar",
-        style: "width: " + _vm.journeyCompleted + "%",
-        attrs: { role: "progressbar" }
-      })
-    ]),
-    _vm._v(" "),
     _c(
       "div",
       { staticClass: "row node-area", class: !_vm.scrolling ? "noscroll" : "" },
@@ -50606,7 +50598,7 @@ var render = function() {
     this.nodes[this.on_n - 1].linker.type != "terminal"
       ? _c("div", { staticClass: "row navigator" }, [
           _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4 p-0" }, [
-            _c("div", { staticClass: "btn-group", attrs: { role: "group" } }, [
+            _c("div", { staticClass: "footer-container" }, [
               this.on_n > 1
                 ? _c(
                     "button",
@@ -50619,6 +50611,14 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
+              _c("div", { staticClass: "progress" }, [
+                _c("div", {
+                  staticClass: "progress-bar",
+                  style: "width: " + _vm.journeyCompleted + "%",
+                  attrs: { role: "progressbar" }
+                })
+              ]),
+              _vm._v(" "),
               _c(
                 "button",
                 {
@@ -50629,10 +50629,7 @@ var render = function() {
                   },
                   on: { click: _vm.saveResponse }
                 },
-                [
-                  _vm._v("Next "),
-                  _c("i", { staticClass: "fas fa-chevron-right fa-fw" })
-                ]
+                [_c("i", { staticClass: "fas fa-chevron-right fa-fw" })]
               )
             ])
           ])

@@ -10,9 +10,6 @@
                 <h5 :class="section_class">{{ section.title }}</h5>
             </div>
         </div>
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" :style="'width: ' + journeyCompleted + '%'"></div>
-        </div>
         <div class="row node-area" :class="!scrolling ? 'noscroll' : ''">
             <aside class="col-md-4 bg-primary text-white d-none d-md-flex sidebar">
                 <div class="container">
@@ -37,9 +34,12 @@
         </div>
         <div class="row navigator" v-if="this.nodes[this.on_n - 1] && this.nodes[this.on_n - 1].linker.type != 'terminal'">
             <div class="col-sm-12 col-md-8 offset-md-4 p-0">
-                <div class="btn-group" role="group">
+                <div class="footer-container">
                     <button type="button" class="btn btn-back" @click="goToPrevious" v-if="this.on_n > 1"><i class="fas fa-chevron-left fa-fw"></i></button>
-                    <button type="button" class="btn btn-danger btn-next" :disabled="! validated[on_n - 1]" @click="saveResponse">Next <i class="fas fa-chevron-right fa-fw"></i></button>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" :style="'width: ' + journeyCompleted + '%'"></div>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-next" :disabled="! validated[on_n - 1]" @click="saveResponse"><i class="fas fa-chevron-right fa-fw"></i></button>
                 </div>
             </div>
         </div>

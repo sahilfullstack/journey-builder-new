@@ -50787,6 +50787,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -50838,104 +50844,110 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "question" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12" }, [
-        _c("h3", [
-          _vm._v(
-            _vm._s(this.node.section_question) +
-              ". " +
-              _vm._s(this.node.data.title)
+    _c("section", { staticClass: "flow-question" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-12" }, [
+          _c("div", { staticClass: "flow-question-header" }, [
+            _c("div", { staticClass: "flow-question-header-title" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(this.node.section_question) +
+                  ". " +
+                  _vm._s(this.node.data.title) +
+                  "\n              "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(this.node.data.body))]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "answerable" },
+            [
+              this.node.linker.type == "select_many"
+                ? _c(
+                    "linker--select-many",
+                    _vm._g(
+                      { attrs: { linker: this.node.linker, value: _vm.value } },
+                      _vm.$listeners
+                    )
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.node.linker.type == "select_one"
+                ? _c(
+                    "linker--select-one",
+                    _vm._g(
+                      { attrs: { linker: this.node.linker, value: _vm.value } },
+                      _vm.$listeners
+                    )
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.node.linker.type == "text"
+                ? _c(
+                    "linker--text",
+                    _vm._g(
+                      { attrs: { linker: this.node.linker, value: _vm.value } },
+                      _vm.$listeners
+                    )
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.node.linker.type == "number"
+                ? _c(
+                    "linker--number",
+                    _vm._g(
+                      { attrs: { linker: this.node.linker, value: _vm.value } },
+                      _vm.$listeners
+                    )
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.node.linker.type == "full_name"
+                ? _c(
+                    "linker--full-name",
+                    _vm._g(
+                      { attrs: { linker: this.node.linker, value: _vm.value } },
+                      _vm.$listeners
+                    )
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.node.linker.type == "date"
+                ? _c(
+                    "linker--date",
+                    _vm._g(
+                      { attrs: { linker: this.node.linker, value: _vm.value } },
+                      _vm.$listeners
+                    )
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.node.linker.type == "weight"
+                ? _c(
+                    "linker--weight",
+                    _vm._g(
+                      { attrs: { linker: this.node.linker, value: _vm.value } },
+                      _vm.$listeners
+                    )
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.node.linker.type == "height"
+                ? _c(
+                    "linker--height",
+                    _vm._g(
+                      { attrs: { linker: this.node.linker, value: _vm.value } },
+                      _vm.$listeners
+                    )
+                  )
+                : _vm._e()
+            ],
+            1
           )
-        ]),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(this.node.data.body))]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "answerable" },
-          [
-            this.node.linker.type == "select_many"
-              ? _c(
-                  "linker--select-many",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "select_one"
-              ? _c(
-                  "linker--select-one",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "text"
-              ? _c(
-                  "linker--text",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "number"
-              ? _c(
-                  "linker--number",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "full_name"
-              ? _c(
-                  "linker--full-name",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "date"
-              ? _c(
-                  "linker--date",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "weight"
-              ? _c(
-                  "linker--weight",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            this.node.linker.type == "height"
-              ? _c(
-                  "linker--height",
-                  _vm._g(
-                    { attrs: { linker: this.node.linker, value: _vm.value } },
-                    _vm.$listeners
-                  )
-                )
-              : _vm._e()
-          ],
-          1
-        )
+        ])
       ])
     ])
   ])
@@ -51082,33 +51094,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        $(this.$el).slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            infinite: false,
-            centerMode: true,
-            // centerPadding: '30px',
-            autoplay: true,
-            autoplaySpeed: 2000,
-            arrows: false,
-            prevArrow: '<i class="fas fa-chevron-left slick-prev"></i>',
-            nextArrow: '<i class="fas fa-chevron-right slick-next"></i>',
-            responsive: [{
-                breakpoint: 769,
-                settings: {
-                    // arrows: true,
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            }, {
-                breakpoint: 577,
-                settings: {
-                    // arrows: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }]
-        });
+        /*            $(this.$el).slick({
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: false,
+                        centerMode: true,
+                        // centerPadding: '30px',
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                        arrows: false,
+                        prevArrow: '<i class="fas fa-chevron-left slick-prev"></i>',
+                        nextArrow: '<i class="fas fa-chevron-right slick-next"></i>',
+                        responsive: [
+                        {
+                            breakpoint: 769,
+                            settings: {
+                                // arrows: true,
+                                slidesToShow: 3,
+                                slidesToScroll: 1
+                            }
+                        }
+                        ,
+                        {
+                            breakpoint: 577,
+                            settings: {
+                                // arrows: true,
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                        ]
+                    });*/
     },
 
     methods: {
@@ -51141,7 +51157,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "horizontal-scroll card-deck" },
     _vm._l(this.linker.selectables, function(selectable, index) {
       return _c(
         "selectable-card",
@@ -51314,33 +51329,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        $(this.$el).slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            infinite: false,
-            centerMode: true,
-            // centerPadding: '30px',
-            autoplay: true,
-            autoplaySpeed: 2000,
-            arrows: false,
-            prevArrow: '<i class="fas fa-chevron-left slick-prev"></i>',
-            nextArrow: '<i class="fas fa-chevron-right slick-next"></i>',
-            responsive: [{
-                breakpoint: 769,
-                settings: {
-                    // arrows: true,
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            }, {
-                breakpoint: 577,
-                settings: {
-                    // arrows: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }]
-        });
+        /*            $(this.$el).slick({
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: false,
+                        centerMode: true,
+                        // centerPadding: '30px',
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                        arrows: false,
+                        prevArrow: '<i class="fas fa-chevron-left slick-prev"></i>',
+                        nextArrow: '<i class="fas fa-chevron-right slick-next"></i>',
+                        responsive: [
+                        {
+                            breakpoint: 769,
+                            settings: {
+                                // arrows: true,
+                                slidesToShow: 3,
+                                slidesToScroll: 1
+                            }
+                        }
+                        ,
+                        {
+                            breakpoint: 577,
+                            settings: {
+                                // arrows: true,
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                        ]
+                    });
+                    */
     },
 
     methods: {
@@ -51370,7 +51390,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "horizontal-scroll card-deck" },
     _vm._l(this.linker.selectables, function(selectable, index) {
       return _c(
         "selectable-card",

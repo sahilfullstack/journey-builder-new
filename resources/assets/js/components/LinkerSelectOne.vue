@@ -1,6 +1,6 @@
 <template>
     
-    <div class="horizontal-scroll card-deck">
+    <div>
         <selectable-card 
             class="text-center" 
             v-for="(selectable, index) in this.linker.selectables"
@@ -33,7 +33,7 @@
             }
         },
         mounted() {
-            $(this.$el).slick({
+/*            $(this.$el).slick({
                 slidesToShow: 3,
                 slidesToScroll: 1,
                 infinite: false,
@@ -64,6 +64,7 @@
                 }
                 ]
             });
+            */
         },
         methods: {
             onSelect(value) {

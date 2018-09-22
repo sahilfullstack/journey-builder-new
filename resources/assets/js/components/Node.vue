@@ -1,9 +1,14 @@
 <template>
     <div class="question">
+      <section class="flow-question">
         <div class="row">
             <div class="col-sm-12">
                 <!-- <p class="h5 text-muted">#{{ this.node.section_question }}</p> -->
-                <h3>{{ this.node.section_question }}. {{ this.node.data.title }}</h3>
+                <div class="flow-question-header">
+                  <div class="flow-question-header-title">
+                    {{ this.node.section_question }}. {{ this.node.data.title }}
+                  </div>
+                </div>
                 <p>{{ this.node.data.body }}</p>
 
                 <div class="answerable">
@@ -18,6 +23,7 @@
                 </div>
             </div>
         </div>
+      </section>
     </div>
 </template>
 

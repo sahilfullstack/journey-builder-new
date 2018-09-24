@@ -35,7 +35,8 @@
         <div class="row navigator" v-if="this.nodes[this.on_n - 1] && this.nodes[this.on_n - 1].linker.type != 'terminal'">
             <div class="col-sm-12 col-md-8 offset-md-4 p-0">
                 <div class="footer-container">
-                    <button type="button" class="btn btn-back" @click="goToPrevious" v-if="this.on_n > 1"><i class="fas fa-chevron-left fa-fw"></i></button>
+                    <button type="button" class="btn btn-back" @click="goToPrevious" v-if="this.on_n > 1"><i v-if="this.on_n > 1" class="fas fa-chevron-left fa-fw"></i></button>
+                    <button type="button" class="btn btn-faded"  :disabled="true" v-if="this.on_n == 1"></button>
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" :style="'width: ' + journeyCompleted + '%'"></div>
                     </div>

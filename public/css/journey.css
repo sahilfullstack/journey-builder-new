@@ -17087,6 +17087,11 @@ section.main .progress .progress-bar {
   border: #e9ecef;
 }
 
+.navigator .btn.btn-faded {
+  background: rgba(204, 222, 115, 0.27);
+  border: #e9ecef;
+}
+
 .navigator .btn.btn-next {
   background: #77254B;
   text-align: right;
@@ -17109,6 +17114,11 @@ section.main .progress .progress-bar {
 .btn-next {
   -ms-flex-item-align: end;
       align-self: flex-end;
+}
+
+.btn-faded {
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
 }
 
 .progress {

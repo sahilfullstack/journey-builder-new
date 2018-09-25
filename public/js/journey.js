@@ -56184,20 +56184,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-11" }, [
-      _c("div", { staticClass: "card", on: { click: _vm.toggle } }, [
-        _c(
-          "div",
-          {
-            class: this.selected ? "shake bg-success text-white" : "",
-            staticStyle: { outline: "none" }
-          },
-          [_vm._t("default")],
-          2
-        )
-      ])
-    ]),
-    _vm._v(" "),
     _c("div", { staticClass: "col-1" }, [
       this.description !== null
         ? _c("img", {
@@ -56217,6 +56203,20 @@ var render = function() {
             attrs: { src: "/images/icon-info.png" }
           })
         : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-11" }, [
+      _c("div", { staticClass: "card", on: { click: _vm.toggle } }, [
+        _c(
+          "div",
+          {
+            class: this.selected ? "shake bg-success text-white" : "",
+            staticStyle: { outline: "none" }
+          },
+          [_vm._t("default")],
+          2
+        )
+      ])
     ])
   ])
 }

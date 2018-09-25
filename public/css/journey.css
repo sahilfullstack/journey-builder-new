@@ -17130,7 +17130,7 @@ section.main .progress .progress-bar {
 .description-icon {
   position: relative;
   top: calc(50% - 10px);
-  margin-left: -15px;
+  margin-right: 10%;
   width: 100%;
 }
 

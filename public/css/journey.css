@@ -17130,7 +17130,7 @@ section.main .progress .progress-bar {
 .description-icon {
   position: relative;
   top: calc(50% - 10px);
-  margin-right: 10%;
+  margin-left: -15px;
   width: 100%;
 }
 
@@ -17355,5 +17355,39 @@ footer.footer {
   opacity: 1;
   -webkit-transition: opacity .15s;
   transition: opacity .15s;
+}
+
+.col-1 {
+  width: 8.33%;
+}
+
+.col-11 {
+  width: 91.66%;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+
+  .col-1 {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 16.66%;
+            flex: 0 0 16.66%;
+    width: 16.66% !important;
+    max-width: 16.66% !important;
+  }
+
+  .col-11 {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 83.33%;
+            flex: 0 0 83.33%;
+    width: 83.33% !important;
+  }
+
+  .description-icon {
+    position: relative;
+    top: 0;
+    margin-left: -15px;
+    width: 100%;
+  }
 }
 

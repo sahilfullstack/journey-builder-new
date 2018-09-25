@@ -153,7 +153,7 @@ section.main {
 .description-icon {
     position:relative;
     top: calc(50% - 10px);
-    margin-right: 10%;
+    margin-left: -15px;
     width: 100%;
 }
 
@@ -377,5 +377,29 @@ footer.footer {
     visibility: visible;
     opacity: 1;
     transition: opacity .15s;
+  }
+}
+
+.col-1 {width: 8.33%;}
+.col-11 {width: 91.66%;}
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .col-1 {
+        flex: 0 0 16.66%;
+        width: 16.66% !important;
+        max-width: 16.66% !important;
+    }
+    .col-11 {
+        flex: 0 0 83.33%;
+        width: 83.33% !important;
+    }
+
+    .description-icon {
+      position:relative;
+      top: 0;
+      margin-left: -15px;
+      width: 100%;
   }
 }

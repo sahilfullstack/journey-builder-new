@@ -4,7 +4,7 @@
         <selectable-card 
             class="text-center" 
             v-for="(selectable, index) in this.linker.selectables"
-            :key="index" :value="index"
+            :key="index" :value="index" :description="selectable.data.description"
             :is-selected="selected.indexOf(index) !== -1"
             @selected="onSelect" @unselected="onUnselect">
             <img class="card-img-top" :src="selectable.data.image_url" v-if="selectable.data.image_url">

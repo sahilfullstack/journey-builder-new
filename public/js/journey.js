@@ -56145,6 +56145,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         value: {
             required: true
         },
+        description: {
+            required: true
+        },
         isSelected: {
             type: Boolean,
             required: true
@@ -56196,22 +56199,24 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "col-1" }, [
-      _c("img", {
-        directives: [
-          {
-            name: "tooltip",
-            rawName: "v-tooltip",
-            value: {
-              content: "Tooltip content here",
-              trigger: "click hover"
-            },
-            expression:
-              "{\n        content: 'Tooltip content here',\n        trigger: 'click hover',\n    }"
-          }
-        ],
-        staticClass: "description-icon",
-        attrs: { src: "/images/icon-info.png" }
-      })
+      this.description !== null
+        ? _c("img", {
+            directives: [
+              {
+                name: "tooltip",
+                rawName: "v-tooltip",
+                value: {
+                  content: this.description,
+                  trigger: "click hover"
+                },
+                expression:
+                  "{\n        content: this.description,\n        trigger: 'click hover',\n    }"
+              }
+            ],
+            staticClass: "description-icon",
+            attrs: { src: "/images/icon-info.png" }
+          })
+        : _vm._e()
     ])
   ])
 }
@@ -57623,6 +57628,7 @@ var render = function() {
           staticClass: "text-center",
           attrs: {
             value: index,
+            description: selectable.data.description,
             "is-selected": _vm.selected.indexOf(index) !== -1
           },
           on: { selected: _vm.onSelect, unselected: _vm.onUnselect }
@@ -57856,6 +57862,7 @@ var render = function() {
           staticClass: "text-center",
           attrs: {
             value: index,
+            description: selectable.data.description,
             "is-selected": _vm.selected.indexOf(index) !== -1
           },
           on: { selected: _vm.onSelect, unselected: _vm.onUnselect }

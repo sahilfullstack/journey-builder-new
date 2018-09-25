@@ -11,7 +11,7 @@ class SectionsSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {        
         $sections = [
             [
                 'title' => 'SELF ASSESSMENT OF HEALTH',
@@ -19,57 +19,42 @@ class SectionsSeeder extends Seeder
                 'color_code' => ''
             ],
             [
-                'title' => 'NUTRITIONAL ASSESSMENT',
+                'title' => 'NUTRITION',
                 'description' => '',
                 'color_code' => ''
             ],
             [
-                'title' => 'LIFESTYLE ASSESSMENT',
+                'title' => 'LIFESTYLE',
                 'description' => '',
                 'color_code' => ''
             ],
             [
-                'title' => 'GYNAECOLOGICAL HISTORY ASSESSMENT',
+                'title' => 'SLEEP',
                 'description' => '',
                 'color_code' => ''
             ],
             [
-                'title' => 'OBSTETRICS HISTORY ASSESSMENT',
+                'title' => 'PHYSICAL ACTIVITY',
                 'description' => '',
                 'color_code' => ''
             ],
             [
-                'title' => 'MENOPAUSE ASSESSMENT',
+                'title' => 'PHYSICAL FEATURES',
                 'description' => '',
                 'color_code' => ''
             ],
             [
-                'title' => 'MEDICAL HISTORY ASSESSMENT',
+                'title' => 'EMOTIONAL WELLBEING',
                 'description' => '',
                 'color_code' => ''
             ],
             [
-                'title' => 'SLEEP ASSESSMENT',
+                'title' => 'GYNAECOLOGICAL HISTORY',
                 'description' => '',
                 'color_code' => ''
             ],
             [
-                'title' => 'PHYSICAL ACTIVITY ASSESSMENT',
-                'description' => '',
-                'color_code' => ''
-            ],
-            [
-                'title' => 'EMOTIONAL WELLBEING ASSESSMENT',
-                'description' => '',
-                'color_code' => ''
-            ],
-            [
-                'title' => 'SEXUAL HISTORY ASSESSMENT',
-                'description' => '',
-                'color_code' => ''
-            ],
-            [
-                'title' => 'PHYSICAL FEATURES ASSESSMENT',
+                'title' => 'MEDICAL HISTORY',
                 'description' => '',
                 'color_code' => ''
             ],
@@ -78,7 +63,6 @@ class SectionsSeeder extends Seeder
                 'description' => '',
                 'color_code' => ''
             ],
-
         ];
 
         foreach ($sections as $section) {

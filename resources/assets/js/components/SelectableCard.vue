@@ -7,8 +7,8 @@
                 </div>
             </div>
         </div>        
-        <div class="col-1"> <img class="description-icon" src="/images/icon-info.png" v-tooltip="{
-            content: 'Tooltip content here',
+        <div class="col-1"> <img class="description-icon" v-if="this.description !== null" src="/images/icon-info.png" v-tooltip="{
+            content: this.description,
             trigger: 'click hover',
         }"></div>
     </div>
@@ -18,6 +18,9 @@
     export default {
         props: {
             value: {
+                required: true
+            },
+            description: {
                 required: true
             },
             isSelected: {

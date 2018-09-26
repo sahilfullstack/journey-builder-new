@@ -19,6 +19,7 @@ $font-family-sans-serif: "Quicksand", sans-serif;
 @import "~bootstrap/scss/bootstrap";
 @import '~pretty-checkbox/src/pretty-checkbox.scss';
 
+
 .row {
     // This overflow property stops the parent from stretching itself if the child is overflowing.
     overflow-x: hidden;
@@ -259,10 +260,23 @@ footer.footer {
     line-height: 29px;
     letter-spacing: 1.1px;
     margin-bottom: 8px;
+    font-weight: 800;
 }
 
 a.disabled {
     color: rgba(204, 222, 115, 0.27);
    pointer-events: none;
    cursor: default;
+}
+
+
+.option-style {
+    font-size: 1.43em;    
+    color: black;
+}
+
+.description-style {
+    color: grey;
+    font-style: italic;
+    font-size: .9em;
 }

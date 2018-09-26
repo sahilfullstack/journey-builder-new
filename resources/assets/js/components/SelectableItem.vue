@@ -1,7 +1,7 @@
 <template>      
-    <div>
-        <p-check @change="toggle" class="p-default p-fill" :checked="this.selected ? true : false" color="#77254B">{{this.text}}</p-check>
-        <label>{{this.description}}</label>
+    <div style="margin-bottom: 3%;">
+        <p-check @change="toggle" class="p-default p-fill option-style" :checked="this.selected ? true : false" color="primary">{{this.text}}</p-check>
+        <label class="description-style">*{{this.description}}</label>
     </div>
 </template>
 

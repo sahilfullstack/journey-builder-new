@@ -17674,7 +17674,7 @@ a.text-dark:focus {
 
 .pretty input:checked ~ .state.p-primary label:after,
 .pretty.p-toggle .state.p-primary label:after {
-  background-color: #428bca !important;
+  background-color: #77254B !important;
 }
 
 .pretty input:checked ~ .state.p-primary .icon,
@@ -17687,7 +17687,7 @@ a.text-dark:focus {
 
 .pretty input:checked ~ .state.p-primary-o label:before,
 .pretty.p-toggle .state.p-primary-o label:before {
-  border-color: #428bca;
+  border-color: #77254B;
 }
 
 .pretty input:checked ~ .state.p-primary-o label:after,
@@ -17701,25 +17701,25 @@ a.text-dark:focus {
 .pretty.p-toggle .state.p-primary-o .icon,
 .pretty.p-toggle .state.p-primary-o .svg,
 .pretty.p-toggle .state.p-primary-o svg {
-  color: #428bca;
-  stroke: #428bca;
+  color: #77254B;
+  stroke: #77254B;
 }
 
 .pretty.p-default:not(.p-fill) input:checked ~ .state.p-primary-o label:after {
-  background-color: #428bca !important;
+  background-color: #77254B !important;
 }
 
 .pretty.p-switch input:checked ~ .state.p-primary:before {
-  border-color: #428bca;
+  border-color: #77254B;
 }
 
 .pretty.p-switch.p-fill input:checked ~ .state.p-primary:before {
-  background-color: #428bca !important;
+  background-color: #77254B !important;
 }
 
 .pretty.p-switch.p-slim input:checked ~ .state.p-primary:before {
-  border-color: #245682;
-  background-color: #245682 !important;
+  border-color: #290d1a;
+  background-color: #290d1a !important;
 }
 
 .pretty input:checked ~ .state.p-info label:after,
@@ -18220,11 +18220,23 @@ footer.footer {
   line-height: 29px;
   letter-spacing: 1.1px;
   margin-bottom: 8px;
+  font-weight: 800;
 }
 
 a.disabled {
   color: rgba(204, 222, 115, 0.27);
   pointer-events: none;
   cursor: default;
+}
+
+.option-style {
+  font-size: 1.43em;
+  color: black;
+}
+
+.description-style {
+  color: grey;
+  font-style: italic;
+  font-size: .9em;
 }
 

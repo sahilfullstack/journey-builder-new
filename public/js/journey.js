@@ -49940,18 +49940,21 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticStyle: { "margin-bottom": "3%" } },
     [
       _c(
         "p-check",
         {
-          staticClass: "p-default p-fill",
-          attrs: { checked: this.selected ? true : false, color: "#77254B" },
+          staticClass: "p-default p-fill option-style",
+          attrs: { checked: this.selected ? true : false, color: "primary" },
           on: { change: _vm.toggle }
         },
         [_vm._v(_vm._s(this.text))]
       ),
       _vm._v(" "),
-      _c("label", [_vm._v(_vm._s(this.description))])
+      _c("label", { staticClass: "description-style" }, [
+        _vm._v("*" + _vm._s(this.description))
+      ])
     ],
     1
   )

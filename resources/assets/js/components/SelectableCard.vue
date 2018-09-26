@@ -1,16 +1,8 @@
-<template>    
-     <div class="row">
-        <div class="col-11">
-            <div @click="toggle" class="card">
-                <div :class="this.selected ? 'shake bg-success text-white' : ''" style="outline: none;">
-                    <slot></slot>
-                </div>
-            </div>
-        </div>        
-        <div class="col-1"> <img class="description-icon" v-if="this.description !== null" src="/images/icon-info.png" v-tooltip="{
-            content: this.description,
-            trigger: 'click hover',
-        }"></div>
+<template>      
+    <div @click="toggle" class="card">
+        <div :class="this.selected ? 'shake bg-success text-white' : ''" style="outline: none;">
+            <slot></slot>
+        </div>
     </div>
 </template>
 

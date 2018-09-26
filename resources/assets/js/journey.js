@@ -7,11 +7,6 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import { VTooltip, VPopover, VClosePopover } from 'v-tooltip'
- 
-Vue.directive('tooltip', VTooltip)
-Vue.directive('close-popover', VClosePopover)
-Vue.component('v-popover', VPopover)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -35,13 +30,15 @@ Vue.component('linker--height', require('./components/LinkerHeight.vue'));
  * Icons
  */
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
-import { faChevronLeft, faChevronRight, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft, faChevronRight, faCheckCircle, faAngleDoubleLeft, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 dom.watch();
 library.add(
-    faChevronLeft,
-    faChevronRight,
-    faCheckCircle
+	faChevronLeft,
+	faChevronRight,
+	faCheckCircle,
+	faAngleDoubleLeft,
+	faAngleDoubleRight,
 )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

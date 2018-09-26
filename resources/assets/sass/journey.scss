@@ -63,12 +63,11 @@ section.main {
         p {
             margin-bottom: 0;
         }
-        background: #f7f7f7;
    }
 
     .progress {
         border-radius: 0;
-        height: 3rem;
+        height: 0.5rem;
         margin-left: -15px;
         margin-right: -15px;
         .progress-bar{
@@ -112,24 +111,25 @@ section.main {
              * background: lighten($secondary, 10%);
              * border: lighten($secondary, 10%);
              */
-                background: rgba(204, 222, 115, 0.27);
+                color: $primary;
                 border: #e9ecef;
                 
             }             
 
-            &.btn-faded {
-                background: rgba(204, 222, 115, 0.27);
-                border: #e9ecef;                
+             &.btn-faded {
+               color: rgba(204, 222, 115, 0.27);
+            /**             
+             *  border: #e9ecef;                
+            */
             }             
 
             &.btn-next {
-                background: $primary;                
-                text-align: right;
-                
+                color: $primary;
+            /**
+             *   text-align: right;
+             */
             }
-
-
-           }
+        }
            
 }
 
@@ -145,16 +145,6 @@ section.main {
 }
 .btn-faded {
     align-self: stretch;
-}
-.progress{
-    width: 40%;
-    align-self: center;
-}
-.description-icon {
-    position:relative;
-    top: calc(50% - 10px);
-    margin-left: -15px;
-    width: 100%;
 }
 
 /**
@@ -269,137 +259,8 @@ footer.footer {
     margin-bottom: 8px;
 }
 
-
-.tooltip {
-  display: block !important;
-  z-index: 10000;
-
-  .tooltip-inner {
-    background: black;
-    color: white;
-    border-radius: 16px;
-    padding: 5px 10px 4px;
-  }
-
-  .tooltip-arrow {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    position: absolute;
-    margin: 5px;
-    border-color: black;
-    z-index: 1;
-  }
-
-  &[x-placement^="top"] {
-    margin-bottom: 5px;
-
-    .tooltip-arrow {
-      border-width: 5px 5px 0 5px;
-      border-left-color: transparent !important;
-      border-right-color: transparent !important;
-      border-bottom-color: transparent !important;
-      bottom: -5px;
-      left: calc(50% - 5px);
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-
-  &[x-placement^="bottom"] {
-    margin-top: 5px;
-
-    .tooltip-arrow {
-      border-width: 0 5px 5px 5px;
-      border-left-color: transparent !important;
-      border-right-color: transparent !important;
-      border-top-color: transparent !important;
-      top: -5px;
-      left: calc(50% - 5px);
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-
-  &[x-placement^="right"] {
-    margin-left: 5px;
-
-    .tooltip-arrow {
-      border-width: 5px 5px 5px 0;
-      border-left-color: transparent !important;
-      border-top-color: transparent !important;
-      border-bottom-color: transparent !important;
-      left: -5px;
-      top: calc(50% - 5px);
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-
-  &[x-placement^="left"] {
-    margin-right: 5px;
-
-    .tooltip-arrow {
-      border-width: 5px 0 5px 5px;
-      border-top-color: transparent !important;
-      border-right-color: transparent !important;
-      border-bottom-color: transparent !important;
-      right: -5px;
-      top: calc(50% - 5px);
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-
-  &.popover {
-    $color: #f9f9f9;
-
-    .popover-inner {
-      background: $color;
-      color: black;
-      padding: 24px;
-      border-radius: 5px;
-      box-shadow: 0 5px 30px rgba(black, .1);
-    }
-
-    .popover-arrow {
-      border-color: $color;
-    }
-  }
-
-  &[aria-hidden='true'] {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity .15s, visibility .15s;
-  }
-
-  &[aria-hidden='false'] {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity .15s;
-  }
-}
-
-.col-1 {width: 8.33%;}
-.col-11 {width: 91.66%;}
-
-
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    .col-1 {
-        flex: 0 0 16.66%;
-        width: 16.66% !important;
-        max-width: 16.66% !important;
-    }
-    .col-11 {
-        flex: 0 0 83.33%;
-        width: 83.33% !important;
-    }
-
-    .description-icon {
-      position:relative;
-      top: 10%;
-      margin-left: -15px;
-      width: 100%;
-  }
+a.disabled {
+    color: rgba(204, 222, 115, 0.27);
+   pointer-events: none;
+   cursor: default;
 }

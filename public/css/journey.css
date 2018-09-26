@@ -18230,14 +18230,14 @@ a.disabled {
 }
 
 .option-style {
-  font-size: 1.2em;
+  font-size: 1.46em;
   color: black;
 }
 
 .description-style {
   color: grey;
   font-style: italic;
-  font-size: .8em;
+  font-size: .9em;
 }
 
 /* Pretty checkbox overrides  */

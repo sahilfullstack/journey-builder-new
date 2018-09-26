@@ -5,7 +5,7 @@
                 <img src="/images/shematters-logo-color.png" alt="SheMatters" id="icon">
             </div>
         </div>
-        <div class="row section bg-secondary noscroll">
+        <div class="row section bg-secondary noscroll" v-if="section != null">
             <div class="col-sm-12 col-md-8 offset-md-4">
                 <h5 :class="section_class">{{ section.title }}</h5>
             </div>
@@ -99,7 +99,7 @@
                         this.section_class = '';
                     }, 2000);
                 }
-
+console.log(this.lastNode.section);
                 return this.lastNode.section;
             },
             journeyCompleted() {

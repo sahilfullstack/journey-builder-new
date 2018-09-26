@@ -49940,7 +49940,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticStyle: { "margin-bottom": "3%" } },
+    { staticClass: "container", staticStyle: { "margin-bottom": "5%" } },
     [
       _c(
         "p-check",
@@ -50174,7 +50174,7 @@ __WEBPACK_IMPORTED_MODULE_0_smoothscroll_polyfill___default.a.polyfill();
                     _this.section_class = '';
                 }, 2000);
             }
-
+            console.log(this.lastNode.section);
             return this.lastNode.section;
         },
         journeyCompleted: function journeyCompleted() {
@@ -50731,13 +50731,15 @@ var render = function() {
   return _c("section", { staticClass: "main container-fluid" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "row section bg-secondary noscroll" }, [
-      _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4" }, [
-        _c("h5", { class: _vm.section_class }, [
-          _vm._v(_vm._s(_vm.section.title))
+    _vm.section != null
+      ? _c("div", { staticClass: "row section bg-secondary noscroll" }, [
+          _c("div", { staticClass: "col-sm-12 col-md-8 offset-md-4" }, [
+            _c("h5", { class: _vm.section_class }, [
+              _vm._v(_vm._s(_vm.section.title))
+            ])
+          ])
         ])
-      ])
-    ]),
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "progress" }, [
       _c("div", {

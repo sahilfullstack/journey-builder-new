@@ -280,3 +280,21 @@ a.disabled {
     font-style: italic;
     font-size: .9em;
 }
+
+
+/* Pretty checkbox overrides  */
+
+.pretty {
+    white-space: inherit;
+    width: 14rem;
+}
+
+.pretty .state label{
+      text-indent: 0;
+      padding-left: 2rem;
+}
+
+.pretty .state label:after, 
+.pretty .state label:before{
+     top: 0;
+}

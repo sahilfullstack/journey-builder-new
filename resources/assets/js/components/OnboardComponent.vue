@@ -17,12 +17,12 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="first-name">First Name</label>
-                                        <input type="text" id="first-name">
+                                        <input class="box-input" type="text" id="first-name">
                                     </div>
                                     
                                     <div class="col-md-6">
                                         <label for="last-name">Last Name</label>
-                                        <input type="text" id="last-name">
+                                        <input class="box-input" type="text" id="last-name">
                                     </div>
                                 </div>
                             </div>

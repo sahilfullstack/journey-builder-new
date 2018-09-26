@@ -1,17 +1,12 @@
 <template>
     
     <div>
-        <selectable-card
-            class="text-center"
+        <selectable-item
             v-for="(selectable, index) in this.linker.selectables"
-            :key="index" :value="index" :description="selectable.data.description"
+            :key="index" :value="index" :description="selectable.data.description" :text="selectable.data.text"
             :is-selected="selected.indexOf(index) !== -1"
-            @selected="onSelect" @unselected="onUnselect">
-            <img class="card-img-top" :src="selectable.data.image_url" v-if="selectable.data.image_url">
-            <div class="card-body d-flex align-items-center">
-                <p class="m-0">{{ selectable.data.text }}</p>
-            </div>
-        </selectable-card>
+            @selected="onSelect" @unselected="onUnselect">          
+        </selectable-item>
     </div>
 
 </template>

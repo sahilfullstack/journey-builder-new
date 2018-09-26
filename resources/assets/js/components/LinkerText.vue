@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12">
             <!-- <label for="text">Your answer</label> -->
-            <input type="text" v-model="response" @input="emit">
+            <input class="box-input" type="text" v-model="response" @input="emit">
         </div>
     </div>
 </template>

@@ -15,6 +15,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('selectable-card', require('./components/SelectableCard.vue'));
+Vue.component('selectable-item', require('./components/SelectableItem.vue'));
 Vue.component('journey', require('./components/JourneyComponent.vue'));
 Vue.component('node', require('./components/Node.vue'));
 Vue.component('linker--select-many', require('./components/LinkerSelectMany.vue'));
@@ -32,6 +33,10 @@ Vue.component('linker--height', require('./components/LinkerHeight.vue'));
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
 import { faChevronLeft, faChevronRight, faCheckCircle, faAngleDoubleLeft, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import PrettyCheckbox from 'pretty-checkbox-vue';
+
+Vue.use(PrettyCheckbox);
+
 dom.watch();
 library.add(
 	faChevronLeft,

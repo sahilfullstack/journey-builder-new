@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12">
             <label for="text">in kgs</label>
-            <input type="number" v-model="response" @input="emit">
+            <input class="box-input" type="number" v-model="response" @input="emit">
         </div>
     </div>
 </template>

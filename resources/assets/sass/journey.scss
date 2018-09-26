@@ -17,6 +17,7 @@ $font-family-sans-serif: "Quicksand", sans-serif;
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/card";
 @import "~bootstrap/scss/bootstrap";
+@import '~pretty-checkbox/src/pretty-checkbox.scss';
 
 .row {
     // This overflow property stops the parent from stretching itself if the child is overflowing.
@@ -148,7 +149,7 @@ section.main {
 }
 
 /**
- * Text Input (https: //github.com/codrops/TextInputEffects/blob/master/css/set1.css#L771)
+ * Text Input (https://github.com/codrops/TextInputEffects/blob/master/css/set1.css#L771)
  */
 label {
     margin: 0;
@@ -157,7 +158,8 @@ label {
     color: $gray-600;
     font-weight: 400;
 }
-input {
+
+.box-input {
     margin: 0 0 1em;
     padding: 1em 0.75em;
     background-color: #f8fafc;

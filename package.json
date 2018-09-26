@@ -25,6 +25,7 @@
         "@fortawesome/vue-fontawesome": "^0.1.1",
         "i": "^0.3.6",
         "npm": "^6.4.0",
+        "pretty-checkbox-vue": "^1.1.9",
         "raf": "^3.4.0",
         "smoothscroll-polyfill": "^0.4.3"
     }

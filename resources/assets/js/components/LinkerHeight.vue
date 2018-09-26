@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-sm-6">
             <label>feet</label>
-            <input type="number" v-model="response.feet" @input="emit">
+            <input class="box-input" type="number" v-model="response.feet" @input="emit">
         </div>
         <div class="col-sm-6">
             <label>inches</label>
-            <input type="number" v-model="response.inches" @input="emit">
+            <input class="box-input" type="number" v-model="response.inches" @input="emit">
         </div>
     </div>
 </template>

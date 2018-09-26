@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-sm-6">
             <label>First Name</label>
-            <input type="text" v-model="response.first_name" @input="emit">
+            <input class="box-input" type="text" v-model="response.first_name" @input="emit">
         </div>
         <div class="col-sm-6">
             <label>Last Name</label>
-            <input type="text" v-model="response.last_name" @input="emit">
+            <input class="box-input" type="text" v-model="response.last_name" @input="emit">
         </div>
     </div>
 </template>

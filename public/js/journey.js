@@ -49952,9 +49952,11 @@ var render = function() {
         [_vm._v(_vm._s(this.text))]
       ),
       _vm._v(" "),
-      _c("label", { staticClass: "description-style" }, [
-        _vm._v("*" + _vm._s(this.description))
-      ])
+      this.description != null
+        ? _c("label", { staticClass: "description-style" }, [
+            _vm._v("*" + _vm._s(this.description))
+          ])
+        : _vm._e()
     ],
     1
   )

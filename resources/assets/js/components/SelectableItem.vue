@@ -1,7 +1,7 @@
 <template>      
     <div style="margin-bottom: 3%;">
         <p-check @change="toggle" class="p-default p-fill option-style" :checked="this.selected ? true : false" color="primary">{{this.text}}</p-check>
-        <label class="description-style">*{{this.description}}</label>
+        <label v-if="this.description != null" class="description-style">*{{this.description}}</label>
     </div>
 </template>
 

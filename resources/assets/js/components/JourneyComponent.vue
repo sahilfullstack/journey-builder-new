@@ -99,7 +99,7 @@
                         this.section_class = '';
                     }, 2000);
                 }
-console.log(this.lastNode.section);
+
                 return this.lastNode.section;
             },
             journeyCompleted() {

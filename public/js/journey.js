@@ -49872,7 +49872,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49883,6 +49883,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49942,23 +49947,23 @@ var render = function() {
     "div",
     { staticClass: "container", staticStyle: { "margin-bottom": "5%" } },
     [
-      _c(
-        "p-check",
-        {
-          staticClass: "p-default p-fill option-style",
-          attrs: { checked: this.selected ? true : false, color: "primary" },
-          on: { change: _vm.toggle }
-        },
-        [_vm._v(_vm._s(this.text))]
-      ),
+      _c("div", { staticClass: "pretty p-default p-fill option-style" }, [
+        _c("input", {
+          attrs: { type: "checkbox", color: "primary" },
+          domProps: { checked: this.selected ? true : false }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "state" }, [
+          _c("label", [_vm._v(_vm._s(this.text))])
+        ])
+      ]),
       _vm._v(" "),
       this.description != null
         ? _c("label", { staticClass: "description-style" }, [
             _vm._v("*" + _vm._s(this.description))
           ])
         : _vm._e()
-    ],
-    1
+    ]
   )
 }
 var staticRenderFns = []

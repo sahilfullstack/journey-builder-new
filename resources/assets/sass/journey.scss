@@ -271,21 +271,21 @@ a.disabled {
 
 
 .option-style {
-    font-size: 1.43em;    
+    font-size: 1.2em;    
     color: black;
 }
 
 .description-style {
     color: grey;
     font-style: italic;
-    font-size: .9em;
+    font-size: .8em;
 }
 
 
 /* Pretty checkbox overrides  */
 
 .pretty {
-    white-space: inherit;
+    white-space: nowrap;
     width: 14rem;
 }
 
@@ -297,4 +297,12 @@ a.disabled {
 .pretty .state label:after, 
 .pretty .state label:before{
      top: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .pretty {
+        white-space: inherit;
+        width: 14rem;
+    }
+
 }

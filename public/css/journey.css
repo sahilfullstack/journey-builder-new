@@ -18230,17 +18230,15 @@ a.disabled {
 }
 
 .option-style {
-  font-size: 1.43em;
+  font-size: 1.2em;
   color: black;
 }
 
 .description-style {
   color: grey;
   font-style: italic;
-  font-size: .9em;
+  font-size: .8em;
 }
-
-/* Pretty checkbox overrides  */
 
 .pretty {
   white-space: inherit;

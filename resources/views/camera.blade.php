@@ -5,8 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>SheMatters</title>
-
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -66,52 +64,19 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     SHE MATTERS
-
                 </div>
             </div>
               <form enctype="multipart/form-data" method="post">
-                      <h2>Regular file upload</h2>
                       <input type="file"></input>
 
-                      <h2>capture=camera</h2>
+                      <h2>Click Below</h2>
                       <input type="file" accept="image/*;capture=camera"></input>
 
-                      <h2>capture=camcorder</h2>
-                      <input type="file" accept="video/*;capture=camcorder"></input>
-
-                      <h2>capture=microphone</h2>
-                      <input type="file" accept="audio/*;capture=microphone"></input>
+                
                     </form>
-
-
-
-
-
-            <div class="camera">
-                <video id="video">Video stream not available.</video>
-                <button id="startbutton">Take photo</button>
-              </div>
-
-              <canvas id="canvas">
-                  </canvas>
-                  <div class="output">
-                    <img id="photo" alt="The screen capture will appear in this box.">
-                  </div>
-
         </div>
     </body>
 </html>

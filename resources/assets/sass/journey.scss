@@ -320,7 +320,7 @@ a.disabled {
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
     content: "";
-    position: fixed;
+    position: absolute;
     display: none;
 }
 

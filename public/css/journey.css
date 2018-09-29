@@ -17300,7 +17300,7 @@ a.disabled {
 
 .checkmark:after {
   content: "";
-  position: fixed;
+  position: absolute;
   display: none;
 }
 

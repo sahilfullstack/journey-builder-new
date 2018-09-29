@@ -29,3 +29,10 @@ Route::get('/journeys/{journey}', ['as' => 'journey.continue', 'uses' => 'Journe
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/camera', function () {
+    return view('camera');
+});
+Route::get('/ccamera', function () {
+    return view('ccamera');
+});

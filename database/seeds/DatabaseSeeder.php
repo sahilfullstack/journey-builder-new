@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TreesSeeder::class);
         $this->call(SectionsSeeder::class);
         $this->call(GANodesSeeder::class);
-        // $this->call(AcneNodesSeeder::class);
+        $this->call(AcneNodesSeeder::class);
+        // $this->call(OldAcneNodesSeeder::class);
     }
 }

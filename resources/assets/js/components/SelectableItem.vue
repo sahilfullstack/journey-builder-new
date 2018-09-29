@@ -1,7 +1,10 @@
 <template>      
-    <div class="container" style="margin-bottom: 5%;">
-        <p-check @change="toggle" class="p-default p-fill option-style" :checked="this.selected ? true : false" color="primary">{{this.text}}</p-check>
-        <label v-if="this.description != null" class="description-style">*{{this.description}}</label>
+    <div style="margin-bottom: 5%;">
+        <label class="checkbox-container">{{this.text}}
+          <input type="checkbox">
+          <span class="checkmark"></span>
+            <label v-if="this.description != null" class="description-style">*{{this.description}}</label>
+        </label>
     </div>
 </template>
 

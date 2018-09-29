@@ -3620,7 +3620,6 @@ class GANodesSeeder extends Seeder
                 ]                  
               ]
             ],
-
            [
             'tree_id' => $trees['ga'],
             'identifier' => 62,

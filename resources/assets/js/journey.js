@@ -26,6 +26,7 @@ Vue.component('linker--full-name', require('./components/LinkerFullName.vue'));
 Vue.component('linker--date', require('./components/LinkerDate.vue'));
 Vue.component('linker--weight', require('./components/LinkerWeight.vue'));
 Vue.component('linker--height', require('./components/LinkerHeight.vue'));
+Vue.component('linker--months', require('./components/LinkerMonths.vue'));
 
 /**
  * Icons
@@ -33,9 +34,6 @@ Vue.component('linker--height', require('./components/LinkerHeight.vue'));
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
 import { faChevronLeft, faChevronRight, faCheckCircle, faAngleDoubleLeft, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import PrettyCheckbox from 'pretty-checkbox-vue';
-
-Vue.use(PrettyCheckbox);
 
 dom.watch();
 library.add(

@@ -17,7 +17,6 @@ $font-family-sans-serif: "Quicksand", sans-serif;
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/card";
 @import "~bootstrap/scss/bootstrap";
-@import '~pretty-checkbox/src/pretty-checkbox.scss';
 
 
 .row {
@@ -282,27 +281,55 @@ a.disabled {
 }
 
 
-/* Pretty checkbox overrides  */
-
-.pretty {
-    white-space: nowrap;
-    width: 14rem;
+/* The checkbox-container */
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-.pretty .state label{
-      text-indent: 0;
-      padding-left: 2rem;
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
 }
 
-.pretty .state label:after, 
-.pretty .state label:before{
-     top: 0;
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    height: 25px;
+    width: 25px;    
+    border: 1px solid #ccc!important;
 }
 
-@media only screen and (max-width: 600px) {
-    .pretty {
-        white-space: inherit;
-        width: 14rem;
-    }
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
 
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #77254B;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
 }

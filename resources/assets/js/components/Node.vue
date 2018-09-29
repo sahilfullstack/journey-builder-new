@@ -20,6 +20,7 @@
                     <linker--date v-if="this.node.linker.type == 'date'" :linker="this.node.linker" v-bind:value="value" v-on="$listeners"></linker--date>
                     <linker--weight v-if="this.node.linker.type == 'weight'" :linker="this.node.linker" v-bind:value="value" v-on="$listeners"></linker--weight>
                     <linker--height v-if="this.node.linker.type == 'height'" :linker="this.node.linker" v-bind:value="value" v-on="$listeners"></linker--height>
+                    <linker--months v-if="this.node.linker.type == 'months'" :linker="this.node.linker" v-bind:value="value" v-on="$listeners"></linker--months>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
     <div>
         <selectable-item  
             v-for="(selectable, index) in this.linker.selectables"
-            :key="index" :value="index" :description="selectable.data.description" :text="selectable.data.text"
+            :key="index" :value="index" :image="selectable.data.image_url" :description="selectable.data.description" :text="selectable.data.text"
             :is-selected="selected.indexOf(index) !== -1"
             @selected="onSelect" @unselected="onUnselect">           
         </selectable-item>

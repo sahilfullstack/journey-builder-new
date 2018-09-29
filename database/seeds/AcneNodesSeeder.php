@@ -70,7 +70,7 @@ class AcneNodesSeeder extends Seeder
                 'section_id' => $sections['ACNE'],
                 'tree_id' => $trees['acne'],
             	'data' => [
-            		'title' => '2. Have you tried any treatment for a significant (6 months or more) period of time?',
+            		'title' => 'Have you tried any treatment for a significant (6 months or more) period of time?',
             		'body' => '',
             	],
             	'linker' => [
@@ -141,7 +141,7 @@ class AcneNodesSeeder extends Seeder
                 'section_id' => $sections['ACNE'],
                 'tree_id' => $trees['acne'],
             	'data' => [
-            		'title' => '3. Are either of the following true for your skin?',
+            		'title' => 'Are either of the following true for your skin?',
             		'body' => '',
             	],
             	'linker' => [
@@ -534,7 +534,7 @@ class AcneNodesSeeder extends Seeder
 				            'data' => [
 								'text'      => 'Mild',
 								'description' => null,
-								'image_url' => 'hhttps://c8.alamy.com/comp/ABF9WH/mild-acne-on-the-forehead-ABF9WH.jpg',
+								'image_url' => 'https://c8.alamy.com/comp/ABF9WH/mild-acne-on-the-forehead-ABF9WH.jpg',
 				            ],
 				            'to' => 12,
 				            'operations' => []                		

@@ -49868,7 +49868,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49889,6 +49889,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -49896,6 +49905,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             required: true
         },
         description: {
+            required: true
+        },
+        image: {
             required: true
         },
         text: {
@@ -49939,7 +49951,25 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticStyle: { "margin-bottom": "5%" } }, [
     _c("label", { staticClass: "checkbox-container" }, [
-      _vm._v(_vm._s(this.text) + "\n      "),
+      this.image != null
+        ? _c("div", { staticClass: "card" }, [
+            _c("img", {
+              staticClass: "card-img-top",
+              attrs: { width: "400", src: this.image }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body d-flex align-items-center" }, [
+              _c("p", { staticClass: "m-0" }, [_vm._v(_vm._s(this.text))])
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      this.image == null
+        ? _c("div", [
+            _vm._v("\n            " + _vm._s(this.text) + "\n        ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _c("input", {
         attrs: { type: "checkbox" },
         domProps: { checked: this.selected ? true : false },
@@ -51381,6 +51411,7 @@ var render = function() {
         key: index,
         attrs: {
           value: index,
+          image: selectable.data.image_url,
           description: selectable.data.description,
           text: selectable.data.text,
           "is-selected": _vm.selected.indexOf(index) !== -1
@@ -51601,6 +51632,7 @@ var render = function() {
         key: index,
         attrs: {
           value: index,
+          image: selectable.data.image_url,
           description: selectable.data.description,
           text: selectable.data.text,
           "is-selected": _vm.selected.indexOf(index) !== -1

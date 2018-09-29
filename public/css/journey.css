@@ -17290,12 +17290,6 @@ a.disabled {
   border: 1px solid #ccc !important;
 }
 
-/* On mouse-over, add a grey background color */
-
-.checkbox-container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
 /* When the checkbox is checked, add a blue background */
 
 .checkbox-container input:checked ~ .checkmark {

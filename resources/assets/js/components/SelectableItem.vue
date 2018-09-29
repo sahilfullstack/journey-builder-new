@@ -1,7 +1,7 @@
 <template>      
     <div style="margin-bottom: 5%;">
         <label class="checkbox-container">{{this.text}}
-          <input type="checkbox">
+          <input :checked="this.selected ? true : false" @change="toggle" type="checkbox">
           <span class="checkmark"></span>
             <label v-if="this.description != null" class="description-style">*{{this.description}}</label>
         </label>

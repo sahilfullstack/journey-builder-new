@@ -49940,7 +49940,11 @@ var render = function() {
   return _c("div", { staticStyle: { "margin-bottom": "5%" } }, [
     _c("label", { staticClass: "checkbox-container" }, [
       _vm._v(_vm._s(this.text) + "\n      "),
-      _c("input", { attrs: { type: "checkbox" } }),
+      _c("input", {
+        attrs: { type: "checkbox" },
+        domProps: { checked: this.selected ? true : false },
+        on: { change: _vm.toggle }
+      }),
       _vm._v(" "),
       _c("span", { staticClass: "checkmark" }),
       _vm._v(" "),

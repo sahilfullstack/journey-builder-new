@@ -2,7 +2,7 @@
     <section class="main container-fluid">
         <div class="row  noscroll">
             <div class="col-sm-12 col-md-8 offset-md-4">
-                <img src="/images/shematters-logo-color.png" alt="SheMatters" id="icon">
+                <img src="/images/project-logo-color.png" alt="project" id="icon">
             </div>
         </div>
         <div class="row section bg-secondary noscroll" v-if="section != null">

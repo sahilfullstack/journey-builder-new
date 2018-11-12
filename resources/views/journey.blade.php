@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SheMatters Journey</title>
+    <title>project Journey</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -18,7 +18,7 @@
 
         <!-- <footer class="footer d-block d-md-none">
             <div class="container">
-                <span class="text-muted">&copy; SheMatters</span>
+                <span class="text-muted">&copy; project</span>
             </div>
         </footer> -->
     </div>
